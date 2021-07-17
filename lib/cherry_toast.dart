@@ -21,6 +21,15 @@ class CherryToast extends StatelessWidget {
               ),
             ],
           ),
+          child: Row(
+            children: [
+              Image(
+                image: AssetImage("assets/icons/ic_error.png",
+                    package: "cherry_toast"),
+                width: 20,
+              ),
+            ],
+          ),
         ),
       ],
     );
