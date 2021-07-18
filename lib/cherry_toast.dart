@@ -1,3 +1,5 @@
+import 'package:cherry_toast/cherry_toast_icon.dart';
+import 'package:cherry_toast/resources/colors.dart';
 import 'package:cherry_toast/resources/constants.dart';
 import 'package:cherry_toast/resources/images.dart';
 import 'package:flutter/material.dart';
@@ -23,13 +25,24 @@ class CherryToast extends StatelessWidget {
               ),
             ],
           ),
-          child: Row(
-            children: [
-              Image(
-                image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
-                width: 20,
-              ),
-            ],
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                CherryToatIcon(
+                    color: WARINING_COLOR,
+                    icon: Image(
+                      image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
+                      width: 20,
+                    )),
+                Image(
+                  image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
+                  width: 10,
+                ),
+              ],
+            ),
           ),
         ),
       ],
