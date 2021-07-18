@@ -1,3 +1,5 @@
+import 'package:cherry_toast/resources/constants.dart';
+import 'package:cherry_toast/resources/images.dart';
 import 'package:flutter/material.dart';
 
 class CherryToast extends StatelessWidget {
@@ -24,8 +26,7 @@ class CherryToast extends StatelessWidget {
           child: Row(
             children: [
               Image(
-                image: AssetImage("assets/icons/ic_error.png",
-                    package: "cherry_toast"),
+                image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
                 width: 20,
               ),
             ],
