@@ -11,8 +11,6 @@ class CherryToast extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
         Container(
-          width: 250,
-          height: 50,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(20),
@@ -31,12 +29,47 @@ class CherryToast extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                CherryToatIcon(
-                    color: WARINING_COLOR,
-                    icon: Image(
-                      image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
-                      width: 20,
-                    )),
+                Expanded(
+                  flex: 2,
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      CherryToatIcon(
+                          color: WARINING_COLOR,
+                          icon: Image(
+                            image:
+                                AssetImage(WARNING_ICON, package: PACKAGE_NAME),
+                            width: 20,
+                          )),
+                      Expanded(
+                        flex: 2,
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 10, right: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text("Title here",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.bold)),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text(
+                                  "this is just  a description, this is just  a descriptionthis is just  a description"),
+                              SizedBox(
+                                height: 5,
+                              ),
+                              Text("Go to settings",
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                      color: WARINING_COLOR))
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
                 Image(
                   image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
                   width: 10,
