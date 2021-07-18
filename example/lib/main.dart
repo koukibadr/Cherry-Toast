@@ -29,7 +29,10 @@ class ExampleApp extends StatelessWidget {
         child: ElevatedButton(
           child: Text("Press Here"),
           onPressed: () {
-            CherryToast().show(context);
+            CherryToast(
+              title: "",
+              action: "",
+            ).show(context);
           },
         ),
       ),

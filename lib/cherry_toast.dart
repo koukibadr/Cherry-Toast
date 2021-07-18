@@ -5,6 +5,65 @@ import 'package:cherry_toast/resources/images.dart';
 import 'package:flutter/material.dart';
 
 class CherryToast extends StatelessWidget {
+  CherryToast(
+      {required this.title,
+      required this.action,
+      this.description,
+      this.descriptionStyle,
+      this.titleStyle = const TextStyle(color: Colors.black),
+      this.actionStyle = const TextStyle(color: Colors.black),
+      this.displayTitle = true,
+      this.displayAction = true});
+
+  CherryToast.success(
+      {required this.title,
+      required this.action,
+      this.description,
+      this.descriptionStyle,
+      this.titleStyle = const TextStyle(color: Colors.black),
+      this.actionStyle = const TextStyle(color: SUCCESS_COLOR),
+      this.displayTitle = true,
+      this.displayAction = true});
+
+  CherryToast.error(
+      {required this.title,
+      required this.action,
+      this.description,
+      this.descriptionStyle,
+      this.titleStyle = const TextStyle(color: Colors.black),
+      this.actionStyle = const TextStyle(color: ERROR_COLOR),
+      this.displayTitle = true,
+      this.displayAction = true});
+
+  CherryToast.warning(
+      {required this.title,
+      required this.action,
+      this.description,
+      this.descriptionStyle,
+      this.titleStyle = const TextStyle(color: Colors.black),
+      this.actionStyle = const TextStyle(color: WARINING_COLOR),
+      this.displayTitle = true,
+      this.displayAction = true});
+
+  CherryToast.info(
+      {required this.title,
+      required this.action,
+      this.description,
+      this.descriptionStyle,
+      this.titleStyle = const TextStyle(color: Colors.black),
+      this.actionStyle = const TextStyle(color: INFO_COLOR),
+      this.displayTitle = true,
+      this.displayAction = true});
+
+  final String title;
+  final String? description;
+  final String action;
+  final TextStyle titleStyle;
+  final TextStyle? descriptionStyle;
+  final TextStyle actionStyle;
+  final bool displayTitle;
+  final bool displayAction;
+
   @override
   Widget build(BuildContext context) {
     return Column(
