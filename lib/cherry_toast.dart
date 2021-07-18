@@ -27,7 +27,7 @@ class CherryToast extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Expanded(
                   flex: 2,
@@ -70,9 +70,12 @@ class CherryToast extends StatelessWidget {
                     ],
                   ),
                 ),
-                Image(
-                  image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
-                  width: 10,
+                Padding(
+                  padding: const EdgeInsets.only(top: 10, right: 10),
+                  child: Image(
+                    image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
+                    width: 10,
+                  ),
                 ),
               ],
             ),
