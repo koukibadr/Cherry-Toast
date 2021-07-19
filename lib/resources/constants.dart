@@ -7,4 +7,5 @@ const TextStyle DEFAULT_TITLTE_STYLE =
     const TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
 
 const Duration DEFAULT_ANIMATION_DURATION = Duration(milliseconds: 1500);
+const Duration DEFAULT_TOAST_DURATION = Duration(milliseconds: 3000);
 const Cubic DEFAULT_ANIMATION_CURVE = Curves.ease;

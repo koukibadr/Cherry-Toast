@@ -31,7 +31,8 @@ class ExampleApp extends StatelessWidget {
           onPressed: () {
             CherryToast.success(
               title: "User Added",
-              action: "Display Info"
+              action: "Display Info",
+              autoDismiss: true,
             ).show(context);
           },
         ),

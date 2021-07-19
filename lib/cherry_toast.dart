@@ -25,7 +25,9 @@ class CherryToast extends StatefulWidget {
       this.toastPosition = POSITION.TOP,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT});
+      this.animationType = ANIMATION_TYPE.FROM_LEFT,
+      this.autoDismiss = false,
+      this.toastDuration = DEFAULT_TOAST_DURATION});
 
   CherryToast.success(
       {required this.title,
@@ -42,7 +44,9 @@ class CherryToast extends StatefulWidget {
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
+      this.animationType = ANIMATION_TYPE.FROM_LEFT,
+      this.autoDismiss = false,
+      this.toastDuration = DEFAULT_TOAST_DURATION}) {
     this.icon = Image(
       image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -64,7 +68,9 @@ class CherryToast extends StatefulWidget {
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
+      this.animationType = ANIMATION_TYPE.FROM_LEFT,
+      this.autoDismiss = false,
+      this.toastDuration = DEFAULT_TOAST_DURATION}) {
     this.icon = Image(
       image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -86,7 +92,9 @@ class CherryToast extends StatefulWidget {
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
+      this.animationType = ANIMATION_TYPE.FROM_LEFT,
+      this.autoDismiss = false,
+      this.toastDuration = DEFAULT_TOAST_DURATION}) {
     this.icon = Image(
       image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -108,7 +116,9 @@ class CherryToast extends StatefulWidget {
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
+      this.animationType = ANIMATION_TYPE.FROM_LEFT,
+      this.autoDismiss = false,
+      this.toastDuration = DEFAULT_TOAST_DURATION}) {
     this.icon = Image(
       image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -130,6 +140,8 @@ class CherryToast extends StatefulWidget {
   final Duration animationDuration;
   final Cubic animationCurve;
   final ANIMATION_TYPE animationType;
+  final bool autoDismiss;
+  final Duration toastDuration;
 
   show(BuildContext context) {
     showDialog(
@@ -158,6 +170,14 @@ class _CherryToastState extends State<CherryToast>
   void initState() {
     super.initState();
     _initAnimation();
+    if (this.widget.autoDismiss) {
+      Timer(this.widget.toastDuration, () {
+        slideController.reverse();
+        Timer(this.widget.animationDuration, () {
+          Navigator.pop(context);
+        });
+      });
+    }
   }
 
   _initAnimation() {
