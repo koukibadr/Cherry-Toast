@@ -53,7 +53,7 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true}) {
     this.icon = Image(
       image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
-      width: 20,
+      width: DEFAULT_ICON_SIZE,
     );
   }
 
@@ -79,7 +79,7 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true}) {
     this.icon = Image(
       image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
-      width: 20,
+      width: DEFAULT_ICON_SIZE,
     );
   }
 
@@ -105,7 +105,7 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true}) {
     this.icon = Image(
       image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
-      width: 20,
+      width: DEFAULT_ICON_SIZE,
     );
   }
 
@@ -131,7 +131,7 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true}) {
     this.icon = Image(
       image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
-      width: 20,
+      width: DEFAULT_ICON_SIZE,
     );
   }
 
@@ -178,10 +178,24 @@ class _CherryToastState extends State<CherryToast>
   late Animation<Offset> offsetAnimation;
   late AnimationController slideController;
 
+  late BoxDecoration toastDecoration;
+
   @override
   void initState() {
     super.initState();
     _initAnimation();
+    toastDecoration = BoxDecoration(
+      color: Colors.white,
+      borderRadius: BorderRadius.circular(20),
+      boxShadow: [
+        BoxShadow(
+          color: Colors.grey.withOpacity(0.5),
+          spreadRadius: 1,
+          blurRadius: 2,
+          offset: Offset(0, 1), // changes position of shadow
+        ),
+      ],
+    );
     if (this.widget.autoDismiss) {
       Timer(this.widget.toastDuration, () {
         slideController.reverse();
@@ -244,18 +258,7 @@ class _CherryToastState extends State<CherryToast>
         SlideTransition(
           position: offsetAnimation,
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 1), // changes position of shadow
-                ),
-              ],
-            ),
+            decoration: toastDecoration,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -280,19 +283,7 @@ class _CherryToastState extends State<CherryToast>
                   this.widget.displayCloseButton
                       ? Padding(
                           padding: const EdgeInsets.only(top: 10, right: 10),
-                          child: InkWell(
-                            onTap: () {
-                              slideController.reverse();
-                              Timer(this.widget.animationDuration, () {
-                                Navigator.pop(context);
-                              });
-                            },
-                            child: Image(
-                              image:
-                                  AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
-                              width: 10,
-                            ),
-                          ),
+                          child: _renderCloseButton(context),
                         )
                       : Container(),
                 ],
@@ -313,18 +304,7 @@ class _CherryToastState extends State<CherryToast>
         SlideTransition(
           position: offsetAnimation,
           child: Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(20),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 1,
-                  blurRadius: 2,
-                  offset: Offset(0, 1), // changes position of shadow
-                ),
-              ],
-            ),
+            decoration: toastDecoration,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
@@ -334,19 +314,7 @@ class _CherryToastState extends State<CherryToast>
                   this.widget.displayCloseButton
                       ? Padding(
                           padding: const EdgeInsets.only(top: 10, left: 10),
-                          child: InkWell(
-                            onTap: () {
-                              slideController.reverse();
-                              Timer(this.widget.animationDuration, () {
-                                Navigator.pop(context);
-                              });
-                            },
-                            child: Image(
-                              image:
-                                  AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
-                              width: 10,
-                            ),
-                          ),
+                          child: _renderCloseButton(context),
                         )
                       : Container(),
                   Expanded(
@@ -370,6 +338,21 @@ class _CherryToastState extends State<CherryToast>
           ),
         ),
       ],
+    );
+  }
+
+  InkWell _renderCloseButton(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        slideController.reverse();
+        Timer(this.widget.animationDuration, () {
+          Navigator.pop(context);
+        });
+      },
+      child: Image(
+        image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
+        width: CLOSE_BUTTON_SIZE,
+      ),
     );
   }
 
