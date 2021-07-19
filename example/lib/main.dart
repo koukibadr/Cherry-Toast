@@ -33,6 +33,7 @@ class ExampleApp extends StatelessWidget {
               title: "User Added",
               action: "Display Info",
               autoDismiss: true,
+              displayCloseButton: false,
             ).show(context);
           },
         ),
