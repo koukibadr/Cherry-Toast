@@ -1,8 +1,7 @@
 name: cherry_toast
-description: A new Flutter package project.
-version: 0.0.1
-author:
-homepage:
+description: A new way to display toasts in flutter with elegant design and animations
+version: 1.0.0
+homepage: https://github.com/koukibadr/Cherry-Toast
 
 environment:
   sdk: '>=2.12.0 <3.0.0'
@@ -18,14 +17,9 @@ dev_dependencies:
 
 flutter:
 
-  # To add assets to your package, add an assets section, like this:
   assets:
     - assets/icons/ic_error.png
     - assets/icons/ic_info.png
     - assets/icons/ic_warning.png
     - assets/icons/ic_success.png
     - assets/icons/ic_close.png
-  # fonts:
-  #   - family: CherryToastIcons
-  #     fonts:
-  #       - asset: assets/fonts/CherryToastIcons.ttf
