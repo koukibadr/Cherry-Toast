@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cherry_toast/cherry_toast_icon.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:cherry_toast/resources/colors.dart';
@@ -6,7 +8,7 @@ import 'package:cherry_toast/resources/images.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
-class CherryToast extends StatelessWidget {
+class CherryToast extends StatefulWidget {
   CherryToast(
       {required this.title,
       required this.action,
@@ -20,7 +22,9 @@ class CherryToast extends StatelessWidget {
           const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.displayAction = true,
-      this.toastPosition = POSITION.TOP});
+      this.toastPosition = POSITION.TOP,
+      this.animationDuration = DEFAULT_ANIMATION_DURATION,
+      this.animationCurve = DEFAULT_ANIMATION_CURVE});
 
   CherryToast.success(
       {required this.title,
@@ -34,7 +38,9 @@ class CherryToast extends StatelessWidget {
       this.displayTitle = true,
       this.displayAction = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR}) {
+      this.themeColor = SUCCESS_COLOR,
+      this.animationDuration = DEFAULT_ANIMATION_DURATION,
+      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
     this.icon = Image(
       image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -53,7 +59,9 @@ class CherryToast extends StatelessWidget {
       this.displayTitle = true,
       this.displayAction = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR}) {
+      this.themeColor = SUCCESS_COLOR,
+      this.animationDuration = DEFAULT_ANIMATION_DURATION,
+      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
     this.icon = Image(
       image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -72,7 +80,9 @@ class CherryToast extends StatelessWidget {
       this.displayTitle = true,
       this.displayAction = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR}) {
+      this.themeColor = SUCCESS_COLOR,
+      this.animationDuration = DEFAULT_ANIMATION_DURATION,
+      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
     this.icon = Image(
       image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -91,7 +101,9 @@ class CherryToast extends StatelessWidget {
       this.displayTitle = true,
       this.displayAction = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR}) {
+      this.themeColor = SUCCESS_COLOR,
+      this.animationDuration = DEFAULT_ANIMATION_DURATION,
+      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
     this.icon = Image(
       image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -110,92 +122,9 @@ class CherryToast extends StatelessWidget {
   final POSITION toastPosition;
   final Color themeColor;
   final Function? actionHandler;
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: this.toastPosition == POSITION.TOP
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: [
-        Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-            borderRadius: BorderRadius.circular(20),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.grey.withOpacity(0.5),
-                spreadRadius: 1,
-                blurRadius: 2,
-                offset: Offset(0, 1), // changes position of shadow
-              ),
-            ],
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CherryToatIcon(color: this.themeColor, icon: this.icon),
-                      Expanded(
-                        flex: 2,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 10, right: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              this.displayTitle
-                                  ? Text(this.title, style: this.titleStyle)
-                                  : Container(),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              this.description == null
-                                  ? Container()
-                                  : Text(this.description ?? ""),
-                              SizedBox(
-                                height: 5,
-                              ),
-                              this.displayAction
-                                  ? InkWell(
-                                      onTap: () {
-                                        this.actionHandler?.call();
-                                      },
-                                      child: Text(this.action,
-                                          style: this.actionStyle))
-                                  : Container()
-                            ],
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(top: 10, right: 10),
-                  child: InkWell(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image(
-                      image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
-                      width: 10,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
+  final Duration animationDuration;
+  final Cubic animationCurve;
+  
 
   show(BuildContext context) {
     showDialog(
@@ -209,5 +138,130 @@ class CherryToast extends StatelessWidget {
             content: this,
           );
         });
+  }
+
+  @override
+  _CherryToastState createState() => _CherryToastState();
+}
+
+class _CherryToastState extends State<CherryToast>
+    with TickerProviderStateMixin {
+  late Animation<Offset> offsetAnimation;
+  late AnimationController slideController;
+
+  @override
+  void initState() {
+    super.initState();
+    _initAnimation();
+  }
+
+  _initAnimation() {
+    slideController = AnimationController(
+      duration: this.widget.animationDuration,
+      vsync: this,
+    );
+    offsetAnimation = Tween<Offset>(
+      begin: const Offset(-2, 0),
+      end: const Offset(0, 0),
+    ).animate(CurvedAnimation(
+        parent: slideController, curve: this.widget.animationCurve));
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      slideController.forward();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: this.widget.toastPosition == POSITION.TOP
+          ? MainAxisAlignment.start
+          : MainAxisAlignment.end,
+      children: [
+        SlideTransition(
+          position: offsetAnimation,
+          child: Container(
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(20),
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.grey.withOpacity(0.5),
+                  spreadRadius: 1,
+                  blurRadius: 2,
+                  offset: Offset(0, 1), // changes position of shadow
+                ),
+              ],
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CherryToatIcon(
+                            color: this.widget.themeColor,
+                            icon: this.widget.icon),
+                        Expanded(
+                          flex: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.only(left: 10, right: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                this.widget.displayTitle
+                                    ? Text(this.widget.title,
+                                        style: this.widget.titleStyle)
+                                    : Container(),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                this.widget.description == null
+                                    ? Container()
+                                    : Text(this.widget.description ?? ""),
+                                SizedBox(
+                                  height: 5,
+                                ),
+                                this.widget.displayAction
+                                    ? InkWell(
+                                        onTap: () {
+                                          this.widget.actionHandler?.call();
+                                        },
+                                        child: Text(this.widget.action,
+                                            style: this.widget.actionStyle))
+                                    : Container()
+                              ],
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(top: 10, right: 10),
+                    child: InkWell(
+                      onTap: () {
+                        slideController.reverse();
+                        Timer(this.widget.animationDuration, () {
+                          Navigator.pop(context);
+                        });
+                      },
+                      child: Image(
+                        image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
+                        width: 10,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ],
+    );
   }
 }
