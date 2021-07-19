@@ -156,17 +156,17 @@ class CherryToast extends StatefulWidget {
   final bool displayCloseButton;
 
   show(BuildContext context) {
-    showDialog(
-        context: context,
-        barrierColor: Colors.white.withOpacity(0),
-        builder: (context) {
-          return AlertDialog(
-            backgroundColor: Colors.transparent,
-            contentPadding: EdgeInsets.all(0),
-            elevation: 0,
-            content: this,
-          );
-        });
+    Navigator.of(context).push(
+      PageRouteBuilder(
+          pageBuilder: (context, _, __) => AlertDialog(
+                backgroundColor: Colors.transparent,
+                contentPadding: EdgeInsets.all(0),
+                insetPadding: EdgeInsets.all(70),
+                elevation: 0,
+                content: this,
+              ),
+          opaque: false),
+    );
   }
 
   @override
@@ -249,7 +249,7 @@ class _CherryToastState extends State<CherryToast>
     }
   }
 
-  Column _renderLeftLayoutToast(BuildContext context) {
+  Widget _renderLeftLayoutToast(BuildContext context) {
     return Column(
       mainAxisAlignment: this.widget.toastPosition == POSITION.TOP
           ? MainAxisAlignment.start
