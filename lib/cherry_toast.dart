@@ -24,7 +24,8 @@ class CherryToast extends StatefulWidget {
       this.displayAction = true,
       this.toastPosition = POSITION.TOP,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE});
+      this.animationCurve = DEFAULT_ANIMATION_CURVE,
+      this.animationType = ANIMATION_TYPE.FROM_LEFT});
 
   CherryToast.success(
       {required this.title,
@@ -40,7 +41,8 @@ class CherryToast extends StatefulWidget {
       this.toastPosition = POSITION.TOP,
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
+      this.animationCurve = DEFAULT_ANIMATION_CURVE,
+      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
     this.icon = Image(
       image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -61,7 +63,8 @@ class CherryToast extends StatefulWidget {
       this.toastPosition = POSITION.TOP,
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
+      this.animationCurve = DEFAULT_ANIMATION_CURVE,
+      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
     this.icon = Image(
       image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -82,7 +85,8 @@ class CherryToast extends StatefulWidget {
       this.toastPosition = POSITION.TOP,
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
+      this.animationCurve = DEFAULT_ANIMATION_CURVE,
+      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
     this.icon = Image(
       image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -103,7 +107,8 @@ class CherryToast extends StatefulWidget {
       this.toastPosition = POSITION.TOP,
       this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE}) {
+      this.animationCurve = DEFAULT_ANIMATION_CURVE,
+      this.animationType = ANIMATION_TYPE.FROM_LEFT}) {
     this.icon = Image(
       image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
       width: 20,
@@ -124,7 +129,7 @@ class CherryToast extends StatefulWidget {
   final Function? actionHandler;
   final Duration animationDuration;
   final Cubic animationCurve;
-  
+  final ANIMATION_TYPE animationType;
 
   show(BuildContext context) {
     showDialog(
@@ -160,11 +165,30 @@ class _CherryToastState extends State<CherryToast>
       duration: this.widget.animationDuration,
       vsync: this,
     );
-    offsetAnimation = Tween<Offset>(
-      begin: const Offset(-2, 0),
-      end: const Offset(0, 0),
-    ).animate(CurvedAnimation(
-        parent: slideController, curve: this.widget.animationCurve));
+    switch (this.widget.animationType) {
+      case ANIMATION_TYPE.FROM_LEFT:
+        offsetAnimation = Tween<Offset>(
+          begin: const Offset(-2, 0),
+          end: const Offset(0, 0),
+        ).animate(CurvedAnimation(
+            parent: slideController, curve: this.widget.animationCurve));
+        break;
+      case ANIMATION_TYPE.FROM_RIGHT:
+        offsetAnimation = Tween<Offset>(
+          begin: const Offset(2, 0),
+          end: const Offset(0, 0),
+        ).animate(CurvedAnimation(
+            parent: slideController, curve: this.widget.animationCurve));
+        break;
+      case ANIMATION_TYPE.FROM_TOP:
+        offsetAnimation = Tween<Offset>(
+          begin: const Offset(0, -2),
+          end: const Offset(0, 0),
+        ).animate(CurvedAnimation(
+            parent: slideController, curve: this.widget.animationCurve));
+        break;
+      default:
+    }
     WidgetsBinding.instance!.addPostFrameCallback((_) {
       slideController.forward();
     });
