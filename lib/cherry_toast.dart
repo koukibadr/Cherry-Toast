@@ -32,7 +32,7 @@ class CherryToast extends StatefulWidget {
 
   CherryToast.success(
       {required this.title,
-      required this.action,
+      this.action,
       this.actionHandler,
       this.description,
       this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
@@ -57,7 +57,7 @@ class CherryToast extends StatefulWidget {
 
   CherryToast.error(
       {required this.title,
-      required this.action,
+      this.action,
       this.actionHandler,
       this.description,
       this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
@@ -66,7 +66,7 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: ERROR_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR,
+      this.themeColor = ERROR_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
@@ -82,7 +82,7 @@ class CherryToast extends StatefulWidget {
 
   CherryToast.warning(
       {required this.title,
-      required this.action,
+      this.action,
       this.actionHandler,
       this.description,
       this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
@@ -91,7 +91,7 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: WARINING_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR,
+      this.themeColor = WARINING_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
@@ -116,7 +116,7 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: INFO_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR,
+      this.themeColor = INFO_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
