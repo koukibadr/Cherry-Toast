@@ -11,9 +11,9 @@ import 'package:flutter/material.dart';
 class CherryToast extends StatefulWidget {
   CherryToast(
       {required this.title,
-      required this.action,
       required this.icon,
       required this.themeColor,
+      this.action,
       this.actionHandler,
       this.description,
       this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
