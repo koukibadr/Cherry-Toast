@@ -130,25 +130,100 @@ class CherryToast extends StatefulWidget {
     );
   }
 
+  ///the toast title string
+  ///
   final String title;
+
+  ///The toast description text
+  ///
   final String? description;
+
+  ///The toast action button text
+  ///
   final String? action;
+
+  ///the text style that will be applied on the title
+  ///by default it's `TextStyle(color: Colors.black, fontWeight: FontWeight.bold)`
+  ///
   final TextStyle titleStyle;
-  final TextStyle? descriptionStyle;
+
+  ///the text style that will be applied on the description
+  ///
+  final TextStyle descriptionStyle;
+
+  ///the action button text style
+  ///
   final TextStyle actionStyle;
+
+  ///indicates whether display or not the title
+  ///
   final bool displayTitle;
+
+  ///the toast icon, it's required when using the default constructor
+  ///
   late Widget icon;
+
+  ///the toast display postion, possible values
+  ///```dart
+  ///{
+  ///TOP,
+  ///BOTTOM
+  ///}
+  ///```
   final POSITION toastPosition;
+
+  ///The color that will be applied on the circle behind the icon
+  ///for better rendering the action button must have the same color
+  ///
   final Color themeColor;
+
+  ///the function invoked when clicking on the action button
+  ///
   final Function? actionHandler;
+
+  ///The duration of the animation by default it's 1.5 seconds
+  ///
   final Duration animationDuration;
+
+  ///the animation curve by default it's set to `Curves.ease`
+  ///
   final Cubic animationCurve;
+
+  ///The animation type applied on the toast
+  ///```dart
+  ///{
+  ///FROM_TOP,
+  ///FROM_LEFT,
+  ///FROM_RIGHT
+  ///}
+  ///```
   final ANIMATION_TYPE animationType;
+
+  ///indicates whether the toast will be hidden automatically or not
+  ///
   final bool autoDismiss;
+
+  ///the duration of the toast if [autoDismiss] is true
+  ///by default it's 3 seconds
+  ///
   final Duration toastDuration;
+
+  ///the layout of the toast
+  ///```dart
+  ///{
+  ///LTR,
+  ///RTL
+  ///}
+  ///```
   final TOAST_LAYOUT layout;
+
+  ///Display / Hide the close button icon
+  ///by default it's true
   final bool displayCloseButton;
 
+  ///Display the created cherry toast
+  ///[context] the context of the application
+  ///
   show(BuildContext context) {
     Navigator.of(context).push(
       PageRouteBuilder(
@@ -171,7 +246,6 @@ class _CherryToastState extends State<CherryToast>
     with TickerProviderStateMixin {
   late Animation<Offset> offsetAnimation;
   late AnimationController slideController;
-
   late BoxDecoration toastDecoration;
 
   @override
@@ -200,6 +274,7 @@ class _CherryToastState extends State<CherryToast>
     }
   }
 
+  ///Initialize animation parameters [slideController] and [offsetAnimation]
   _initAnimation() {
     slideController = AnimationController(
       duration: this.widget.animationDuration,
@@ -243,6 +318,8 @@ class _CherryToastState extends State<CherryToast>
     }
   }
 
+  ///render a left layout toast if [this.widget.layout] set to LTR
+  ///
   Widget _renderLeftLayoutToast(BuildContext context) {
     return Column(
       mainAxisAlignment: this.widget.toastPosition == POSITION.TOP
@@ -289,6 +366,8 @@ class _CherryToastState extends State<CherryToast>
     );
   }
 
+  ///render a right layout toast if [this.widget.layout] set to RTL
+  ///
   Column _renderRightLayoutToast(BuildContext context) {
     return Column(
       mainAxisAlignment: this.widget.toastPosition == POSITION.TOP
@@ -335,6 +414,9 @@ class _CherryToastState extends State<CherryToast>
     );
   }
 
+  /// render the close button icon with a clickable  widget that
+  /// will hide the toast
+  ///
   InkWell _renderCloseButton(BuildContext context) {
     return InkWell(
       onTap: () {
@@ -350,6 +432,8 @@ class _CherryToastState extends State<CherryToast>
     );
   }
 
+  ///render the toast content (Title, Description and Action)
+  ///
   Expanded _renderToastContent() {
     return Expanded(
       flex: 2,
