@@ -16,7 +16,7 @@ class CherryToast extends StatefulWidget {
       required this.themeColor,
       this.actionHandler,
       this.description,
-      this.descriptionStyle,
+      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
       this.titleStyle = DEFAULT_TITLTE_STYLE,
       this.actionStyle =
           const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
@@ -35,7 +35,7 @@ class CherryToast extends StatefulWidget {
       required this.action,
       this.actionHandler,
       this.description,
-      this.descriptionStyle,
+      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
       this.titleStyle = DEFAULT_TITLTE_STYLE,
       this.actionStyle =
           const TextStyle(color: SUCCESS_COLOR, fontWeight: FontWeight.bold),
@@ -60,7 +60,7 @@ class CherryToast extends StatefulWidget {
       required this.action,
       this.actionHandler,
       this.description,
-      this.descriptionStyle,
+      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
       this.titleStyle = DEFAULT_TITLTE_STYLE,
       this.actionStyle =
           const TextStyle(color: ERROR_COLOR, fontWeight: FontWeight.bold),
@@ -85,7 +85,7 @@ class CherryToast extends StatefulWidget {
       required this.action,
       this.actionHandler,
       this.description,
-      this.descriptionStyle,
+      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
       this.titleStyle = DEFAULT_TITLTE_STYLE,
       this.actionStyle =
           const TextStyle(color: WARINING_COLOR, fontWeight: FontWeight.bold),
@@ -110,7 +110,7 @@ class CherryToast extends StatefulWidget {
       this.action,
       this.actionHandler,
       this.description,
-      this.descriptionStyle,
+      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
       this.titleStyle = DEFAULT_TITLTE_STYLE,
       this.actionStyle =
           const TextStyle(color: INFO_COLOR, fontWeight: FontWeight.bold),
@@ -371,7 +371,8 @@ class _CherryToastState extends State<CherryToast>
                       SizedBox(
                         height: 5,
                       ),
-                      Text(this.widget.description ?? "")
+                      Text(this.widget.description ?? "",
+                          style: this.widget.descriptionStyle)
                     ],
                   ),
             this.widget.action != null
@@ -393,5 +394,5 @@ class _CherryToastState extends State<CherryToast>
         ),
       ),
     );
-  } 
+  }
 }

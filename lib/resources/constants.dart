@@ -5,6 +5,8 @@ const String PACKAGE_NAME = "cherry_toast";
 
 const TextStyle DEFAULT_TITLTE_STYLE =
     const TextStyle(color: Colors.black, fontWeight: FontWeight.bold);
+const TextStyle DEFAULT_DESCRIPTION_STYLE =
+    const TextStyle(color: Colors.black);
 
 const Duration DEFAULT_ANIMATION_DURATION = Duration(milliseconds: 1500);
 const Duration DEFAULT_TOAST_DURATION = Duration(milliseconds: 3000);
