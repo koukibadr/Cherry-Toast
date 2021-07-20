@@ -1,3 +1,9 @@
-## [1.0.0] - 19/07/2021
+## [1.0.0] - 20/07/2021
 
-* TODO: Describe initial release.
+* Add support to all platforms
+* Add support to null safety
+* Add multiple built-in themes
+* Add built-in animations
+* Support LTR and RTL layout rendering
+* Support Top and Bottom toast display
+* Full customization to title, description and action components
