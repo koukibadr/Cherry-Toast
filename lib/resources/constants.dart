@@ -16,3 +16,4 @@ const double CLOSE_BUTTON_SIZE = 10;
 
 const double DEFAULT_ICON_SIZE = 20;
 const double DEFAULT_ICON_LAYOUT_SIZE = 40;
+const double DEFAULT_RADIUS = 20;

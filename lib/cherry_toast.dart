@@ -28,7 +28,8 @@ class CherryToast extends StatefulWidget {
       this.autoDismiss = false,
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true});
+      this.displayCloseButton = true,
+      this.borderRadius = DEFAULT_RADIUS});
 
   CherryToast.success(
       {required this.title,
@@ -48,7 +49,8 @@ class CherryToast extends StatefulWidget {
       this.autoDismiss = false,
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true}) {
+      this.displayCloseButton = true,
+      this.borderRadius = DEFAULT_RADIUS}) {
     this.icon = Image(
       image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -73,7 +75,8 @@ class CherryToast extends StatefulWidget {
       this.autoDismiss = false,
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true}) {
+      this.displayCloseButton = true,
+      this.borderRadius = DEFAULT_RADIUS}) {
     this.icon = Image(
       image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -98,7 +101,8 @@ class CherryToast extends StatefulWidget {
       this.autoDismiss = false,
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true}) {
+      this.displayCloseButton = true,
+      this.borderRadius = DEFAULT_RADIUS}) {
     this.icon = Image(
       image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -123,7 +127,8 @@ class CherryToast extends StatefulWidget {
       this.autoDismiss = false,
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true}) {
+      this.displayCloseButton = true,
+      this.borderRadius = DEFAULT_RADIUS}) {
     this.icon = Image(
       image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -221,6 +226,8 @@ class CherryToast extends StatefulWidget {
   ///by default it's true
   final bool displayCloseButton;
 
+  final double borderRadius;
+
   ///Display the created cherry toast
   ///[context] the context of the application
   ///
@@ -254,7 +261,7 @@ class _CherryToastState extends State<CherryToast>
     _initAnimation();
     toastDecoration = BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(20),
+      borderRadius: BorderRadius.circular(this.widget.borderRadius),
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),

@@ -107,7 +107,7 @@ class ExampleApp extends StatelessWidget {
           ElevatedButton(
             child: Text("🍒 Success Cherry Toast"),
             onPressed: () {
-              CherryToast.success(title: "The simplest cherry toast")
+              CherryToast.success(title: "The simplest cherry toast", borderRadius: 0)
                   .show(context);
             },
           ),
