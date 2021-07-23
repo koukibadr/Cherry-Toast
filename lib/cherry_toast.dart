@@ -226,6 +226,10 @@ class CherryToast extends StatefulWidget {
   ///by default it's true
   final bool displayCloseButton;
 
+
+  ///define the border radius applied on the toast
+  ///by default it's 20 
+  ///
   final double borderRadius;
 
   ///Display the created cherry toast
