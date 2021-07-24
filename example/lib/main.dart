@@ -43,7 +43,7 @@ class ExampleApp extends StatelessWidget {
               CherryToast.info(
                 title: "User added",
                 action: "Display information",
-                actionHandler: (){
+                actionHandler: () {
                   print("Action button pressed");
                 },
               ).show(context);
@@ -95,7 +95,7 @@ class ExampleApp extends StatelessWidget {
                 description: "All information may be deleted after this action",
                 animationType: ANIMATION_TYPE.FROM_TOP,
                 action: "Backup data",
-                actionHandler: (){
+                actionHandler: () {
                   print("Hello World!!");
                 },
               ).show(context);
@@ -107,7 +107,8 @@ class ExampleApp extends StatelessWidget {
           ElevatedButton(
             child: Text("🍒 Success Cherry Toast"),
             onPressed: () {
-              CherryToast.success(title: "The simplest cherry toast", borderRadius: 0)
+              CherryToast.success(
+                      title: "The simplest cherry toast", borderRadius: 0)
                   .show(context);
             },
           ),
