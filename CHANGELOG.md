@@ -1,3 +1,7 @@
+## [1.0.1] - 24/07/2021
+
+* Add customizable border radius
+
 ## [1.0.0] - 20/07/2021
 
 * Add support to all platforms
