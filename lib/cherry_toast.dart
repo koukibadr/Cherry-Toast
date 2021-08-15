@@ -29,7 +29,8 @@ class CherryToast extends StatefulWidget {
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS});
+      this.borderRadius = DEFAULT_RADIUS,
+      this.displayIcon = true});
 
   CherryToast.success(
       {required this.title,
@@ -50,7 +51,8 @@ class CherryToast extends StatefulWidget {
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS}) {
+      this.borderRadius = DEFAULT_RADIUS,
+      this.displayIcon = true}) {
     this.icon = Image(
       image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -76,7 +78,8 @@ class CherryToast extends StatefulWidget {
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS}) {
+      this.borderRadius = DEFAULT_RADIUS,
+      this.displayIcon = true}) {
     this.icon = Image(
       image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -102,7 +105,8 @@ class CherryToast extends StatefulWidget {
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS}) {
+      this.borderRadius = DEFAULT_RADIUS,
+      this.displayIcon = true}) {
     this.icon = Image(
       image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -128,7 +132,8 @@ class CherryToast extends StatefulWidget {
       this.toastDuration = DEFAULT_TOAST_DURATION,
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS}) {
+      this.borderRadius = DEFAULT_RADIUS,
+      this.displayIcon = true}) {
     this.icon = Image(
       image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
       width: DEFAULT_ICON_SIZE,
@@ -230,6 +235,10 @@ class CherryToast extends StatefulWidget {
   ///by default it's 20
   ///
   final double borderRadius;
+
+  ///Define whether the icon will be  rendered or not
+  ///
+  final bool displayIcon;
 
   ///Display the created cherry toast
   ///[context] the context of the application
@@ -354,9 +363,11 @@ class _CherryToastState extends State<CherryToast>
                           ? CrossAxisAlignment.center
                           : CrossAxisAlignment.start,
                       children: [
-                        CherryToatIcon(
-                            color: this.widget.themeColor,
-                            icon: this.widget.icon),
+                        this.widget.displayIcon
+                            ? CherryToatIcon(
+                                color: this.widget.themeColor,
+                                icon: this.widget.icon)
+                            : Container(),
                         _renderToastContent(),
                       ],
                     ),
