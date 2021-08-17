@@ -3,7 +3,6 @@ import 'package:cherry_toast/cherry_toast_icon.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:cherry_toast/resources/colors.dart';
 import 'package:cherry_toast/resources/constants.dart';
-import 'package:cherry_toast/resources/images.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -12,6 +11,7 @@ class CherryToast extends StatefulWidget {
       {required this.title,
       required this.icon,
       required this.themeColor,
+      this.iconColor = Colors.black,
       this.action,
       this.actionHandler,
       this.description,
@@ -42,7 +42,6 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: SUCCESS_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = SUCCESS_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
@@ -52,10 +51,9 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
       this.displayIcon = true}) {
-    this.icon = Image(
-      image: AssetImage(SUCCESS_ICON, package: PACKAGE_NAME),
-      width: DEFAULT_ICON_SIZE,
-    );
+    this.icon = Icons.check_circle;
+    this.themeColor = SUCCESS_COLOR;
+    this.iconColor = SUCCESS_COLOR;
   }
 
   CherryToast.error(
@@ -69,7 +67,6 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: ERROR_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = ERROR_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
@@ -79,10 +76,9 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
       this.displayIcon = true}) {
-    this.icon = Image(
-      image: AssetImage(ERROR_ICON, package: PACKAGE_NAME),
-      width: DEFAULT_ICON_SIZE,
-    );
+    this.icon = Icons.error_rounded;
+    this.themeColor = ERROR_COLOR;
+    this.iconColor = ERROR_COLOR;
   }
 
   CherryToast.warning(
@@ -96,7 +92,6 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: WARINING_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = WARINING_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
@@ -106,10 +101,9 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
       this.displayIcon = true}) {
-    this.icon = Image(
-      image: AssetImage(WARNING_ICON, package: PACKAGE_NAME),
-      width: DEFAULT_ICON_SIZE,
-    );
+    this.icon = Icons.warning_rounded;
+    this.themeColor = WARINING_COLOR;
+    this.iconColor = WARINING_COLOR;
   }
 
   CherryToast.info(
@@ -123,7 +117,6 @@ class CherryToast extends StatefulWidget {
           const TextStyle(color: INFO_COLOR, fontWeight: FontWeight.bold),
       this.displayTitle = true,
       this.toastPosition = POSITION.TOP,
-      this.themeColor = INFO_COLOR,
       this.animationDuration = DEFAULT_ANIMATION_DURATION,
       this.animationCurve = DEFAULT_ANIMATION_CURVE,
       this.animationType = ANIMATION_TYPE.FROM_LEFT,
@@ -133,10 +126,9 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
       this.displayIcon = true}) {
-    this.icon = Image(
-      image: AssetImage(INFO_ICON, package: PACKAGE_NAME),
-      width: DEFAULT_ICON_SIZE,
-    );
+    this.icon = Icons.info_rounded;
+    this.themeColor = INFO_COLOR;
+    this.iconColor = INFO_COLOR;
   }
 
   ///the toast title string
@@ -170,7 +162,9 @@ class CherryToast extends StatefulWidget {
 
   ///the toast icon, it's required when using the default constructor
   ///
-  late Widget icon;
+  late IconData icon;
+
+  late Color iconColor;
 
   ///the toast display postion, possible values
   ///```dart
@@ -184,7 +178,7 @@ class CherryToast extends StatefulWidget {
   ///The color that will be applied on the circle behind the icon
   ///for better rendering the action button must have the same color
   ///
-  final Color themeColor;
+  late Color themeColor;
 
   ///the function invoked when clicking on the action button
   ///
@@ -365,9 +359,9 @@ class _CherryToastState extends State<CherryToast>
                         this.widget.displayIcon
                             ? CherryToatIcon(
                                 color: this.widget.themeColor,
-                                icon: Icons.check_circle,
+                                icon: this.widget.icon,
                                 iconSize: DEFAULT_ICON_SIZE,
-                              )
+                                iconColor: this.widget.iconColor)
                             : Container(),
                         _renderToastContent(),
                       ],
@@ -422,10 +416,10 @@ class _CherryToastState extends State<CherryToast>
                       children: [
                         _renderToastContent(),
                         CherryToatIcon(
-                          color: this.widget.themeColor,
-                          icon: Icons.check_circle,
-                          iconSize: DEFAULT_ICON_SIZE,
-                        ),
+                            color: this.widget.themeColor,
+                            icon: this.widget.icon,
+                            iconSize: DEFAULT_ICON_SIZE,
+                            iconColor: this.widget.iconColor),
                       ],
                     ),
                   ),
@@ -449,10 +443,8 @@ class _CherryToastState extends State<CherryToast>
           Navigator.pop(context);
         });
       },
-      child: Image(
-        image: AssetImage(CLOSE_ICON, package: PACKAGE_NAME),
-        width: CLOSE_BUTTON_SIZE,
-      ),
+      child:
+          Icon(Icons.close, color: Colors.grey[500], size: CLOSE_BUTTON_SIZE),
     );
   }
 

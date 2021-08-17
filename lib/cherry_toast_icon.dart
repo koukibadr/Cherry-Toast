@@ -12,8 +12,13 @@ class CherryToatIcon extends StatefulWidget {
 
   final double iconSize;
 
+  final Color iconColor;
+
   CherryToatIcon(
-      {required this.color, required this.icon, required this.iconSize});
+      {required this.color,
+      required this.icon,
+      required this.iconSize,
+      required this.iconColor});
 
   @override
   _CherryToatIconState createState() => _CherryToatIconState();
@@ -52,7 +57,8 @@ class _CherryToatIconState extends State<CherryToatIcon>
       child: Center(
           child: AnimatedBuilder(
         builder: (context, child) {
-          return Icon(this.widget.icon, size: this._heartAnimation.value);
+          return Icon(this.widget.icon,
+              size: this._heartAnimation.value, color: this.widget.iconColor);
         },
         animation: this._heartAnimationController,
       )),

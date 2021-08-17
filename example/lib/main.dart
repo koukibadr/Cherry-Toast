@@ -72,7 +72,7 @@ class ExampleApp extends StatelessWidget {
             child: Text("🍒 Bottom Cherry Toast"),
             onPressed: () {
               CherryToast(
-                      icon: Icon(Icons.alarm_add),
+                      icon: Icons.alarm_add,
                       themeColor: Colors.pink,
                       title: "",
                       displayTitle: false,
@@ -119,7 +119,7 @@ class ExampleApp extends StatelessWidget {
             child: Text("🍒 Rigth Layout Cherry Toast"),
             onPressed: () {
               CherryToast(
-                      icon: Icon(Icons.car_repair),
+                      icon: Icons.car_repair,
                       themeColor: Colors.green,
                       title: "",
                       displayTitle: false,

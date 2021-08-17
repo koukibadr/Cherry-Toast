@@ -16,14 +16,3 @@ dev_dependencies:
     sdk: flutter
 
 flutter:
-
-  assets:
-    - assets/icons/ic_error.png
-    - assets/icons/ic_info.png
-    - assets/icons/ic_warning.png
-    - assets/icons/ic_success.png
-    - assets/icons/ic_close.png
-  fonts:
-    - family:  CherryToastIcons
-      fonts:
-        - asset: assets/fonts/CherryToastIcons.ttf
