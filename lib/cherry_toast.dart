@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:cherry_toast/cherry_toast_icon.dart';
+import 'package:cherry_toast/cherry_toast_icons_icons.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:cherry_toast/resources/colors.dart';
 import 'package:cherry_toast/resources/constants.dart';
@@ -366,7 +367,9 @@ class _CherryToastState extends State<CherryToast>
                         this.widget.displayIcon
                             ? CherryToatIcon(
                                 color: this.widget.themeColor,
-                                icon: this.widget.icon)
+                                icon: Icons.check_circle,
+                                iconSize: DEFAULT_ICON_SIZE,
+                              )
                             : Container(),
                         _renderToastContent(),
                       ],
@@ -421,8 +424,10 @@ class _CherryToastState extends State<CherryToast>
                       children: [
                         _renderToastContent(),
                         CherryToatIcon(
-                            color: this.widget.themeColor,
-                            icon: this.widget.icon),
+                          color: this.widget.themeColor,
+                          icon: CherryToastIcons.check_circle,
+                          iconSize: DEFAULT_ICON_SIZE,
+                        ),
                       ],
                     ),
                   ),

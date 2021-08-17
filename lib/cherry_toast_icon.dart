@@ -8,9 +8,12 @@ class CherryToatIcon extends StatefulWidget {
 
   ///The toast icon widget
   ///
-  final Widget icon;
+  final IconData icon;
 
-  CherryToatIcon({required this.color, required this.icon});
+  final double iconSize;
+
+  CherryToatIcon(
+      {required this.color, required this.icon, required this.iconSize});
 
   @override
   _CherryToatIconState createState() => _CherryToatIconState();
@@ -25,11 +28,11 @@ class _CherryToatIconState extends State<CherryToatIcon>
   void initState() {
     super.initState();
     _heartAnimationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 200));
-    _heartAnimation =
-        Tween(begin: DEFAULT_ICON_SIZE * 0.5, end: DEFAULT_ICON_SIZE * 0.85)
-            .animate(CurvedAnimation(
-                curve: Curves.bounceOut, parent: _heartAnimationController));
+        vsync: this, duration: Duration(milliseconds: 1200));
+    _heartAnimation = Tween(
+            begin: this.widget.iconSize * 0.7, end: this.widget.iconSize * 0.95)
+        .animate(CurvedAnimation(
+            curve: Curves.bounceOut, parent: _heartAnimationController));
 
     _heartAnimationController.addStatusListener((AnimationStatus status) {
       if (status == AnimationStatus.completed) {
@@ -49,9 +52,9 @@ class _CherryToatIconState extends State<CherryToatIcon>
       child: Center(
           child: AnimatedBuilder(
         builder: (context, child) {
-          return this.widget.icon;
+          return Icon(this.widget.icon, size: this._heartAnimation.value);
         },
-        animation: this._heartAnimation,
+        animation: this._heartAnimationController,
       )),
     );
   }

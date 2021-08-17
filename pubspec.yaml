@@ -23,3 +23,7 @@ flutter:
     - assets/icons/ic_warning.png
     - assets/icons/ic_success.png
     - assets/icons/ic_close.png
+  fonts:
+    - family:  CherryToastIcons
+      fonts:
+        - asset: assets/fonts/CherryToastIcons.ttf
