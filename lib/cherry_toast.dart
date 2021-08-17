@@ -29,7 +29,8 @@ class CherryToast extends StatefulWidget {
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true});
+      this.displayIcon = true,
+      this.enableIconAnimation = true});
 
   CherryToast.success(
       {required this.title,
@@ -50,7 +51,8 @@ class CherryToast extends StatefulWidget {
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true}) {
+      this.displayIcon = true,
+      this.enableIconAnimation = true}) {
     this.icon = Icons.check_circle;
     this.themeColor = SUCCESS_COLOR;
     this.iconColor = SUCCESS_COLOR;
@@ -75,7 +77,8 @@ class CherryToast extends StatefulWidget {
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true}) {
+      this.displayIcon = true,
+      this.enableIconAnimation = true}) {
     this.icon = Icons.error_rounded;
     this.themeColor = ERROR_COLOR;
     this.iconColor = ERROR_COLOR;
@@ -100,7 +103,8 @@ class CherryToast extends StatefulWidget {
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true}) {
+      this.displayIcon = true,
+      this.enableIconAnimation = true}) {
     this.icon = Icons.warning_rounded;
     this.themeColor = WARINING_COLOR;
     this.iconColor = WARINING_COLOR;
@@ -125,7 +129,8 @@ class CherryToast extends StatefulWidget {
       this.layout = TOAST_LAYOUT.LTR,
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true}) {
+      this.displayIcon = true,
+      this.enableIconAnimation = true}) {
     this.icon = Icons.info_rounded;
     this.themeColor = INFO_COLOR;
     this.iconColor = INFO_COLOR;
@@ -232,6 +237,8 @@ class CherryToast extends StatefulWidget {
   ///Define whether the icon will be  rendered or not
   ///
   final bool displayIcon;
+
+  final bool enableIconAnimation;
 
   ///Display the created cherry toast
   ///[context] the context of the application
@@ -361,7 +368,10 @@ class _CherryToastState extends State<CherryToast>
                                 color: this.widget.themeColor,
                                 icon: this.widget.icon,
                                 iconSize: DEFAULT_ICON_SIZE,
-                                iconColor: this.widget.iconColor)
+                                iconColor: this.widget.iconColor,
+                                enableAnimation:
+                                    this.widget.enableIconAnimation,
+                              )
                             : Container(),
                         _renderToastContent(),
                       ],
@@ -419,7 +429,8 @@ class _CherryToastState extends State<CherryToast>
                             color: this.widget.themeColor,
                             icon: this.widget.icon,
                             iconSize: DEFAULT_ICON_SIZE,
-                            iconColor: this.widget.iconColor),
+                            iconColor: this.widget.iconColor,
+                            enableAnimation: this.widget.enableIconAnimation),
                       ],
                     ),
                   ),

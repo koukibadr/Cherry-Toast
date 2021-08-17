@@ -57,6 +57,7 @@ class ExampleApp extends StatelessWidget {
             onPressed: () {
               CherryToast.error(
                       title: "",
+                      enableIconAnimation: false,
                       displayTitle: false,
                       description: "Invalid account information",
                       animationType: ANIMATION_TYPE.FROM_RIGHT,
