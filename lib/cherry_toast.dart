@@ -179,8 +179,7 @@ class CherryToast extends StatefulWidget {
   ///for the built-in themes the color  will be set automatically
   late Color iconColor;
 
-
-  ///the icon size 
+  ///the icon size
   ///by default is 20
   ///this parameter is available in default constructor
   late double iconSize;
@@ -251,7 +250,6 @@ class CherryToast extends StatefulWidget {
   ///Define whether the icon will be  rendered or not
   ///
   final bool displayIcon;
-
 
   ///Define wether the animation on the icon will be rendered or not
   ///
