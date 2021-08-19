@@ -3,17 +3,22 @@ import 'package:flutter/material.dart';
 
 class CherryToatIcon extends StatefulWidget {
   ///the color that will be applied on the circle behind the icon
-  ///
+  ///(required)
   final Color color;
 
-  ///The toast icon widget
+  ///The toast icon widget (required)
   ///
   final IconData icon;
 
+  ///the size of the icon (required)
+  ///
   final double iconSize;
 
+  ///the icon color (required)
   final Color iconColor;
 
+  ///define wether the animation will be applied on the icon or not
+  ///
   final bool enableAnimation;
 
   CherryToatIcon(
@@ -35,19 +40,22 @@ class _CherryToatIconState extends State<CherryToatIcon>
   @override
   void initState() {
     super.initState();
-    _heartAnimationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1200));
-    _heartAnimation = Tween(
-            begin: this.widget.iconSize * 0.7, end: this.widget.iconSize * 0.95)
-        .animate(CurvedAnimation(
-            curve: Curves.bounceOut, parent: _heartAnimationController));
+    if (this.widget.enableAnimation) {
+      _heartAnimationController = AnimationController(
+          vsync: this, duration: Duration(milliseconds: 1200));
+      _heartAnimation = Tween(
+              begin: this.widget.iconSize * 0.7,
+              end: this.widget.iconSize * 0.95)
+          .animate(CurvedAnimation(
+              curve: Curves.bounceOut, parent: _heartAnimationController));
 
-    _heartAnimationController.addStatusListener((AnimationStatus status) {
-      if (status == AnimationStatus.completed) {
-        _heartAnimationController.repeat();
-      }
-    });
-    _heartAnimationController.forward();
+      _heartAnimationController.addStatusListener((AnimationStatus status) {
+        if (status == AnimationStatus.completed) {
+          _heartAnimationController.repeat();
+        }
+      });
+      _heartAnimationController.forward();
+    }
   }
 
   @override
@@ -74,7 +82,9 @@ class _CherryToatIconState extends State<CherryToatIcon>
 
   @override
   void dispose() {
-    _heartAnimationController.dispose();
+    if (this.widget.enableAnimation) {
+      _heartAnimationController.dispose();
+    }
     super.dispose();
   }
 }

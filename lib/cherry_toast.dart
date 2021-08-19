@@ -30,7 +30,8 @@ class CherryToast extends StatefulWidget {
       this.displayCloseButton = true,
       this.borderRadius = DEFAULT_RADIUS,
       this.displayIcon = true,
-      this.enableIconAnimation = true});
+      this.enableIconAnimation = true,
+      this.iconSize = DEFAULT_ICON_SIZE});
 
   CherryToast.success(
       {required this.title,
@@ -56,6 +57,7 @@ class CherryToast extends StatefulWidget {
     this.icon = Icons.check_circle;
     this.themeColor = SUCCESS_COLOR;
     this.iconColor = SUCCESS_COLOR;
+    this.iconSize = DEFAULT_ICON_SIZE;
   }
 
   CherryToast.error(
@@ -82,6 +84,7 @@ class CherryToast extends StatefulWidget {
     this.icon = Icons.error_rounded;
     this.themeColor = ERROR_COLOR;
     this.iconColor = ERROR_COLOR;
+    this.iconSize = DEFAULT_ICON_SIZE;
   }
 
   CherryToast.warning(
@@ -108,6 +111,7 @@ class CherryToast extends StatefulWidget {
     this.icon = Icons.warning_rounded;
     this.themeColor = WARINING_COLOR;
     this.iconColor = WARINING_COLOR;
+    this.iconSize = DEFAULT_ICON_SIZE;
   }
 
   CherryToast.info(
@@ -134,6 +138,7 @@ class CherryToast extends StatefulWidget {
     this.icon = Icons.info_rounded;
     this.themeColor = INFO_COLOR;
     this.iconColor = INFO_COLOR;
+    this.iconSize = DEFAULT_ICON_SIZE;
   }
 
   ///the toast title string
@@ -169,7 +174,16 @@ class CherryToast extends StatefulWidget {
   ///
   late IconData icon;
 
+  ///the Icon color
+  ///this parameter is only available on the default constructor
+  ///for the built-in themes the color  will be set automatically
   late Color iconColor;
+
+
+  ///the icon size 
+  ///by default is 20
+  ///this parameter is available in default constructor
+  late double iconSize;
 
   ///the toast display postion, possible values
   ///```dart
@@ -238,6 +252,9 @@ class CherryToast extends StatefulWidget {
   ///
   final bool displayIcon;
 
+
+  ///Define wether the animation on the icon will be rendered or not
+  ///
   final bool enableIconAnimation;
 
   ///Display the created cherry toast
@@ -367,7 +384,7 @@ class _CherryToastState extends State<CherryToast>
                             ? CherryToatIcon(
                                 color: this.widget.themeColor,
                                 icon: this.widget.icon,
-                                iconSize: DEFAULT_ICON_SIZE,
+                                iconSize: this.widget.iconSize,
                                 iconColor: this.widget.iconColor,
                                 enableAnimation:
                                     this.widget.enableIconAnimation,
@@ -428,7 +445,7 @@ class _CherryToastState extends State<CherryToast>
                         CherryToatIcon(
                             color: this.widget.themeColor,
                             icon: this.widget.icon,
-                            iconSize: DEFAULT_ICON_SIZE,
+                            iconSize: this.widget.iconSize,
                             iconColor: this.widget.iconColor,
                             enableAnimation: this.widget.enableIconAnimation),
                       ],
