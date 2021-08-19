@@ -1,3 +1,9 @@
+## [1.0.2] - 19/08/2021
+
+* Add heartbeat animation on icon
+* Customizable icon size and color
+* Bug fixes
+
 ## [1.0.1] - 24/07/2021
 
 * Add customizable border radius
