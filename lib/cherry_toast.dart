@@ -261,14 +261,24 @@ class CherryToast extends StatefulWidget {
   show(BuildContext context) {
     Navigator.of(context).push(
       PageRouteBuilder(
-          pageBuilder: (context, _, __) => AlertDialog(
-                backgroundColor: Colors.transparent,
-                contentPadding: EdgeInsets.all(0),
-                insetPadding: EdgeInsets.all(70),
-                elevation: 0,
-                content: this,
-              ),
-          opaque: false),
+        barrierDismissible: autoDismiss,
+        barrierColor: Colors.black.withOpacity(0.3),
+        pageBuilder: (context, _, __) => SafeArea(
+          child: AlertDialog(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            content: Column(
+              mainAxisAlignment: toastPosition == POSITION.BOTTOM ? MainAxisAlignment.end : MainAxisAlignment.start,
+              children: [
+                SizedBox(
+                  child: this,
+                ),
+              ],
+            ),
+          ),
+        ),
+        opaque: false,
+      ),
     );
   }
 
@@ -394,7 +404,10 @@ class _CherryToastState extends State<CherryToast>
                   ),
                   this.widget.displayCloseButton
                       ? Padding(
-                          padding: const EdgeInsets.only(top: 10, right: 10),
+                          padding: const EdgeInsets.only(
+                            top: 10,
+                            right: 10,
+                          ),
                           child: _renderCloseButton(context),
                         )
                       : Container(),
@@ -427,7 +440,10 @@ class _CherryToastState extends State<CherryToast>
                 children: [
                   this.widget.displayCloseButton
                       ? Padding(
-                          padding: const EdgeInsets.only(top: 10, left: 10),
+                          padding: const EdgeInsets.only(
+                            top: 10,
+                            left: 10,
+                          ),
                           child: _renderCloseButton(context),
                         )
                       : Container(),
@@ -441,11 +457,12 @@ class _CherryToastState extends State<CherryToast>
                       children: [
                         _renderToastContent(),
                         CherryToatIcon(
-                            color: this.widget.themeColor,
-                            icon: this.widget.icon,
-                            iconSize: this.widget.iconSize,
-                            iconColor: this.widget.iconColor,
-                            enableAnimation: this.widget.enableIconAnimation),
+                          color: this.widget.themeColor,
+                          icon: this.widget.icon,
+                          iconSize: this.widget.iconSize,
+                          iconColor: this.widget.iconColor,
+                          enableAnimation: this.widget.enableIconAnimation,
+                        ),
                       ],
                     ),
                   ),
@@ -465,12 +482,18 @@ class _CherryToastState extends State<CherryToast>
     return InkWell(
       onTap: () {
         slideController.reverse();
-        Timer(this.widget.animationDuration, () {
-          Navigator.pop(context);
-        });
+        Timer(
+          this.widget.animationDuration,
+          () {
+            Navigator.pop(context);
+          },
+        );
       },
-      child:
-          Icon(Icons.close, color: Colors.grey[500], size: CLOSE_BUTTON_SIZE),
+      child: Icon(
+        Icons.close,
+        color: Colors.grey[500],
+        size: CLOSE_BUTTON_SIZE,
+      ),
     );
   }
 
@@ -480,7 +503,10 @@ class _CherryToastState extends State<CherryToast>
     return Expanded(
       flex: 2,
       child: Padding(
-        padding: const EdgeInsets.only(left: 10, right: 10),
+        padding: const EdgeInsets.only(
+          left: 10,
+          right: 10,
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: this.widget.layout == TOAST_LAYOUT.LTR
@@ -488,7 +514,10 @@ class _CherryToastState extends State<CherryToast>
               : CrossAxisAlignment.end,
           children: [
             this.widget.displayTitle
-                ? Text(this.widget.title, style: this.widget.titleStyle)
+                ? Text(
+                    this.widget.title,
+                    style: this.widget.titleStyle,
+                  )
                 : Container(),
             this.widget.description == null
                 ? Container()
@@ -497,8 +526,10 @@ class _CherryToastState extends State<CherryToast>
                       SizedBox(
                         height: 5,
                       ),
-                      Text(this.widget.description ?? "",
-                          style: this.widget.descriptionStyle)
+                      Text(
+                        this.widget.description ?? "",
+                        style: this.widget.descriptionStyle,
+                      )
                     ],
                   ),
             this.widget.action != null
@@ -508,11 +539,14 @@ class _CherryToastState extends State<CherryToast>
                         height: 5,
                       ),
                       InkWell(
-                          onTap: () {
-                            this.widget.actionHandler?.call();
-                          },
-                          child: Text(this.widget.action ?? "",
-                              style: this.widget.actionStyle))
+                        onTap: () {
+                          this.widget.actionHandler?.call();
+                        },
+                        child: Text(
+                          this.widget.action ?? "",
+                          style: this.widget.actionStyle,
+                        ),
+                      )
                     ],
                   )
                 : Container()

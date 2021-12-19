@@ -120,19 +120,19 @@ class ExampleApp extends StatelessWidget {
             child: Text("🍒 Rigth Layout Cherry Toast"),
             onPressed: () {
               CherryToast(
-                      icon: Icons.car_repair,
-                      themeColor: Colors.green,
-                      title: "",
-                      displayTitle: false,
-                      description: "هذا مثال تصميم من اليمين",
-                      toastPosition: POSITION.BOTTOM,
-                      layout: TOAST_LAYOUT.RTL,
-                      animationType: ANIMATION_TYPE.FROM_RIGHT,
-                      action: "انقر هنا",
-                      actionStyle: TextStyle(color: Colors.green),
-                      animationDuration: Duration(milliseconds: 1000),
-                      autoDismiss: true)
-                  .show(context);
+                icon: Icons.car_repair,
+                themeColor: Colors.green,
+                title: "",
+                displayTitle: false,
+                description: "هذا مثال تصميم من اليمين",
+                toastPosition: POSITION.BOTTOM,
+                layout: TOAST_LAYOUT.RTL,
+                animationType: ANIMATION_TYPE.FROM_RIGHT,
+                action: "انقر هنا",
+                actionStyle: TextStyle(color: Colors.green),
+                animationDuration: Duration(milliseconds: 1000),
+                autoDismiss: true,
+              ).show(context);
             },
           ),
         ],
