@@ -18,8 +18,10 @@ class CherryToast extends StatefulWidget {
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
     this.titleStyle = defaultTitleStyle,
-    this.actionStyle =
-        const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+    this.actionStyle = const TextStyle(
+      color: Colors.black,
+      fontWeight: FontWeight.bold,
+    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -43,8 +45,10 @@ class CherryToast extends StatefulWidget {
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
     this.titleStyle = defaultTitleStyle,
-    this.actionStyle =
-        const TextStyle(color: successColor, fontWeight: FontWeight.bold),
+    this.actionStyle = const TextStyle(
+      color: successColor,
+      fontWeight: FontWeight.bold,
+    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -72,8 +76,10 @@ class CherryToast extends StatefulWidget {
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
     this.titleStyle = defaultTitleStyle,
-    this.actionStyle =
-        const TextStyle(color: errorColor, fontWeight: FontWeight.bold),
+    this.actionStyle = const TextStyle(
+      color: errorColor,
+      fontWeight: FontWeight.bold,
+    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -101,8 +107,10 @@ class CherryToast extends StatefulWidget {
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
     this.titleStyle = defaultTitleStyle,
-    this.actionStyle =
-        const TextStyle(color: warningColor, fontWeight: FontWeight.bold),
+    this.actionStyle = const TextStyle(
+      color: warningColor,
+      fontWeight: FontWeight.bold,
+    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -130,8 +138,10 @@ class CherryToast extends StatefulWidget {
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
     this.titleStyle = defaultTitleStyle,
-    this.actionStyle =
-        const TextStyle(color: infoColor, fontWeight: FontWeight.bold),
+    this.actionStyle = const TextStyle(
+      color: infoColor,
+      fontWeight: FontWeight.bold,
+    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
