@@ -63,9 +63,7 @@ class CherryToast extends StatefulWidget {
     this.enableIconAnimation = true,
   }) : super(key: key) {
     icon = Icons.check_circle;
-    themeColor = successColor;
-    iconColor = successColor;
-    iconSize = defaultIconSize;
+    _initializeAttributes(successColor);
   }
 
   CherryToast.error({
@@ -94,9 +92,7 @@ class CherryToast extends StatefulWidget {
     this.enableIconAnimation = true,
   }) : super(key: key) {
     icon = Icons.error_rounded;
-    themeColor = errorColor;
-    iconColor = errorColor;
-    iconSize = defaultIconSize;
+    _initializeAttributes(errorColor);
   }
 
   CherryToast.warning({
@@ -125,9 +121,7 @@ class CherryToast extends StatefulWidget {
     this.enableIconAnimation = true,
   }) : super(key: key) {
     icon = Icons.warning_rounded;
-    themeColor = warningColor;
-    iconColor = warningColor;
-    iconSize = defaultIconSize;
+    _initializeAttributes(warningColor);
   }
 
   CherryToast.info({
@@ -156,8 +150,13 @@ class CherryToast extends StatefulWidget {
     this.enableIconAnimation = true,
   }) : super(key: key) {
     icon = Icons.info_rounded;
-    themeColor = infoColor;
-    iconColor = infoColor;
+    _initializeAttributes(infoColor);
+  }
+
+
+  void _initializeAttributes(Color color){
+    themeColor = color;
+    iconColor = color;
     iconSize = defaultIconSize;
   }
 
@@ -207,8 +206,8 @@ class CherryToast extends StatefulWidget {
   ///the toast display postion, possible values
   ///```dart
   ///{
-  ///TOP,
-  ///BOTTOM
+  ///top,
+  ///bottom
   ///}
   ///```
   final POSITION toastPosition;
@@ -233,9 +232,9 @@ class CherryToast extends StatefulWidget {
   ///The animation type applied on the toast
   ///```dart
   ///{
-  ///FROM_TOP,
-  ///FROM_LEFT,
-  ///FROM_RIGHT
+  ///fromTop,
+  ///fromLeft,
+  ///fromRight
   ///}
   ///```
   final ANIMATION_TYPE animationType;
@@ -252,8 +251,8 @@ class CherryToast extends StatefulWidget {
   ///the layout of the toast
   ///```dart
   ///{
-  ///LTR,
-  ///RTL
+  ///ltr,
+  ///rtl
   ///}
   ///```
   final TOAST_LAYOUT layout;
