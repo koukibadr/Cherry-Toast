@@ -21,12 +21,14 @@ class CherryToatIcon extends StatefulWidget {
   ///
   final bool enableAnimation;
 
-  CherryToatIcon(
-      {required this.color,
-      required this.icon,
-      required this.iconSize,
-      required this.iconColor,
-      required this.enableAnimation});
+  const CherryToatIcon({
+    Key? key,
+    required this.color,
+    required this.icon,
+    required this.iconSize,
+    required this.iconColor,
+    required this.enableAnimation,
+  }) : super(key: key);
 
   @override
   _CherryToatIconState createState() => _CherryToatIconState();
@@ -40,14 +42,22 @@ class _CherryToatIconState extends State<CherryToatIcon>
   @override
   void initState() {
     super.initState();
-    if (this.widget.enableAnimation) {
+    if (widget.enableAnimation) {
       _heartAnimationController = AnimationController(
-          vsync: this, duration: Duration(milliseconds: 1200));
+        vsync: this,
+        duration: const Duration(
+          milliseconds: 1200,
+        ),
+      );
       _heartAnimation = Tween(
-              begin: this.widget.iconSize * 0.7,
-              end: this.widget.iconSize * 0.95)
-          .animate(CurvedAnimation(
-              curve: Curves.bounceOut, parent: _heartAnimationController));
+        begin: widget.iconSize * 0.7,
+        end: widget.iconSize * 0.95,
+      ).animate(
+        CurvedAnimation(
+          curve: Curves.bounceOut,
+          parent: _heartAnimationController,
+        ),
+      );
 
       _heartAnimationController.addStatusListener((AnimationStatus status) {
         if (status == AnimationStatus.completed) {
@@ -61,28 +71,36 @@ class _CherryToatIconState extends State<CherryToatIcon>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: DEFAULT_ICON_LAYOUT_SIZE,
-      height: DEFAULT_ICON_LAYOUT_SIZE,
+      width: defaultIconLayoutSize,
+      height: defaultIconLayoutSize,
       decoration: BoxDecoration(
-          shape: BoxShape.circle, color: this.widget.color.withAlpha(20)),
+        shape: BoxShape.circle,
+        color: widget.color.withAlpha(20),
+      ),
       child: Center(
-          child: this.widget.enableAnimation
-              ? AnimatedBuilder(
-                  builder: (context, child) {
-                    return Icon(this.widget.icon,
-                        size: this._heartAnimation.value,
-                        color: this.widget.iconColor);
-                  },
-                  animation: this._heartAnimationController,
-                )
-              : Icon(this.widget.icon,
-                  size: this.widget.iconSize, color: this.widget.iconColor)),
+        child: widget.enableAnimation
+            ? AnimatedBuilder(
+                builder: (context, child) {
+                  return Icon(
+                    widget.icon,
+                    size: _heartAnimation.value,
+                    color: widget.iconColor,
+                  );
+                },
+                animation: _heartAnimationController,
+              )
+            : Icon(
+                widget.icon,
+                size: widget.iconSize,
+                color: widget.iconColor,
+              ),
+      ),
     );
   }
 
   @override
   void dispose() {
-    if (this.widget.enableAnimation) {
+    if (widget.enableAnimation) {
       _heartAnimationController.dispose();
     }
     super.dispose();

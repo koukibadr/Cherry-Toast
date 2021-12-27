@@ -1,7 +1,23 @@
-enum CHERRY_TYPE { SUCCESS, WARINING, ERROR, INFO, CUSTOM }
+enum CHERRY_TYPE {
+  success,
+  warning,
+  error,
+  info,
+  custom,
+}
 
-enum POSITION { TOP, BOTTOM }
+enum POSITION {
+  top,
+  bottom,
+}
 
-enum ANIMATION_TYPE { FROM_TOP, FROM_LEFT, FROM_RIGHT }
+enum ANIMATION_TYPE {
+  fromTop,
+  fromLeft,
+  fromRight,
+}
 
-enum TOAST_LAYOUT { LTR, RTL }
+enum TOAST_LAYOUT {
+  ltr,
+  rtl,
+}

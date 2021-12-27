@@ -7,138 +7,148 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CherryToast extends StatefulWidget {
-  CherryToast(
-      {required this.title,
-      required this.icon,
-      required this.themeColor,
-      this.iconColor = Colors.black,
-      this.action,
-      this.actionHandler,
-      this.description,
-      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
-      this.titleStyle = DEFAULT_TITLTE_STYLE,
-      this.actionStyle =
-          const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-      this.displayTitle = true,
-      this.toastPosition = POSITION.TOP,
-      this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT,
-      this.autoDismiss = false,
-      this.toastDuration = DEFAULT_TOAST_DURATION,
-      this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true,
-      this.enableIconAnimation = true,
-      this.iconSize = DEFAULT_ICON_SIZE});
+  CherryToast({
+    Key? key,
+    required this.title,
+    required this.icon,
+    required this.themeColor,
+    this.iconColor = Colors.black,
+    this.action,
+    this.actionHandler,
+    this.description,
+    this.descriptionStyle = defaultDescriptionStyle,
+    this.titleStyle = defaultTitleStyle,
+    this.actionStyle =
+        const TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+    this.displayTitle = true,
+    this.toastPosition = POSITION.top,
+    this.animationDuration = defaultAnimationDuration,
+    this.animationCurve = defaultAnimationCurve,
+    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.autoDismiss = false,
+    this.toastDuration = defaultToastDuration,
+    this.layout = TOAST_LAYOUT.ltr,
+    this.displayCloseButton = true,
+    this.borderRadius = defaultRadius,
+    this.displayIcon = true,
+    this.enableIconAnimation = true,
+    this.iconSize = defaultIconSize,
+  }) : super(key: key);
 
-  CherryToast.success(
-      {required this.title,
-      this.action,
-      this.actionHandler,
-      this.description,
-      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
-      this.titleStyle = DEFAULT_TITLTE_STYLE,
-      this.actionStyle =
-          const TextStyle(color: SUCCESS_COLOR, fontWeight: FontWeight.bold),
-      this.displayTitle = true,
-      this.toastPosition = POSITION.TOP,
-      this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT,
-      this.autoDismiss = false,
-      this.toastDuration = DEFAULT_TOAST_DURATION,
-      this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true,
-      this.enableIconAnimation = true}) {
-    this.icon = Icons.check_circle;
-    this.themeColor = SUCCESS_COLOR;
-    this.iconColor = SUCCESS_COLOR;
-    this.iconSize = DEFAULT_ICON_SIZE;
+  CherryToast.success({
+    Key? key,
+    required this.title,
+    this.action,
+    this.actionHandler,
+    this.description,
+    this.descriptionStyle = defaultDescriptionStyle,
+    this.titleStyle = defaultTitleStyle,
+    this.actionStyle =
+        const TextStyle(color: successColor, fontWeight: FontWeight.bold),
+    this.displayTitle = true,
+    this.toastPosition = POSITION.top,
+    this.animationDuration = defaultAnimationDuration,
+    this.animationCurve = defaultAnimationCurve,
+    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.autoDismiss = false,
+    this.toastDuration = defaultToastDuration,
+    this.layout = TOAST_LAYOUT.ltr,
+    this.displayCloseButton = true,
+    this.borderRadius = defaultRadius,
+    this.displayIcon = true,
+    this.enableIconAnimation = true,
+  }) : super(key: key) {
+    icon = Icons.check_circle;
+    themeColor = successColor;
+    iconColor = successColor;
+    iconSize = defaultIconSize;
   }
 
-  CherryToast.error(
-      {required this.title,
-      this.action,
-      this.actionHandler,
-      this.description,
-      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
-      this.titleStyle = DEFAULT_TITLTE_STYLE,
-      this.actionStyle =
-          const TextStyle(color: ERROR_COLOR, fontWeight: FontWeight.bold),
-      this.displayTitle = true,
-      this.toastPosition = POSITION.TOP,
-      this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT,
-      this.autoDismiss = false,
-      this.toastDuration = DEFAULT_TOAST_DURATION,
-      this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true,
-      this.enableIconAnimation = true}) {
-    this.icon = Icons.error_rounded;
-    this.themeColor = ERROR_COLOR;
-    this.iconColor = ERROR_COLOR;
-    this.iconSize = DEFAULT_ICON_SIZE;
+  CherryToast.error({
+    Key? key,
+    required this.title,
+    this.action,
+    this.actionHandler,
+    this.description,
+    this.descriptionStyle = defaultDescriptionStyle,
+    this.titleStyle = defaultTitleStyle,
+    this.actionStyle =
+        const TextStyle(color: errorColor, fontWeight: FontWeight.bold),
+    this.displayTitle = true,
+    this.toastPosition = POSITION.top,
+    this.animationDuration = defaultAnimationDuration,
+    this.animationCurve = defaultAnimationCurve,
+    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.autoDismiss = false,
+    this.toastDuration = defaultToastDuration,
+    this.layout = TOAST_LAYOUT.ltr,
+    this.displayCloseButton = true,
+    this.borderRadius = defaultRadius,
+    this.displayIcon = true,
+    this.enableIconAnimation = true,
+  }) : super(key: key) {
+    icon = Icons.error_rounded;
+    themeColor = errorColor;
+    iconColor = errorColor;
+    iconSize = defaultIconSize;
   }
 
-  CherryToast.warning(
-      {required this.title,
-      this.action,
-      this.actionHandler,
-      this.description,
-      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
-      this.titleStyle = DEFAULT_TITLTE_STYLE,
-      this.actionStyle =
-          const TextStyle(color: WARINING_COLOR, fontWeight: FontWeight.bold),
-      this.displayTitle = true,
-      this.toastPosition = POSITION.TOP,
-      this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT,
-      this.autoDismiss = false,
-      this.toastDuration = DEFAULT_TOAST_DURATION,
-      this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true,
-      this.enableIconAnimation = true}) {
-    this.icon = Icons.warning_rounded;
-    this.themeColor = WARINING_COLOR;
-    this.iconColor = WARINING_COLOR;
-    this.iconSize = DEFAULT_ICON_SIZE;
+  CherryToast.warning({
+    Key? key,
+    required this.title,
+    this.action,
+    this.actionHandler,
+    this.description,
+    this.descriptionStyle = defaultDescriptionStyle,
+    this.titleStyle = defaultTitleStyle,
+    this.actionStyle =
+        const TextStyle(color: warningColor, fontWeight: FontWeight.bold),
+    this.displayTitle = true,
+    this.toastPosition = POSITION.top,
+    this.animationDuration = defaultAnimationDuration,
+    this.animationCurve = defaultAnimationCurve,
+    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.autoDismiss = false,
+    this.toastDuration = defaultToastDuration,
+    this.layout = TOAST_LAYOUT.ltr,
+    this.displayCloseButton = true,
+    this.borderRadius = defaultRadius,
+    this.displayIcon = true,
+    this.enableIconAnimation = true,
+  }) : super(key: key) {
+    icon = Icons.warning_rounded;
+    themeColor = warningColor;
+    iconColor = warningColor;
+    iconSize = defaultIconSize;
   }
 
-  CherryToast.info(
-      {required this.title,
-      this.action,
-      this.actionHandler,
-      this.description,
-      this.descriptionStyle = DEFAULT_DESCRIPTION_STYLE,
-      this.titleStyle = DEFAULT_TITLTE_STYLE,
-      this.actionStyle =
-          const TextStyle(color: INFO_COLOR, fontWeight: FontWeight.bold),
-      this.displayTitle = true,
-      this.toastPosition = POSITION.TOP,
-      this.animationDuration = DEFAULT_ANIMATION_DURATION,
-      this.animationCurve = DEFAULT_ANIMATION_CURVE,
-      this.animationType = ANIMATION_TYPE.FROM_LEFT,
-      this.autoDismiss = false,
-      this.toastDuration = DEFAULT_TOAST_DURATION,
-      this.layout = TOAST_LAYOUT.LTR,
-      this.displayCloseButton = true,
-      this.borderRadius = DEFAULT_RADIUS,
-      this.displayIcon = true,
-      this.enableIconAnimation = true}) {
-    this.icon = Icons.info_rounded;
-    this.themeColor = INFO_COLOR;
-    this.iconColor = INFO_COLOR;
-    this.iconSize = DEFAULT_ICON_SIZE;
+  CherryToast.info({
+    Key? key,
+    required this.title,
+    this.action,
+    this.actionHandler,
+    this.description,
+    this.descriptionStyle = defaultDescriptionStyle,
+    this.titleStyle = defaultTitleStyle,
+    this.actionStyle =
+        const TextStyle(color: infoColor, fontWeight: FontWeight.bold),
+    this.displayTitle = true,
+    this.toastPosition = POSITION.top,
+    this.animationDuration = defaultAnimationDuration,
+    this.animationCurve = defaultAnimationCurve,
+    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.autoDismiss = false,
+    this.toastDuration = defaultToastDuration,
+    this.layout = TOAST_LAYOUT.ltr,
+    this.displayCloseButton = true,
+    this.borderRadius = defaultRadius,
+    this.displayIcon = true,
+    this.enableIconAnimation = true,
+  }) : super(key: key) {
+    icon = Icons.info_rounded;
+    themeColor = infoColor;
+    iconColor = infoColor;
+    iconSize = defaultIconSize;
   }
 
   ///the toast title string
@@ -258,7 +268,7 @@ class CherryToast extends StatefulWidget {
   ///Display the created cherry toast
   ///[context] the context of the application
   ///
-  show(BuildContext context) {
+  void show(BuildContext context) {
     Navigator.of(context).push(
       PageRouteBuilder(
         barrierDismissible: autoDismiss,
@@ -268,7 +278,9 @@ class CherryToast extends StatefulWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             content: Column(
-              mainAxisAlignment: toastPosition == POSITION.BOTTOM ? MainAxisAlignment.end : MainAxisAlignment.start,
+              mainAxisAlignment: toastPosition == POSITION.bottom
+                  ? MainAxisAlignment.end
+                  : MainAxisAlignment.start,
               children: [
                 SizedBox(
                   child: this,
@@ -298,20 +310,20 @@ class _CherryToastState extends State<CherryToast>
     _initAnimation();
     toastDecoration = BoxDecoration(
       color: Colors.white,
-      borderRadius: BorderRadius.circular(this.widget.borderRadius),
+      borderRadius: BorderRadius.circular(widget.borderRadius),
       boxShadow: [
         BoxShadow(
           color: Colors.grey.withOpacity(0.5),
           spreadRadius: 1,
           blurRadius: 2,
-          offset: Offset(0, 1), // changes position of shadow
+          offset: const Offset(0, 1), // changes position of shadow
         ),
       ],
     );
-    if (this.widget.autoDismiss) {
-      Timer(this.widget.toastDuration, () {
+    if (widget.autoDismiss) {
+      Timer(widget.toastDuration, () {
         slideController.reverse();
-        Timer(this.widget.animationDuration, () {
+        Timer(widget.animationDuration, () {
           Navigator.pop(context);
         });
       });
@@ -319,32 +331,44 @@ class _CherryToastState extends State<CherryToast>
   }
 
   ///Initialize animation parameters [slideController] and [offsetAnimation]
-  _initAnimation() {
+  void _initAnimation() {
     slideController = AnimationController(
-      duration: this.widget.animationDuration,
+      duration: widget.animationDuration,
       vsync: this,
     );
-    switch (this.widget.animationType) {
-      case ANIMATION_TYPE.FROM_LEFT:
+    switch (widget.animationType) {
+      case ANIMATION_TYPE.fromLeft:
         offsetAnimation = Tween<Offset>(
           begin: const Offset(-2, 0),
           end: const Offset(0, 0),
-        ).animate(CurvedAnimation(
-            parent: slideController, curve: this.widget.animationCurve));
+        ).animate(
+          CurvedAnimation(
+            parent: slideController,
+            curve: widget.animationCurve,
+          ),
+        );
         break;
-      case ANIMATION_TYPE.FROM_RIGHT:
+      case ANIMATION_TYPE.fromRight:
         offsetAnimation = Tween<Offset>(
           begin: const Offset(2, 0),
           end: const Offset(0, 0),
-        ).animate(CurvedAnimation(
-            parent: slideController, curve: this.widget.animationCurve));
+        ).animate(
+          CurvedAnimation(
+            parent: slideController,
+            curve: widget.animationCurve,
+          ),
+        );
         break;
-      case ANIMATION_TYPE.FROM_TOP:
+      case ANIMATION_TYPE.fromTop:
         offsetAnimation = Tween<Offset>(
           begin: const Offset(0, -2),
           end: const Offset(0, 0),
-        ).animate(CurvedAnimation(
-            parent: slideController, curve: this.widget.animationCurve));
+        ).animate(
+          CurvedAnimation(
+            parent: slideController,
+            curve: widget.animationCurve,
+          ),
+        );
         break;
       default:
     }
@@ -355,7 +379,7 @@ class _CherryToastState extends State<CherryToast>
 
   @override
   Widget build(BuildContext context) {
-    if (this.widget.layout == TOAST_LAYOUT.LTR) {
+    if (widget.layout == TOAST_LAYOUT.ltr) {
       return _renderLeftLayoutToast(context);
     } else {
       return _renderRightLayoutToast(context);
@@ -366,7 +390,7 @@ class _CherryToastState extends State<CherryToast>
   ///
   Widget _renderLeftLayoutToast(BuildContext context) {
     return Column(
-      mainAxisAlignment: this.widget.toastPosition == POSITION.TOP
+      mainAxisAlignment: widget.toastPosition == POSITION.top
           ? MainAxisAlignment.start
           : MainAxisAlignment.end,
       children: [
@@ -383,26 +407,25 @@ class _CherryToastState extends State<CherryToast>
                   Expanded(
                     flex: 2,
                     child: Row(
-                      crossAxisAlignment: this.widget.description == null &&
-                              this.widget.action == null
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
+                      crossAxisAlignment:
+                          widget.description == null && widget.action == null
+                              ? CrossAxisAlignment.center
+                              : CrossAxisAlignment.start,
                       children: [
-                        this.widget.displayIcon
+                        widget.displayIcon
                             ? CherryToatIcon(
-                                color: this.widget.themeColor,
-                                icon: this.widget.icon,
-                                iconSize: this.widget.iconSize,
-                                iconColor: this.widget.iconColor,
-                                enableAnimation:
-                                    this.widget.enableIconAnimation,
+                                color: widget.themeColor,
+                                icon: widget.icon,
+                                iconSize: widget.iconSize,
+                                iconColor: widget.iconColor,
+                                enableAnimation: widget.enableIconAnimation,
                               )
                             : Container(),
                         _renderToastContent(),
                       ],
                     ),
                   ),
-                  this.widget.displayCloseButton
+                  widget.displayCloseButton
                       ? Padding(
                           padding: const EdgeInsets.only(
                             top: 10,
@@ -424,7 +447,7 @@ class _CherryToastState extends State<CherryToast>
   ///
   Column _renderRightLayoutToast(BuildContext context) {
     return Column(
-      mainAxisAlignment: this.widget.toastPosition == POSITION.TOP
+      mainAxisAlignment: widget.toastPosition == POSITION.top
           ? MainAxisAlignment.start
           : MainAxisAlignment.end,
       children: [
@@ -438,7 +461,7 @@ class _CherryToastState extends State<CherryToast>
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  this.widget.displayCloseButton
+                  widget.displayCloseButton
                       ? Padding(
                           padding: const EdgeInsets.only(
                             top: 10,
@@ -450,18 +473,18 @@ class _CherryToastState extends State<CherryToast>
                   Expanded(
                     flex: 2,
                     child: Row(
-                      crossAxisAlignment: this.widget.description == null &&
-                              this.widget.action == null
-                          ? CrossAxisAlignment.center
-                          : CrossAxisAlignment.start,
+                      crossAxisAlignment:
+                          widget.description == null && widget.action == null
+                              ? CrossAxisAlignment.center
+                              : CrossAxisAlignment.start,
                       children: [
                         _renderToastContent(),
                         CherryToatIcon(
-                          color: this.widget.themeColor,
-                          icon: this.widget.icon,
-                          iconSize: this.widget.iconSize,
-                          iconColor: this.widget.iconColor,
-                          enableAnimation: this.widget.enableIconAnimation,
+                          color: widget.themeColor,
+                          icon: widget.icon,
+                          iconSize: widget.iconSize,
+                          iconColor: widget.iconColor,
+                          enableAnimation: widget.enableIconAnimation,
                         ),
                       ],
                     ),
@@ -483,7 +506,7 @@ class _CherryToastState extends State<CherryToast>
       onTap: () {
         slideController.reverse();
         Timer(
-          this.widget.animationDuration,
+          widget.animationDuration,
           () {
             Navigator.pop(context);
           },
@@ -492,7 +515,7 @@ class _CherryToastState extends State<CherryToast>
       child: Icon(
         Icons.close,
         color: Colors.grey[500],
-        size: CLOSE_BUTTON_SIZE,
+        size: closeButtonSize,
       ),
     );
   }
@@ -509,42 +532,42 @@ class _CherryToastState extends State<CherryToast>
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: this.widget.layout == TOAST_LAYOUT.LTR
+          crossAxisAlignment: widget.layout == TOAST_LAYOUT.ltr
               ? CrossAxisAlignment.start
               : CrossAxisAlignment.end,
           children: [
-            this.widget.displayTitle
+            widget.displayTitle
                 ? Text(
-                    this.widget.title,
-                    style: this.widget.titleStyle,
+                    widget.title,
+                    style: widget.titleStyle,
                   )
                 : Container(),
-            this.widget.description == null
+            widget.description == null
                 ? Container()
                 : Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       Text(
-                        this.widget.description ?? "",
-                        style: this.widget.descriptionStyle,
+                        widget.description ?? '',
+                        style: widget.descriptionStyle,
                       )
                     ],
                   ),
-            this.widget.action != null
+            widget.action != null
                 ? Column(
                     children: [
-                      SizedBox(
+                      const SizedBox(
                         height: 5,
                       ),
                       InkWell(
                         onTap: () {
-                          this.widget.actionHandler?.call();
+                          widget.actionHandler?.call();
                         },
                         child: Text(
-                          this.widget.action ?? "",
-                          style: this.widget.actionStyle,
+                          widget.action ?? '',
+                          style: widget.actionStyle,
                         ),
                       )
                     ],

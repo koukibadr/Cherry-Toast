@@ -30,22 +30,30 @@ class ExampleApp extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("🍒 🍒",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
-          Text("Cherry Toasts",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20)),
+          Text(
+            '🍒 🍒',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
+          Text(
+            'Cherry Toasts',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 20,
+            ),
+          ),
           SizedBox(
             height: 30,
           ),
           ElevatedButton(
-            child: Text("🍒 Info Cherry Toast"),
+            child: Text('🍒 Info Cherry Toast'),
             onPressed: () {
               CherryToast.info(
-                title: "User added",
-                action: "Display information",
-                actionHandler: () {
-                  print("Action button pressed");
-                },
+                title: 'User added',
+                action: 'Display information',
+                actionHandler: () {},
               ).show(context);
             },
           ),
@@ -53,52 +61,16 @@ class ExampleApp extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-            child: Text("🍒 Error Cherry Toast"),
+            child: Text('🍒 Error Cherry Toast'),
             onPressed: () {
               CherryToast.error(
-                      title: "",
-                      enableIconAnimation: false,
-                      displayTitle: false,
-                      description: "Invalid account information",
-                      animationType: ANIMATION_TYPE.FROM_RIGHT,
-                      animationDuration: Duration(milliseconds: 1000),
-                      autoDismiss: true)
-                  .show(context);
-            },
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-            child: Text("🍒 Bottom Cherry Toast"),
-            onPressed: () {
-              CherryToast(
-                      icon: Icons.alarm_add,
-                      themeColor: Colors.pink,
-                      title: "",
-                      displayTitle: false,
-                      description: "A bottom cherry toast example",
-                      toastPosition: POSITION.BOTTOM,
-                      animationDuration: Duration(milliseconds: 1000),
-                      autoDismiss: true)
-                  .show(context);
-            },
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          ElevatedButton(
-            child: Text("🍒 Warning Cherry Toast"),
-            onPressed: () {
-              CherryToast.warning(
-                title: "",
+                title: '',
+                enableIconAnimation: false,
                 displayTitle: false,
-                description: "All information may be deleted after this action",
-                animationType: ANIMATION_TYPE.FROM_TOP,
-                action: "Backup data",
-                actionHandler: () {
-                  print("Hello World!!");
-                },
+                description: 'Invalid account information',
+                animationType: ANIMATION_TYPE.fromRight,
+                animationDuration: Duration(milliseconds: 1000),
+                autoDismiss: true,
               ).show(context);
             },
           ),
@@ -106,29 +78,64 @@ class ExampleApp extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-            child: Text("🍒 Success Cherry Toast"),
+            child: Text('🍒 Bottom Cherry Toast'),
             onPressed: () {
-              CherryToast.success(
-                      title: "The simplest cherry toast", borderRadius: 0)
-                  .show(context);
+              CherryToast(
+                icon: Icons.alarm_add,
+                themeColor: Colors.pink,
+                title: '',
+                displayTitle: false,
+                description: 'A bottom cherry toast example',
+                toastPosition: POSITION.bottom,
+                animationDuration: Duration(milliseconds: 1000),
+                autoDismiss: true,
+              ).show(context);
             },
           ),
           SizedBox(
             height: 10,
           ),
           ElevatedButton(
-            child: Text("🍒 Rigth Layout Cherry Toast"),
+            child: Text('🍒 Warning Cherry Toast'),
+            onPressed: () {
+              CherryToast.warning(
+                title: '',
+                displayTitle: false,
+                description: 'All information may be deleted after this action',
+                animationType: ANIMATION_TYPE.fromTop,
+                action: 'Backup data',
+                actionHandler: () {},
+              ).show(context);
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            child: Text('🍒 Success Cherry Toast'),
+            onPressed: () {
+              CherryToast.success(
+                title: 'The simplest cherry toast',
+                borderRadius: 0,
+              ).show(context);
+            },
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          ElevatedButton(
+            child: Text('🍒 Rigth Layout Cherry Toast'),
             onPressed: () {
               CherryToast(
                 icon: Icons.car_repair,
                 themeColor: Colors.green,
-                title: "",
+                title: '',
                 displayTitle: false,
-                description: "هذا مثال تصميم من اليمين",
-                toastPosition: POSITION.BOTTOM,
-                layout: TOAST_LAYOUT.RTL,
-                animationType: ANIMATION_TYPE.FROM_RIGHT,
-                action: "انقر هنا",
+                description: 'هذا مثال تصميم من اليمين',
+                toastPosition: POSITION.bottom,
+                layout: TOAST_LAYOUT.rtl,
+                animationType: ANIMATION_TYPE.fromRight,
+                action: 'انقر هنا',
                 actionStyle: TextStyle(color: Colors.green),
                 animationDuration: Duration(milliseconds: 1000),
                 autoDismiss: true,
