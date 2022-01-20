@@ -153,8 +153,7 @@ class CherryToast extends StatefulWidget {
     _initializeAttributes(infoColor);
   }
 
-
-  void _initializeAttributes(Color color){
+  void _initializeAttributes(Color color) {
     themeColor = color;
     iconColor = color;
     iconSize = defaultIconSize;
