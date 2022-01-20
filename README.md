@@ -1,3 +1,4 @@
+  
 
   
 
@@ -5,12 +6,16 @@
 
 #  Cherry Toast
 
+  
+
 <p  align="center">
-<img  src="https://github.com/koukibadr/Cherry-Toast/blob/main/cherry_toast_logo.gif?raw=true" height="200"/>
+<img  src="https://github.com/koukibadr/Cherry-Toast/blob/main/cherry_toast_logo.gif?raw=true"  height="200"/>
 <br>
 <b>A new way to display toasts in Flutter in an elegant design and animations</b>
 </p>
 
+  
+  
 
 | ![info_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/info_cherry_toast.gif?raw=true) | ![error_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/error_cherry_toast.gif?raw=true) | ![bottom_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/bottom_cherry_toast.gif?raw=true) |
 |--|--|--|
@@ -20,38 +25,32 @@
 
   
 
-##  Cherry Toast v1.0.2
-
-
-- Support all platforms
-- Top and Bottom display position
-- Multiple built-in themes
-- Built-in animations
-- Support null safety
-- Elegant design
-- Full customizable
-- Heartbeat animation on icons
-- Customizable icon size and color and display
   
 
+##  Cherry Toast v1.0.3
+
   
+-  Support all platforms
+-  Top and Bottom display position
+-  Multiple built-in themes
+-  Built-in animations
+-  Support null safety
+-  Elegant design
+-  Full customizable
+-  Heartbeat animation on icons
+-  Customizable icon size and color and display
+
 
 ##  Installation
-
 
 To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-	cherry_toast: ^1.0.2
+	cherry_toast: ^1.0.3
 ```
 
-  
-
-  
-
 ##  Parameters
-
 
 | Name | Description | Required | Default Value |
 |--|--|--|--|
@@ -79,28 +78,21 @@ dependencies:
 | enableIconAnimation | define wether apply an animation on the icon or not | false | true |
 | iconSize | define the icon size | false | 20 |
 
-  
 
 ##  Usage
 
-- Simple cherry toast with only title
+-  Simple cherry toast with only title
 
 ```dart
-
 CherryToast.success(
 	title:  "The simplest cherry toast"
 ).show(context);
 
 ```
 
-
-
-  
-
-- Simple cherry toast with action button
+-  Simple cherry toast with action button
 
 ```dart
-
 CherryToast.info(
 	title:  "User added",
 	action:  "Display information",
@@ -112,22 +104,22 @@ CherryToast.info(
 ```
 
 <p  align="center">
-<img  src="https://github.com/koukibadr/Cherry-Toast/blob/main/example/cherry_toast_animation.gif?raw=true" height="600"/>
+<img  src="https://github.com/koukibadr/Cherry-Toast/blob/main/example/cherry_toast_animation.gif?raw=true"  height="600"/>
 <br>
+
 <b>A new way to display toasts in Flutter in an elegant design and animations</b>
+
 </p>
 
-  
 
-- Toast with description without title
+-  Toast with description without title
 
 ```dart
-
 CherryToast.warning(
 	title:  "",
 	displayTitle:  false,
 	description:  "All information may be deleted after this action",
-	animationType:  ANIMATION_TYPE.FROM_TOP,
+	animationType: ANIMATION_TYPE.FROM_TOP,
 	action:  "Backup data",
 	actionHandler: (){
 		print("Hello World!!");
@@ -136,58 +128,51 @@ CherryToast.warning(
 
 ```
 
-  
-
-  
-
-- Toast with nothing but description with different animation type and auto dismiss
+-  Toast with nothing but description with different animation type and auto dismiss
 
 ```dart
 CherryToast.error(
 	title:  "",
 	displayTitle:  false,
 	description:  "Invalid account information",
-	animationType:  ANIMATION_TYPE.FROM_RIGHT,
-	animationDuration:  Duration(milliseconds:  1000),
-	autoDismiss:  true)
-.show(context);
+	animationType: ANIMATION_TYPE.FROM_RIGHT,
+	animationDuration: Duration(milliseconds:  1000),
+	autoDismiss:  true
+).show(context);
 
 ```
 
-- Bottom displayed cherry toast
+-  Bottom displayed cherry toast
 
 ```dart
 CherryToast(
-	icon:  Icons.alarm_add,
-	themeColor:  Colors.pink,
+	icon: Icons.alarm_add,
+	themeColor: Colors.pink,
 	title:  "",
 	displayTitle:  false,
 	description:  "A bottom cherry toast example",
-	toastPosition:  POSITION.BOTTOM,
-	animationDuration:  Duration(milliseconds:  1000),
-	autoDismiss:  true)
-.show(context);
-
-  
+	toastPosition: POSITION.BOTTOM,
+	animationDuration: Duration(milliseconds:  1000),
+	autoDismiss:  true
+).show(context);
 
 ```
 
-
-- Right layout rendered cherry toast
+-  Right layout rendered cherry toast
 
 ```dart
 CherryToast(
-	icon:  Icon(Icons.car_repair),
-	themeColor:  Colors.green,
+	icon: Icon(Icons.car_repair),
+	themeColor: Colors.green,
 	title:  "",
 	displayTitle:  false,
 	description:  "هذا مثال تصميم من اليمين",
-	toastPosition:  POSITION.BOTTOM,
-	layout:  TOAST_LAYOUT.RTL,
-	animationType:  ANIMATION_TYPE.FROM_RIGHT,
+	toastPosition: POSITION.BOTTOM,
+	layout: TOAST_LAYOUT.RTL,
+	animationType: ANIMATION_TYPE.FROM_RIGHT,
 	action:  "انقر هنا",
-	actionStyle:  TextStyle(color:  Colors.green),
-	animationDuration:  Duration(milliseconds:  1000),
+	actionStyle: TextStyle(color: Colors.green),
+	animationDuration: Duration(milliseconds:  1000),
 	autoDismiss:  true)
 .show(context);
 
@@ -197,6 +182,6 @@ CherryToast(
 
 Of course the project is open source, and you can contribute to it [repository link](https://github.com/koukibadr/Cherry-Toast)
 
-- If you **found a bug**, open an issue.
-- If you **have a feature request**, open an issue.
-- If you **want to contribute**, submit a pull request.
+-  If you **found a bug**, open an issue.
+-  If you **have a feature request**, open an issue.
+-  If you **want to contribute**, submit a pull request.
