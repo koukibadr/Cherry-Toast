@@ -1,3 +1,8 @@
+## [1.0.3] - 20/01/2022
+
+* Enhanced widget rendering 
+* Bug fixes
+
 ## [1.0.2] - 19/08/2021
 
 * Add heartbeat animation on icon
