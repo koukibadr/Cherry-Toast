@@ -52,7 +52,7 @@ class ExampleApp extends StatelessWidget {
             onPressed: () {
               CherryToast.info(
                 title: Text('User added'),
-                action: 'Display information',
+                action: Text('Display information'),
                 actionHandler: () {},
               ).show(context);
             },
@@ -101,9 +101,10 @@ class ExampleApp extends StatelessWidget {
               CherryToast.warning(
                 title: Text(''),
                 displayTitle: false,
-                description: Text('All information may be deleted after this action'),
+                description:
+                    Text('All information may be deleted after this action'),
                 animationType: ANIMATION_TYPE.fromTop,
-                action: 'Backup data',
+                action: Text('Backup data'),
                 actionHandler: () {},
               ).show(context);
             },
@@ -135,8 +136,10 @@ class ExampleApp extends StatelessWidget {
                 toastPosition: POSITION.bottom,
                 layout: TOAST_LAYOUT.rtl,
                 animationType: ANIMATION_TYPE.fromRight,
-                action: 'انقر هنا',
-                actionStyle: TextStyle(color: Colors.green),
+                action: Text(
+                  'انقر هنا',
+                  style: TextStyle(color: Colors.green),
+                ),
                 animationDuration: Duration(milliseconds: 1000),
                 autoDismiss: true,
               ).show(context);

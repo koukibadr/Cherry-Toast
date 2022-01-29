@@ -16,10 +16,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.actionStyle = const TextStyle(
-      color: Colors.black,
-      fontWeight: FontWeight.bold,
-    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -41,10 +37,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.actionStyle = const TextStyle(
-      color: successColor,
-      fontWeight: FontWeight.bold,
-    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -68,10 +60,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.actionStyle = const TextStyle(
-      color: errorColor,
-      fontWeight: FontWeight.bold,
-    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -95,10 +83,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.actionStyle = const TextStyle(
-      color: warningColor,
-      fontWeight: FontWeight.bold,
-    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -122,10 +106,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.actionStyle = const TextStyle(
-      color: infoColor,
-      fontWeight: FontWeight.bold,
-    ),
     this.displayTitle = true,
     this.toastPosition = POSITION.top,
     this.animationDuration = defaultAnimationDuration,
@@ -157,11 +137,8 @@ class CherryToast extends StatefulWidget {
 
   ///The toast action button text
   ///
-  final String? action;
+  final Text? action;
 
-  ///the action button text style
-  ///
-  final TextStyle actionStyle;
 
   ///indicates whether display or not the title
   ///
@@ -546,10 +523,7 @@ class _CherryToastState extends State<CherryToast>
                         onTap: () {
                           widget.actionHandler?.call();
                         },
-                        child: Text(
-                          widget.action ?? '',
-                          style: widget.actionStyle,
-                        ),
+                        child: widget.action,
                       )
                     ],
                   )
