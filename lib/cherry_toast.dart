@@ -16,7 +16,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.descriptionStyle = defaultDescriptionStyle,
     this.actionStyle = const TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
@@ -42,7 +41,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.descriptionStyle = defaultDescriptionStyle,
     this.actionStyle = const TextStyle(
       color: successColor,
       fontWeight: FontWeight.bold,
@@ -70,7 +68,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.descriptionStyle = defaultDescriptionStyle,
     this.actionStyle = const TextStyle(
       color: errorColor,
       fontWeight: FontWeight.bold,
@@ -98,7 +95,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.descriptionStyle = defaultDescriptionStyle,
     this.actionStyle = const TextStyle(
       color: warningColor,
       fontWeight: FontWeight.bold,
@@ -126,7 +122,6 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
-    this.descriptionStyle = defaultDescriptionStyle,
     this.actionStyle = const TextStyle(
       color: infoColor,
       fontWeight: FontWeight.bold,
@@ -157,18 +152,12 @@ class CherryToast extends StatefulWidget {
   //TODO update code documentation
   final Text title;
 
-  ///The toast description text
-  ///
-  final String? description;
+  //TODO update code documentation
+  final Text? description;
 
   ///The toast action button text
   ///
   final String? action;
-
-
-  ///the text style that will be applied on the description
-  ///
-  final TextStyle descriptionStyle;
 
   ///the action button text style
   ///
@@ -544,10 +533,7 @@ class _CherryToastState extends State<CherryToast>
                       const SizedBox(
                         height: 5,
                       ),
-                      Text(
-                        widget.description ?? '',
-                        style: widget.descriptionStyle,
-                      )
+                      widget.description!
                     ],
                   ),
             widget.action != null
