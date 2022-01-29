@@ -17,7 +17,6 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
-    this.titleStyle = defaultTitleStyle,
     this.actionStyle = const TextStyle(
       color: Colors.black,
       fontWeight: FontWeight.bold,
@@ -44,7 +43,6 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
-    this.titleStyle = defaultTitleStyle,
     this.actionStyle = const TextStyle(
       color: successColor,
       fontWeight: FontWeight.bold,
@@ -73,7 +71,6 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
-    this.titleStyle = defaultTitleStyle,
     this.actionStyle = const TextStyle(
       color: errorColor,
       fontWeight: FontWeight.bold,
@@ -102,7 +99,6 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
-    this.titleStyle = defaultTitleStyle,
     this.actionStyle = const TextStyle(
       color: warningColor,
       fontWeight: FontWeight.bold,
@@ -131,7 +127,6 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.descriptionStyle = defaultDescriptionStyle,
-    this.titleStyle = defaultTitleStyle,
     this.actionStyle = const TextStyle(
       color: infoColor,
       fontWeight: FontWeight.bold,
@@ -159,9 +154,8 @@ class CherryToast extends StatefulWidget {
     iconSize = defaultIconSize;
   }
 
-  ///the toast title string
-  ///
-  final String title;
+  //TODO update code documentation
+  final Text title;
 
   ///The toast description text
   ///
@@ -171,10 +165,6 @@ class CherryToast extends StatefulWidget {
   ///
   final String? action;
 
-  ///the text style that will be applied on the title
-  ///by default it's `TextStyle(color: Colors.black, fontWeight: FontWeight.bold)`
-  ///
-  final TextStyle titleStyle;
 
   ///the text style that will be applied on the description
   ///
@@ -545,10 +535,7 @@ class _CherryToastState extends State<CherryToast>
               : CrossAxisAlignment.end,
           children: [
             widget.displayTitle
-                ? Text(
-                    widget.title,
-                    style: widget.titleStyle,
-                  )
+                ? widget.title
                 : Container(),
             widget.description == null
                 ? Container()

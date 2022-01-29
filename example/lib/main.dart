@@ -51,7 +51,7 @@ class ExampleApp extends StatelessWidget {
             child: Text('🍒 Info Cherry Toast'),
             onPressed: () {
               CherryToast.info(
-                title: 'User added',
+                title: Text('User added'),
                 action: 'Display information',
                 actionHandler: () {},
               ).show(context);
@@ -64,7 +64,7 @@ class ExampleApp extends StatelessWidget {
             child: Text('🍒 Error Cherry Toast'),
             onPressed: () {
               CherryToast.error(
-                title: '',
+                title: Text(''),
                 enableIconAnimation: false,
                 displayTitle: false,
                 description: 'Invalid account information',
@@ -83,7 +83,7 @@ class ExampleApp extends StatelessWidget {
               CherryToast(
                 icon: Icons.alarm_add,
                 themeColor: Colors.pink,
-                title: '',
+                title: Text(''),
                 displayTitle: false,
                 description: 'A bottom cherry toast example',
                 toastPosition: POSITION.bottom,
@@ -99,7 +99,7 @@ class ExampleApp extends StatelessWidget {
             child: Text('🍒 Warning Cherry Toast'),
             onPressed: () {
               CherryToast.warning(
-                title: '',
+                title: Text(''),
                 displayTitle: false,
                 description: 'All information may be deleted after this action',
                 animationType: ANIMATION_TYPE.fromTop,
@@ -115,7 +115,7 @@ class ExampleApp extends StatelessWidget {
             child: Text('🍒 Success Cherry Toast'),
             onPressed: () {
               CherryToast.success(
-                title: 'The simplest cherry toast',
+                title: Text('The simplest cherry toast'),
                 borderRadius: 0,
               ).show(context);
             },
@@ -129,7 +129,7 @@ class ExampleApp extends StatelessWidget {
               CherryToast(
                 icon: Icons.car_repair,
                 themeColor: Colors.green,
-                title: '',
+                title: Text(''),
                 displayTitle: false,
                 description: 'هذا مثال تصميم من اليمين',
                 toastPosition: POSITION.bottom,
