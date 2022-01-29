@@ -132,13 +132,10 @@ class CherryToast extends StatefulWidget {
   //TODO update code documentation
   final Text title;
 
-  //TODO update code documentation
   final Text? description;
 
-  ///The toast action button text
-  ///
   final Text? action;
-
+  //TODO update code documentation
 
   ///indicates whether display or not the title
   ///
