@@ -129,13 +129,16 @@ class CherryToast extends StatefulWidget {
     iconSize = defaultIconSize;
   }
 
-  //TODO update code documentation
+  ///Text widget displayed as a title in the toast
+  ///required parameter for all toast types
   final Text title;
 
+  ///Text widget displayed as a description in the toast
   final Text? description;
 
+  ///THe action button displayed below description
+  ///by default there's no action added
   final Text? action;
-  //TODO update code documentation
 
   ///indicates whether display or not the title
   ///
@@ -505,9 +508,7 @@ class _CherryToastState extends State<CherryToast>
               ? CrossAxisAlignment.start
               : CrossAxisAlignment.end,
           children: [
-            widget.displayTitle
-                ? widget.title
-                : Container(),
+            widget.displayTitle ? widget.title : Container(),
             widget.description == null
                 ? Container()
                 : Column(
