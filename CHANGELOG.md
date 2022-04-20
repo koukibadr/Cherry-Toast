@@ -1,3 +1,7 @@
+## [1.0.4] - 20/04/2022
+
+* Bug fixes
+
 ## [1.0.3] - 20/01/2022
 
 * Enhanced widget rendering 

@@ -1,6 +1,6 @@
 name: cherry_toast
 description: A new way to display toasts in flutter with elegant design and animations
-version: 1.0.3
+version: 1.0.4
 homepage: https://github.com/koukibadr/Cherry-Toast
 
 environment:
