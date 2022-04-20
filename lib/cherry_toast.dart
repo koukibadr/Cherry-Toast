@@ -264,6 +264,7 @@ class _CherryToastState extends State<CherryToast>
   late Animation<Offset> offsetAnimation;
   late AnimationController slideController;
   late BoxDecoration toastDecoration;
+  Timer? autoDismissTimer;
 
   @override
   void initState() {
@@ -282,13 +283,19 @@ class _CherryToastState extends State<CherryToast>
       ],
     );
     if (widget.autoDismiss) {
-      Timer(widget.toastDuration, () {
+      autoDismissTimer = Timer(widget.toastDuration, () {
         slideController.reverse();
         Timer(widget.animationDuration, () {
           Navigator.pop(context);
         });
       });
     }
+  }
+
+  @override
+  void dispose() {
+    autoDismissTimer?.cancel();
+    super.dispose();
   }
 
   ///Initialize animation parameters [slideController] and [offsetAnimation]
@@ -466,6 +473,7 @@ class _CherryToastState extends State<CherryToast>
     return InkWell(
       onTap: () {
         slideController.reverse();
+        autoDismissTimer?.cancel();
         Timer(
           widget.animationDuration,
           () {
