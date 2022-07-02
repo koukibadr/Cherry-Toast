@@ -1,4 +1,3 @@
-import 'package:cherry_toast/resources/constants.dart';
 import 'package:flutter/material.dart';
 
 class CherryToastIcon extends StatefulWidget {

@@ -1,3 +1,7 @@
+## [1.0.6] - 02/07/2022
+
+* Fix pub.dev static analysis
+
 ## [1.0.5] - 02/07/2022
 
 * Flutter 3 support
