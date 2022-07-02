@@ -1,7 +1,7 @@
 import 'package:cherry_toast/resources/constants.dart';
 import 'package:flutter/material.dart';
 
-class CherryToatIcon extends StatefulWidget {
+class CherryToastIcon extends StatefulWidget {
   ///the color that will be applied on the circle behind the icon
   ///(required)
   final Color color;
@@ -21,7 +21,7 @@ class CherryToatIcon extends StatefulWidget {
   ///
   final bool enableAnimation;
 
-  const CherryToatIcon({
+  const CherryToastIcon({
     Key? key,
     required this.color,
     required this.icon,
@@ -31,10 +31,10 @@ class CherryToatIcon extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  _CherryToatIconState createState() => _CherryToatIconState();
+  _CherryToastIconState createState() => _CherryToastIconState();
 }
 
-class _CherryToatIconState extends State<CherryToatIcon>
+class _CherryToastIconState extends State<CherryToastIcon>
     with TickerProviderStateMixin {
   late Animation _heartAnimation;
   late AnimationController _heartAnimationController;
@@ -71,8 +71,8 @@ class _CherryToatIconState extends State<CherryToatIcon>
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: defaultIconLayoutSize,
-      height: defaultIconLayoutSize,
+      width: 40,
+      height: 40,
       decoration: BoxDecoration(
         shape: BoxShape.circle,
         color: widget.color.withAlpha(20),

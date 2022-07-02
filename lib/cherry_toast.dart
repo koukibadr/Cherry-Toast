@@ -2,7 +2,6 @@ import 'dart:async';
 import 'package:cherry_toast/cherry_toast_icon.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:cherry_toast/resources/colors.dart';
-import 'package:cherry_toast/resources/constants.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -17,18 +16,22 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.displayTitle = true,
-    this.toastPosition = POSITION.top,
-    this.animationDuration = defaultAnimationDuration,
-    this.animationCurve = defaultAnimationCurve,
-    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.toastPosition = Position.top,
+    this.animationDuration = const Duration(
+      milliseconds: 1500,
+    ),
+    this.animationCurve = Curves.ease,
+    this.animationType = AnimationType.fromLeft,
     this.autoDismiss = false,
-    this.toastDuration = defaultToastDuration,
-    this.layout = TOAST_LAYOUT.ltr,
+    this.toastDuration = const Duration(
+      milliseconds: 3000,
+    ),
+    this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
-    this.borderRadius = defaultRadius,
+    this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
-    this.iconSize = defaultIconSize,
+    this.iconSize = 20,
   }) : super(key: key);
 
   CherryToast.success({
@@ -38,15 +41,19 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.displayTitle = true,
-    this.toastPosition = POSITION.top,
-    this.animationDuration = defaultAnimationDuration,
-    this.animationCurve = defaultAnimationCurve,
-    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.toastPosition = Position.top,
+    this.animationDuration = const Duration(
+      milliseconds: 1500,
+    ),
+    this.animationCurve = Curves.ease,
+    this.animationType = AnimationType.fromLeft,
     this.autoDismiss = false,
-    this.toastDuration = defaultToastDuration,
-    this.layout = TOAST_LAYOUT.ltr,
+    this.toastDuration = const Duration(
+      milliseconds: 3000,
+    ),
+    this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
-    this.borderRadius = defaultRadius,
+    this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
   }) : super(key: key) {
@@ -61,15 +68,19 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.displayTitle = true,
-    this.toastPosition = POSITION.top,
-    this.animationDuration = defaultAnimationDuration,
-    this.animationCurve = defaultAnimationCurve,
-    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.toastPosition = Position.top,
+    this.animationDuration = const Duration(
+      milliseconds: 1500,
+    ),
+    this.animationCurve = Curves.ease,
+    this.animationType = AnimationType.fromLeft,
     this.autoDismiss = false,
-    this.toastDuration = defaultToastDuration,
-    this.layout = TOAST_LAYOUT.ltr,
+    this.toastDuration = const Duration(
+      milliseconds: 3000,
+    ),
+    this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
-    this.borderRadius = defaultRadius,
+    this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
   }) : super(key: key) {
@@ -84,15 +95,19 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.displayTitle = true,
-    this.toastPosition = POSITION.top,
-    this.animationDuration = defaultAnimationDuration,
-    this.animationCurve = defaultAnimationCurve,
-    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.toastPosition = Position.top,
+    this.animationDuration = const Duration(
+      milliseconds: 1500,
+    ),
+    this.animationCurve = Curves.ease,
+    this.animationType = AnimationType.fromLeft,
     this.autoDismiss = false,
-    this.toastDuration = defaultToastDuration,
-    this.layout = TOAST_LAYOUT.ltr,
+    this.toastDuration = const Duration(
+      milliseconds: 3000,
+    ),
+    this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
-    this.borderRadius = defaultRadius,
+    this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
   }) : super(key: key) {
@@ -107,15 +122,19 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.displayTitle = true,
-    this.toastPosition = POSITION.top,
-    this.animationDuration = defaultAnimationDuration,
-    this.animationCurve = defaultAnimationCurve,
-    this.animationType = ANIMATION_TYPE.fromLeft,
+    this.toastPosition = Position.top,
+    this.animationDuration = const Duration(
+      milliseconds: 1500,
+    ),
+    this.animationCurve = Curves.ease,
+    this.animationType = AnimationType.fromLeft,
     this.autoDismiss = false,
-    this.toastDuration = defaultToastDuration,
-    this.layout = TOAST_LAYOUT.ltr,
+    this.toastDuration = const Duration(
+      milliseconds: 3000,
+    ),
+    this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
-    this.borderRadius = defaultRadius,
+    this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
   }) : super(key: key) {
@@ -126,7 +145,7 @@ class CherryToast extends StatefulWidget {
   void _initializeAttributes(Color color) {
     themeColor = color;
     iconColor = color;
-    iconSize = defaultIconSize;
+    iconSize = 20;
   }
 
   ///Text widget displayed as a title in the toast
@@ -165,7 +184,7 @@ class CherryToast extends StatefulWidget {
   ///bottom
   ///}
   ///```
-  final POSITION toastPosition;
+  final Position toastPosition;
 
   ///The color that will be applied on the circle behind the icon
   ///for better rendering the action button must have the same color
@@ -192,7 +211,7 @@ class CherryToast extends StatefulWidget {
   ///fromRight
   ///}
   ///```
-  final ANIMATION_TYPE animationType;
+  final AnimationType animationType;
 
   ///indicates whether the toast will be hidden automatically or not
   ///
@@ -210,7 +229,7 @@ class CherryToast extends StatefulWidget {
   ///rtl
   ///}
   ///```
-  final TOAST_LAYOUT layout;
+  final ToastLayout layout;
 
   ///Display / Hide the close button icon
   ///by default it's true
@@ -242,7 +261,7 @@ class CherryToast extends StatefulWidget {
             backgroundColor: Colors.transparent,
             elevation: 0,
             content: Column(
-              mainAxisAlignment: toastPosition == POSITION.bottom
+              mainAxisAlignment: toastPosition == Position.bottom
                   ? MainAxisAlignment.end
                   : MainAxisAlignment.start,
               children: [
@@ -308,7 +327,7 @@ class _CherryToastState extends State<CherryToast>
       vsync: this,
     );
     switch (widget.animationType) {
-      case ANIMATION_TYPE.fromLeft:
+      case AnimationType.fromLeft:
         offsetAnimation = Tween<Offset>(
           begin: const Offset(-2, 0),
           end: const Offset(0, 0),
@@ -319,7 +338,7 @@ class _CherryToastState extends State<CherryToast>
           ),
         );
         break;
-      case ANIMATION_TYPE.fromRight:
+      case AnimationType.fromRight:
         offsetAnimation = Tween<Offset>(
           begin: const Offset(2, 0),
           end: const Offset(0, 0),
@@ -330,7 +349,7 @@ class _CherryToastState extends State<CherryToast>
           ),
         );
         break;
-      case ANIMATION_TYPE.fromTop:
+      case AnimationType.fromTop:
         offsetAnimation = Tween<Offset>(
           begin: const Offset(0, -2),
           end: const Offset(0, 0),
@@ -343,14 +362,14 @@ class _CherryToastState extends State<CherryToast>
         break;
       default:
     }
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       slideController.forward();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    if (widget.layout == TOAST_LAYOUT.ltr) {
+    if (widget.layout == ToastLayout.ltr) {
       return _renderLeftLayoutToast(context);
     } else {
       return _renderRightLayoutToast(context);
@@ -361,7 +380,7 @@ class _CherryToastState extends State<CherryToast>
   ///
   Widget _renderLeftLayoutToast(BuildContext context) {
     return Column(
-      mainAxisAlignment: widget.toastPosition == POSITION.top
+      mainAxisAlignment: widget.toastPosition == Position.top
           ? MainAxisAlignment.start
           : MainAxisAlignment.end,
       children: [
@@ -384,7 +403,7 @@ class _CherryToastState extends State<CherryToast>
                               : CrossAxisAlignment.start,
                       children: [
                         widget.displayIcon
-                            ? CherryToatIcon(
+                            ? CherryToastIcon(
                                 color: widget.themeColor,
                                 icon: widget.icon,
                                 iconSize: widget.iconSize,
@@ -418,7 +437,7 @@ class _CherryToastState extends State<CherryToast>
   ///
   Column _renderRightLayoutToast(BuildContext context) {
     return Column(
-      mainAxisAlignment: widget.toastPosition == POSITION.top
+      mainAxisAlignment: widget.toastPosition == Position.top
           ? MainAxisAlignment.start
           : MainAxisAlignment.end,
       children: [
@@ -450,7 +469,7 @@ class _CherryToastState extends State<CherryToast>
                               : CrossAxisAlignment.start,
                       children: [
                         _renderToastContent(),
-                        CherryToatIcon(
+                        CherryToastIcon(
                           color: widget.themeColor,
                           icon: widget.icon,
                           iconSize: widget.iconSize,
@@ -487,7 +506,7 @@ class _CherryToastState extends State<CherryToast>
       child: Icon(
         Icons.close,
         color: Colors.grey[500],
-        size: closeButtonSize,
+        size: 15,
       ),
     );
   }
@@ -504,7 +523,7 @@ class _CherryToastState extends State<CherryToast>
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: widget.layout == TOAST_LAYOUT.ltr
+          crossAxisAlignment: widget.layout == ToastLayout.ltr
               ? CrossAxisAlignment.start
               : CrossAxisAlignment.end,
           children: [

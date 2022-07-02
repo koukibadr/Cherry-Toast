@@ -1,4 +1,4 @@
-enum CHERRY_TYPE {
+enum CherryType {
   success,
   warning,
   error,
@@ -6,18 +6,18 @@ enum CHERRY_TYPE {
   custom,
 }
 
-enum POSITION {
+enum Position {
   top,
   bottom,
 }
 
-enum ANIMATION_TYPE {
+enum AnimationType {
   fromTop,
   fromLeft,
   fromRight,
 }
 
-enum TOAST_LAYOUT {
+enum ToastLayout {
   ltr,
   rtl,
 }

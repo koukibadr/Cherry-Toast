@@ -68,7 +68,7 @@ class ExampleApp extends StatelessWidget {
                 enableIconAnimation: false,
                 displayTitle: false,
                 description: Text('Invalid account information'),
-                animationType: ANIMATION_TYPE.fromRight,
+                animationType: AnimationType.fromRight,
                 animationDuration: Duration(milliseconds: 1000),
                 autoDismiss: true,
               ).show(context);
@@ -86,7 +86,7 @@ class ExampleApp extends StatelessWidget {
                 title: Text(''),
                 displayTitle: false,
                 description: Text('A bottom cherry toast example'),
-                toastPosition: POSITION.bottom,
+                toastPosition: Position.bottom,
                 animationDuration: Duration(milliseconds: 1000),
                 autoDismiss: true,
               ).show(context);
@@ -103,7 +103,7 @@ class ExampleApp extends StatelessWidget {
                 displayTitle: false,
                 description:
                     Text('All information may be deleted after this action'),
-                animationType: ANIMATION_TYPE.fromTop,
+                animationType: AnimationType.fromTop,
                 action: Text('Backup data'),
                 actionHandler: () {},
               ).show(context);
@@ -133,9 +133,9 @@ class ExampleApp extends StatelessWidget {
                 title: Text(''),
                 displayTitle: false,
                 description: Text('هذا مثال تصميم من اليمين'),
-                toastPosition: POSITION.bottom,
-                layout: TOAST_LAYOUT.rtl,
-                animationType: ANIMATION_TYPE.fromRight,
+                toastPosition: Position.bottom,
+                layout: ToastLayout.rtl,
+                animationType: AnimationType.fromRight,
                 action: Text(
                   'انقر هنا',
                   style: TextStyle(color: Colors.green),
