@@ -1,6 +1,8 @@
 ## [1.0.5] - 02/07/2022
 
-* Bug fixes
+* Flutter 3 support
+* Fix naming conventions
+* remove unused variables
 
 ## [1.0.4] - 20/04/2022
 
