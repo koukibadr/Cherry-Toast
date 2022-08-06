@@ -22,7 +22,7 @@ class CherryToast extends StatefulWidget {
     ),
     this.animationCurve = Curves.ease,
     this.animationType = AnimationType.fromLeft,
-    this.autoDismiss = false,
+    this.autoDismiss = true,
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
@@ -47,7 +47,7 @@ class CherryToast extends StatefulWidget {
     ),
     this.animationCurve = Curves.ease,
     this.animationType = AnimationType.fromLeft,
-    this.autoDismiss = false,
+    this.autoDismiss = true,
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
@@ -74,7 +74,7 @@ class CherryToast extends StatefulWidget {
     ),
     this.animationCurve = Curves.ease,
     this.animationType = AnimationType.fromLeft,
-    this.autoDismiss = false,
+    this.autoDismiss = true,
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
@@ -101,7 +101,7 @@ class CherryToast extends StatefulWidget {
     ),
     this.animationCurve = Curves.ease,
     this.animationType = AnimationType.fromLeft,
-    this.autoDismiss = false,
+    this.autoDismiss = true,
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
@@ -128,7 +128,7 @@ class CherryToast extends StatefulWidget {
     ),
     this.animationCurve = Curves.ease,
     this.animationType = AnimationType.fromLeft,
-    this.autoDismiss = false,
+    this.autoDismiss = true,
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
@@ -254,25 +254,29 @@ class CherryToast extends StatefulWidget {
   void show(BuildContext context) {
     Navigator.of(context).push(
       PageRouteBuilder(
-        barrierDismissible: autoDismiss,
-        barrierColor: Colors.black.withOpacity(0.3),
-        pageBuilder: (context, _, __) => SafeArea(
-          child: AlertDialog(
-            backgroundColor: Colors.transparent,
-            elevation: 0,
-            content: Column(
-              mainAxisAlignment: toastPosition == Position.bottom
-                  ? MainAxisAlignment.end
-                  : MainAxisAlignment.start,
-              children: [
-                SizedBox(
-                  child: this,
-                ),
-              ],
+        fullscreenDialog: false,
+        barrierColor: Colors.grey.withOpacity(0.1),
+        opaque: false,
+        barrierDismissible: true,
+        pageBuilder: (context, _, __) => GestureDetector(
+          onTap: Navigator.of(context).pop,
+          child: SafeArea(
+            child: AlertDialog(
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              content: Column(
+                mainAxisAlignment: toastPosition == Position.bottom
+                    ? MainAxisAlignment.end
+                    : MainAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    child: this,
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-        opaque: false,
       ),
     );
   }
@@ -308,7 +312,7 @@ class _CherryToastState extends State<CherryToast>
       autoDismissTimer = Timer(widget.toastDuration, () {
         slideController.reverse();
         Timer(widget.animationDuration, () {
-          Navigator.pop(context);
+          Navigator.maybePop(context);
         });
       });
     }
@@ -317,6 +321,7 @@ class _CherryToastState extends State<CherryToast>
   @override
   void dispose() {
     autoDismissTimer?.cancel();
+    slideController.dispose();
     super.dispose();
   }
 
