@@ -1,3 +1,8 @@
+## [1.0.8] - 06/08/2022
+
+* Fix barrier dimissable issue
+* Fix animation and timer dispose error
+
 ## [1.0.6] - 02/07/2022
 
 * Fix pub.dev static analysis
