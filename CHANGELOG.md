@@ -1,3 +1,7 @@
+## [1.0.9] - 15/01/2023
+
+* Fix addPostFrameCallback function call in initstate
+
 ## [1.0.8] - 06/08/2022
 
 * Fix barrier dimissable issue
