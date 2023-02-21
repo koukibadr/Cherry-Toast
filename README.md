@@ -14,6 +14,7 @@
 
 - Support all platforms
 - Top and Bottom display position
+- Customizable background color
 - Multiple built-in themes
 - Built-in animations
 - Support null safety
@@ -29,7 +30,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-	cherry_toast: ^1.0.9
+	cherry_toast: ^1.1.0
 ```
 
 ## Parameters
@@ -59,6 +60,7 @@ dependencies:
 | displayIcon         | hide or show the icon on the toast                                                                              | false                                                                   | true                                                          |
 | enableIconAnimation | define wether apply an animation on the icon or not                                                             | false                                                                   | true                                                          |
 | iconSize            | define the icon size                                                                                            | false                                                                   | 20                                                            |
+| backgroundColor            | define the main dialog background | false                                                                   | Colors.white |
 
 ## Usage
 
