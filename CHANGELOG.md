@@ -1,3 +1,7 @@
+## [1.1.0] - 21/02/2023
+
+* Add background color parameter
+
 ## [1.0.9] - 15/01/2023
 
 * Fix addPostFrameCallback function call in initstate
