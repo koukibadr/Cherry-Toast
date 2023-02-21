@@ -13,6 +13,7 @@ class CherryToast extends StatefulWidget {
     required this.themeColor,
     this.iconColor = Colors.black,
     this.action,
+    this.backgroundColor = defaultBackgroundColor,
     this.actionHandler,
     this.description,
     this.displayTitle = true,
@@ -40,6 +41,7 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
+    this.backgroundColor = defaultBackgroundColor,
     this.displayTitle = true,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
@@ -66,6 +68,7 @@ class CherryToast extends StatefulWidget {
     required this.title,
     this.action,
     this.actionHandler,
+    this.backgroundColor = defaultBackgroundColor,
     this.description,
     this.displayTitle = true,
     this.toastPosition = Position.top,
@@ -95,6 +98,7 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.displayTitle = true,
+    this.backgroundColor = defaultBackgroundColor,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
       milliseconds: 1500,
@@ -121,6 +125,7 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.description,
+    this.backgroundColor = defaultBackgroundColor,
     this.displayTitle = true,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
@@ -171,6 +176,8 @@ class CherryToast extends StatefulWidget {
   ///this parameter is only available on the default constructor
   ///for the built-in themes the color  will be set automatically
   late Color iconColor;
+  //background color of container
+  final Color backgroundColor;
 
   ///the icon size
   ///by default is 20
@@ -297,7 +304,7 @@ class _CherryToastState extends State<CherryToast>
     super.initState();
     _initAnimation();
     toastDecoration = BoxDecoration(
-      color: Colors.white,
+      color: widget.backgroundColor,
       borderRadius: BorderRadius.circular(widget.borderRadius),
       boxShadow: [
         BoxShadow(
