@@ -125,7 +125,7 @@ class ExampleApp extends StatelessWidget {
             height: 10,
           ),
           ElevatedButton(
-            child: Text('🍒 Rigth Layout Cherry Toast'),
+            child: Text('🍒 Right Layout Cherry Toast'),
             onPressed: () {
               CherryToast(
                 icon: Icons.car_repair,
