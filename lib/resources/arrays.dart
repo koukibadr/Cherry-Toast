@@ -15,6 +15,7 @@ enum AnimationType {
   fromTop,
   fromLeft,
   fromRight,
+  fromBottom,
 }
 
 enum ToastLayout {
