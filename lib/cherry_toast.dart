@@ -372,6 +372,17 @@ class _CherryToastState extends State<CherryToast>
           ),
         );
         break;
+      case AnimationType.fromBottom:
+        offsetAnimation = Tween<Offset>(
+          begin: const Offset(0, 2),
+          end: const Offset(0, 0),
+        ).animate(
+          CurvedAnimation(
+            parent: slideController,
+            curve: widget.animationCurve,
+          ),
+        );
+        break;
       default:
     }
 
