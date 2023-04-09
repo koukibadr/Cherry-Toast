@@ -16,6 +16,7 @@ class CherryToast extends StatefulWidget {
     this.backgroundColor = defaultBackgroundColor,
     this.actionHandler,
     this.description,
+    this.iconWidget,
     this.displayTitle = true,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
@@ -33,7 +34,13 @@ class CherryToast extends StatefulWidget {
     this.displayIcon = true,
     this.enableIconAnimation = true,
     this.iconSize = 20,
-  }) : super(key: key);
+  }) : super(key: key) {
+    if (iconWidget != null) {
+      showIconWidget = true;
+    } else {
+      showIconWidget = false;
+    }
+  }
 
   CherryToast.success({
     Key? key,
@@ -56,11 +63,17 @@ class CherryToast extends StatefulWidget {
     this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
+    this.iconWidget,
     this.displayIcon = true,
     this.enableIconAnimation = true,
   }) : super(key: key) {
     icon = Icons.check_circle;
     _initializeAttributes(successColor);
+    if (iconWidget != null) {
+      showIconWidget = true;
+    } else {
+      showIconWidget = false;
+    }
   }
 
   CherryToast.error({
@@ -78,6 +91,7 @@ class CherryToast extends StatefulWidget {
     this.animationCurve = Curves.ease,
     this.animationType = AnimationType.fromLeft,
     this.autoDismiss = true,
+    this.iconWidget,
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
@@ -89,6 +103,11 @@ class CherryToast extends StatefulWidget {
   }) : super(key: key) {
     icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
+    if (iconWidget != null) {
+      showIconWidget = true;
+    } else {
+      showIconWidget = false;
+    }
   }
 
   CherryToast.warning({
@@ -112,11 +131,17 @@ class CherryToast extends StatefulWidget {
     this.layout = ToastLayout.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
+    this.iconWidget,
     this.displayIcon = true,
     this.enableIconAnimation = true,
   }) : super(key: key) {
     icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
+    if (iconWidget != null) {
+      showIconWidget = true;
+    } else {
+      showIconWidget = false;
+    }
   }
 
   CherryToast.info({
@@ -142,9 +167,15 @@ class CherryToast extends StatefulWidget {
     this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.iconWidget,
   }) : super(key: key) {
     icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
+    if (iconWidget != null) {
+      showIconWidget = true;
+    } else {
+      showIconWidget = false;
+    }
   }
 
   void _initializeAttributes(Color color) {
@@ -178,6 +209,9 @@ class CherryToast extends StatefulWidget {
   late Color iconColor;
   //background color of container
   final Color backgroundColor;
+  //custom widget user can do it according to its way
+  final Widget? iconWidget;
+  late bool showIconWidget;
 
   ///the icon size
   ///by default is 20
@@ -235,6 +269,8 @@ class CherryToast extends StatefulWidget {
   ///ltr,
   ///rtl
   ///}
+  ///
+
   ///```
   final ToastLayout layout;
 
@@ -435,7 +471,10 @@ class _CherryToastState extends State<CherryToast>
                               ? CrossAxisAlignment.center
                               : CrossAxisAlignment.start,
                       children: [
-                        widget.displayIcon
+                        if (widget.showIconWidget && widget.iconWidget != null)
+                          widget.iconWidget!,
+                        //so only one widget will appear
+                        widget.displayIcon && widget.showIconWidget == false
                             ? CherryToastIcon(
                                 color: widget.themeColor,
                                 icon: widget.icon,
