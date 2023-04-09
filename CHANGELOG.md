@@ -1,3 +1,8 @@
+## [1.2.0] - 09/04/2023
+
+* Add fromBottom animation ([pull request link](https://github.com/koukibadr/Cherry-Toast/pull/36))
+* Change icon widget to any widget type ([pull request link](https://github.com/koukibadr/Cherry-Toast/pull/36))
+
 ## [1.1.0] - 21/02/2023
 
 * Add background color parameter
