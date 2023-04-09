@@ -34,13 +34,7 @@ class CherryToast extends StatefulWidget {
     this.displayIcon = true,
     this.enableIconAnimation = true,
     this.iconSize = 20,
-  }) : super(key: key) {
-    if (iconWidget != null) {
-      showIconWidget = true;
-    } else {
-      showIconWidget = false;
-    }
-  }
+  }) : super(key: key);
 
   CherryToast.success({
     Key? key,
@@ -69,11 +63,6 @@ class CherryToast extends StatefulWidget {
   }) : super(key: key) {
     icon = Icons.check_circle;
     _initializeAttributes(successColor);
-    if (iconWidget != null) {
-      showIconWidget = true;
-    } else {
-      showIconWidget = false;
-    }
   }
 
   CherryToast.error({
@@ -103,11 +92,6 @@ class CherryToast extends StatefulWidget {
   }) : super(key: key) {
     icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
-    if (iconWidget != null) {
-      showIconWidget = true;
-    } else {
-      showIconWidget = false;
-    }
   }
 
   CherryToast.warning({
@@ -137,11 +121,6 @@ class CherryToast extends StatefulWidget {
   }) : super(key: key) {
     icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
-    if (iconWidget != null) {
-      showIconWidget = true;
-    } else {
-      showIconWidget = false;
-    }
   }
 
   CherryToast.info({
@@ -171,11 +150,6 @@ class CherryToast extends StatefulWidget {
   }) : super(key: key) {
     icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
-    if (iconWidget != null) {
-      showIconWidget = true;
-    } else {
-      showIconWidget = false;
-    }
   }
 
   void _initializeAttributes(Color color) {
@@ -209,9 +183,9 @@ class CherryToast extends StatefulWidget {
   late Color iconColor;
   //background color of container
   final Color backgroundColor;
-  //custom widget user can do it according to its way
+
+  //Custom widget displayed at the place of the predefined icons
   final Widget? iconWidget;
-  late bool showIconWidget;
 
   ///the icon size
   ///by default is 20
@@ -471,18 +445,18 @@ class _CherryToastState extends State<CherryToast>
                               ? CrossAxisAlignment.center
                               : CrossAxisAlignment.start,
                       children: [
-                        if (widget.showIconWidget && widget.iconWidget != null)
-                          widget.iconWidget!,
-                        //so only one widget will appear
-                        widget.displayIcon && widget.showIconWidget == false
-                            ? CherryToastIcon(
-                                color: widget.themeColor,
-                                icon: widget.icon,
-                                iconSize: widget.iconSize,
-                                iconColor: widget.iconColor,
-                                enableAnimation: widget.enableIconAnimation,
-                              )
-                            : Container(),
+                        if (widget.iconWidget != null)
+                          widget.iconWidget!
+                        else if (widget.displayIcon)
+                          CherryToastIcon(
+                            color: widget.themeColor,
+                            icon: widget.icon,
+                            iconSize: widget.iconSize,
+                            iconColor: widget.iconColor,
+                            enableAnimation: widget.enableIconAnimation,
+                          )
+                        else
+                          Container(),
                         _renderToastContent(),
                       ],
                     ),
