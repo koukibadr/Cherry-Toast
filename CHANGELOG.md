@@ -1,3 +1,7 @@
+## [1.2.1] - 30/04/2023
+
+* Fix dismiss issue
+
 ## [1.2.0] - 09/04/2023
 
 * Add fromBottom animation ([pull request link](https://github.com/koukibadr/Cherry-Toast/pull/36))
