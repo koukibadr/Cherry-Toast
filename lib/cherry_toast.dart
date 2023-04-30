@@ -329,7 +329,9 @@ class _CherryToastState extends State<CherryToast>
       autoDismissTimer = Timer(widget.toastDuration, () {
         slideController.reverse();
         Timer(widget.animationDuration, () {
-          Navigator.maybePop(context);
+          if(mounted){
+            Navigator.maybePop(context);
+          }
         });
       });
     }
