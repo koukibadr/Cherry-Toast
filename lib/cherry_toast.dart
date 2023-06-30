@@ -14,6 +14,7 @@ class CherryToast extends StatefulWidget {
     this.iconColor = Colors.black,
     this.action,
     this.backgroundColor = defaultBackgroundColor,
+    this.shadowColor = defaultShadowColor,
     this.actionHandler,
     this.description,
     this.iconWidget,
@@ -43,6 +44,7 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.backgroundColor = defaultBackgroundColor,
+    this.shadowColor = defaultShadowColor,
     this.displayTitle = true,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
@@ -71,6 +73,7 @@ class CherryToast extends StatefulWidget {
     this.action,
     this.actionHandler,
     this.backgroundColor = defaultBackgroundColor,
+    this.shadowColor = defaultShadowColor,
     this.description,
     this.displayTitle = true,
     this.toastPosition = Position.top,
@@ -102,6 +105,7 @@ class CherryToast extends StatefulWidget {
     this.description,
     this.displayTitle = true,
     this.backgroundColor = defaultBackgroundColor,
+    this.shadowColor = defaultShadowColor,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
       milliseconds: 1500,
@@ -130,6 +134,7 @@ class CherryToast extends StatefulWidget {
     this.actionHandler,
     this.description,
     this.backgroundColor = defaultBackgroundColor,
+    this.shadowColor = defaultShadowColor,
     this.displayTitle = true,
     this.toastPosition = Position.top,
     this.animationDuration = const Duration(
@@ -183,7 +188,8 @@ class CherryToast extends StatefulWidget {
   late Color iconColor;
   //background color of container
   final Color backgroundColor;
-
+  //box shadow color of container
+  final Color shadowColor;
   //Custom widget displayed at the place of the predefined icons
   final Widget? iconWidget;
 
@@ -318,7 +324,7 @@ class _CherryToastState extends State<CherryToast>
       borderRadius: BorderRadius.circular(widget.borderRadius),
       boxShadow: [
         BoxShadow(
-          color: Colors.grey.withOpacity(0.5),
+          color: widget.shadowColor,
           spreadRadius: 1,
           blurRadius: 2,
           offset: const Offset(0, 1), // changes position of shadow
