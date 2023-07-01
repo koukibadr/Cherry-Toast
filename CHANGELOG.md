@@ -1,3 +1,7 @@
+## [1.3.1] - 01/07/2023
+
+* Update toast shadow color to support multiple theme color [PR](https://github.com/koukibadr/Cherry-Toast/pull/41)
+
 ## [1.2.1] - 30/04/2023
 
 * Fix dismiss issue
