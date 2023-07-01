@@ -93,7 +93,8 @@ late  Color  iconColor;
 
 ///background color of container
 final  Color  backgroundColor;
-
+///box shadow color of container
+final Color shadowColor;
 //Custom widget displayed at the place of the predefined icons
 final  Widget?  iconWidget;
 
