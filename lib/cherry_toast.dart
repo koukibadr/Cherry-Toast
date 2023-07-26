@@ -288,6 +288,7 @@ class CherryToast extends StatefulWidget {
               backgroundColor: Colors.transparent,
               elevation: 0,
               content: Column(
+                mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: toastPosition == Position.bottom
                     ? MainAxisAlignment.end
                     : MainAxisAlignment.start,
