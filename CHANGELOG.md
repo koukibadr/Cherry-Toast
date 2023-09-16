@@ -1,3 +1,7 @@
+## [1.3.2] - 16/09/2023
+
+* Bug fix : Enable click on screen widgets when toast is open [Issue 18](https://github.com/koukibadr/Cherry-Toast/issues/18) [PR 43](https://github.com/koukibadr/Cherry-Toast/pull/43)
+
 ## [1.3.1] - 01/07/2023
 
 * Update toast shadow color to support multiple theme color [PR](https://github.com/koukibadr/Cherry-Toast/pull/41)
