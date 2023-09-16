@@ -173,7 +173,7 @@ final  bool  enableIconAnimation;
 
 CherryToast.success(
 
-title:  "The simplest cherry toast"
+title:  Text("The simplest cherry toast", style: TextStyle(color: Colors.black))
 
 ).show(context);
 
@@ -191,9 +191,9 @@ title:  "The simplest cherry toast"
 
 CherryToast.info(
 
-title:  "User added",
+title:  Text("User added", style: TextStyle(color: Colors.black)),
 
-action:  "Display information",
+action: Text("Display information", style: TextStyle(color: Colors.black)),
 
 actionHandler: (){
 
@@ -233,15 +233,15 @@ print("Action button pressed");
 
 CherryToast.warning(
 
-title:  "",
+title: Text(""),
 
 displayTitle:  false,
 
-description:  "All information may be deleted after this action",
+description:  Text("All information may be deleted after this action", style: TextStyle(color: Colors.black)),
 
-animationType:  ANIMATION_TYPE.FROM_TOP,
+animationType:  AnimationType.fromLeft,
 
-action:  "Backup data",
+action:  Text("Backup data", style: TextStyle(color: Colors.black)),
 
 actionHandler: (){
 
@@ -265,13 +265,13 @@ print("Hello World!!");
 
 CherryToast.error(
 
-title:  "",
+title:  Text(""),
 
 displayTitle:  false,
 
-description:  "Invalid account information",
+description:  Text("Invalid account information", style: TextStyle(color: Colors.black)),
 
-animationType:  ANIMATION_TYPE.FROM_RIGHT,
+animationType:  AnimationType.fromRight,
 
 animationDuration:  Duration(milliseconds:  1000),
 
@@ -297,13 +297,13 @@ icon:  Icons.alarm_add,
 
 themeColor:  Colors.pink,
 
-title:  "",
+title: Text(""),
 
 displayTitle:  false,
 
-description:  "A bottom cherry toast example",
+description:  Text("A bottom cherry toast example", style:  TextStyle(color:  Colors.black)),
 
-toastPosition:  POSITION.BOTTOM,
+toastPosition:  Position.bottom,
 
 animationDuration:  Duration(milliseconds:  1000),
 
@@ -312,7 +312,6 @@ autoDismiss:  true
 ).show(context);
 
   
-
 ```
 
   
@@ -325,27 +324,26 @@ autoDismiss:  true
 
 CherryToast(
 
-icon:  Icon(Icons.car_repair),
+icon:  Icons.car_repair,
 
 themeColor:  Colors.green,
 
-title:  "",
+title: const Text(""),
 
 displayTitle:  false,
 
-description:  "هذا مثال تصميم من اليمين",
+description: const Text("هذا مثال تصميم من اليمين",  style:  TextStyle(color:  Colors.black)),
 
-toastPosition:  POSITION.BOTTOM,
+toastPosition:  Position.bottom,
 
-layout:  TOAST_LAYOUT.RTL,
+layout:  ToastLayout.rtl,
 
-animationType:  ANIMATION_TYPE.FROM_RIGHT,
+animationType:  AnimationType.fromRight,
 
-action:  "انقر هنا",
+action: const Text("انقر هنا", style:  TextStyle(color:  Colors.green)),
 
-actionStyle:  TextStyle(color:  Colors.green),
 
-animationDuration:  Duration(milliseconds:  1000),
+animationDuration: const Duration(milliseconds:  1000),
 
 autoDismiss:  true)
 
