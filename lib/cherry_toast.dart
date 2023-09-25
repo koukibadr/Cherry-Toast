@@ -271,36 +271,37 @@ class CherryToast extends StatefulWidget {
   ///
   final bool enableIconAnimation;
 
+  //Overlay that does not block the screen
+  OverlayEntry? overlayEntry;
+
+  void show(BuildContext context) {
+    overlayEntry = _overlayEntryBuilder();
+    Overlay.maybeOf(context)?.insert(overlayEntry!);
+  }
+
+  void closeOverlay() {
+    overlayEntry?.remove();
+    overlayEntry = null;
+  }
+
   ///Display the created cherry toast
   ///[context] the context of the application
   ///
-  void show(BuildContext context) {
-    Navigator.of(context).push(
-      PageRouteBuilder(
-        fullscreenDialog: false,
-        barrierColor: Colors.grey.withOpacity(0.1),
-        opaque: false,
-        barrierDismissible: true,
-        pageBuilder: (context, _, __) => GestureDetector(
-          onTap: Navigator.of(context).pop,
-          child: SafeArea(
-            child: AlertDialog(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              content: Column(
-                mainAxisAlignment: toastPosition == Position.bottom
-                    ? MainAxisAlignment.end
-                    : MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: this,
-                  ),
-                ],
-              ),
-            ),
+  OverlayEntry _overlayEntryBuilder() {
+    return OverlayEntry(
+      opaque: false,
+      builder: (context) {
+        return SafeArea(
+          child: AlertDialog(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            alignment: Alignment.topLeft,
+            contentPadding: const EdgeInsets.all(0),
+            insetPadding: const EdgeInsets.all(30),
+            content: this,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -335,9 +336,7 @@ class _CherryToastState extends State<CherryToast>
       autoDismissTimer = Timer(widget.toastDuration, () {
         slideController.reverse();
         Timer(widget.animationDuration, () {
-          if (mounted) {
-            Navigator.maybePop(context);
-          }
+          widget.closeOverlay();
         });
       });
     }
@@ -427,118 +426,108 @@ class _CherryToastState extends State<CherryToast>
     }
   }
 
+  //TODO refactor this function with `_renderRightLayoutToast`
+  
   ///render a left layout toast if [this.widget.layout] set to LTR
   ///
   Widget _renderLeftLayoutToast(BuildContext context) {
-    return Column(
-      mainAxisAlignment: widget.toastPosition == Position.top
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: [
-        SlideTransition(
-          position: offsetAnimation,
-          child: Container(
-            decoration: toastDecoration,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      crossAxisAlignment:
-                          widget.description == null && widget.action == null
-                              ? CrossAxisAlignment.center
-                              : CrossAxisAlignment.start,
-                      children: [
-                        if (widget.iconWidget != null)
-                          widget.iconWidget!
-                        else if (widget.displayIcon)
-                          CherryToastIcon(
-                            color: widget.themeColor,
-                            icon: widget.icon,
-                            iconSize: widget.iconSize,
-                            iconColor: widget.iconColor,
-                            enableAnimation: widget.enableIconAnimation,
-                          )
-                        else
-                          Container(),
-                        _renderToastContent(),
-                      ],
-                    ),
-                  ),
-                  widget.displayCloseButton
-                      ? Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            right: 10,
-                          ),
-                          child: _renderCloseButton(context),
-                        )
-                      : Container(),
-                ],
+    return SlideTransition(
+      position: offsetAnimation,
+      child: Container(
+        decoration: toastDecoration,
+        width: MediaQuery.of(context).size.width * 0.7,
+        height: MediaQuery.of(context).size.height * 0.1,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Row(
+                  crossAxisAlignment:
+                      widget.description == null && widget.action == null
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
+                  children: [
+                    if (widget.iconWidget != null)
+                      widget.iconWidget!
+                    else if (widget.displayIcon)
+                      CherryToastIcon(
+                        color: widget.themeColor,
+                        icon: widget.icon,
+                        iconSize: widget.iconSize,
+                        iconColor: widget.iconColor,
+                        enableAnimation: widget.enableIconAnimation,
+                      )
+                    else
+                      Container(),
+                    _renderToastContent(),
+                  ],
+                ),
               ),
-            ),
+              widget.displayCloseButton
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        right: 10,
+                      ),
+                      child: _renderCloseButton(context),
+                    )
+                  : Container(),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
   ///render a right layout toast if [this.widget.layout] set to RTL
   ///
-  Column _renderRightLayoutToast(BuildContext context) {
-    return Column(
-      mainAxisAlignment: widget.toastPosition == Position.top
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: [
-        SlideTransition(
-          position: offsetAnimation,
-          child: Container(
-            decoration: toastDecoration,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.displayCloseButton
-                      ? Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            left: 10,
-                          ),
-                          child: _renderCloseButton(context),
-                        )
-                      : Container(),
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      crossAxisAlignment:
-                          widget.description == null && widget.action == null
-                              ? CrossAxisAlignment.center
-                              : CrossAxisAlignment.start,
-                      children: [
-                        _renderToastContent(),
-                        CherryToastIcon(
-                          color: widget.themeColor,
-                          icon: widget.icon,
-                          iconSize: widget.iconSize,
-                          iconColor: widget.iconColor,
-                          enableAnimation: widget.enableIconAnimation,
-                        ),
-                      ],
+  Widget _renderRightLayoutToast(BuildContext context) {
+    return SlideTransition(
+      position: offsetAnimation,
+      child: Container(
+        decoration: toastDecoration,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              widget.displayCloseButton
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        left: 10,
+                      ),
+                      child: _renderCloseButton(context),
+                    )
+                  : Container(),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  crossAxisAlignment:
+                      widget.description == null && widget.action == null
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
+                  children: [
+                    _renderToastContent(),
+                    CherryToastIcon(
+                      color: widget.themeColor,
+                      icon: widget.icon,
+                      iconSize: widget.iconSize,
+                      iconColor: widget.iconColor,
+                      enableAnimation: widget.enableIconAnimation,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
@@ -553,7 +542,7 @@ class _CherryToastState extends State<CherryToast>
         Timer(
           widget.animationDuration,
           () {
-            Navigator.pop(context);
+            widget.closeOverlay();
           },
         );
       },
