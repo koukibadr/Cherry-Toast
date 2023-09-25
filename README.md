@@ -58,7 +58,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.3.2
+    cherry_toast: ^1.3.3
 ```
 
   

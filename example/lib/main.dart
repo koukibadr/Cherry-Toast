@@ -51,6 +51,7 @@ class ExampleApp extends StatelessWidget {
             child: Text('🍒 Info Cherry Toast'),
             onPressed: () {
               CherryToast.info(
+                toastPosition: Position.top,
                 title: Text('User added'),
                 action: Text('Display information'),
                 actionHandler: () {},

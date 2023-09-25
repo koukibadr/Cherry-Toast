@@ -1,3 +1,7 @@
+## [1.3.3] - 25/09/2023
+
+* Bug fix : Enable to change toast position other than center [Issue 45](https://github.com/koukibadr/Cherry-Toast/issues/45)
+
 ## [1.3.2] - 16/09/2023
 
 * Bug fix : Enable click on screen widgets when toast is open [Issue 18](https://github.com/koukibadr/Cherry-Toast/issues/18) [PR 43](https://github.com/koukibadr/Cherry-Toast/pull/43)
