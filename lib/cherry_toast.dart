@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CherryToast extends StatefulWidget {
+  //Overlay that does not block the screen
+  OverlayEntry? overlayEntry;
+
   CherryToast({
     Key? key,
     required this.title,
@@ -35,6 +38,8 @@ class CherryToast extends StatefulWidget {
     this.displayIcon = true,
     this.enableIconAnimation = true,
     this.iconSize = 20,
+    this.height,
+    this.width,
   }) : super(key: key);
 
   CherryToast.success({
@@ -62,6 +67,8 @@ class CherryToast extends StatefulWidget {
     this.iconWidget,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.check_circle;
     _initializeAttributes(successColor);
@@ -92,6 +99,8 @@ class CherryToast extends StatefulWidget {
     this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
@@ -122,6 +131,8 @@ class CherryToast extends StatefulWidget {
     this.iconWidget,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
@@ -152,6 +163,8 @@ class CherryToast extends StatefulWidget {
     this.displayIcon = true,
     this.enableIconAnimation = true,
     this.iconWidget,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
@@ -271,8 +284,14 @@ class CherryToast extends StatefulWidget {
   ///
   final bool enableIconAnimation;
 
-  //Overlay that does not block the screen
-  OverlayEntry? overlayEntry;
+  /// The above code is declaring a final variable named "width" of type double with a nullable value.
+  /// width attribute define the toast width
+  final double? width;
+
+  /// The above code is declaring a final variable named "height" of type double with a nullable type
+  /// modifier.
+  /// height attribute define the toast height
+  final double? height;
 
   void show(BuildContext context) {
     overlayEntry = _overlayEntryBuilder();
@@ -426,8 +445,6 @@ class _CherryToastState extends State<CherryToast>
     }
   }
 
-  //TODO refactor this function with `_renderRightLayoutToast`
-  
   ///render a left layout toast if [this.widget.layout] set to LTR
   ///
   Widget _renderLeftLayoutToast(BuildContext context) {
@@ -435,8 +452,8 @@ class _CherryToastState extends State<CherryToast>
       position: offsetAnimation,
       child: Container(
         decoration: toastDecoration,
-        width: MediaQuery.of(context).size.width * 0.7,
-        height: MediaQuery.of(context).size.height * 0.1,
+        width: widget.width ?? MediaQuery.of(context).size.width * 0.7,
+        height: widget.height ?? MediaQuery.of(context).size.height * 0.1,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -489,6 +506,8 @@ class _CherryToastState extends State<CherryToast>
     return SlideTransition(
       position: offsetAnimation,
       child: Container(
+        width: widget.width ?? MediaQuery.of(context).size.width * 0.7,
+        height: widget.height ?? MediaQuery.of(context).size.height * 0.1,
         decoration: toastDecoration,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
