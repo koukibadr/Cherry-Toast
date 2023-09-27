@@ -6,6 +6,9 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CherryToast extends StatefulWidget {
+  //Overlay that does not block the screen
+  OverlayEntry? overlayEntry;
+
   CherryToast({
     Key? key,
     required this.title,
@@ -35,6 +38,8 @@ class CherryToast extends StatefulWidget {
     this.displayIcon = true,
     this.enableIconAnimation = true,
     this.iconSize = 20,
+    this.height,
+    this.width,
   }) : super(key: key);
 
   CherryToast.success({
@@ -62,6 +67,8 @@ class CherryToast extends StatefulWidget {
     this.iconWidget,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.check_circle;
     _initializeAttributes(successColor);
@@ -92,6 +99,8 @@ class CherryToast extends StatefulWidget {
     this.borderRadius = 20,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
@@ -122,6 +131,8 @@ class CherryToast extends StatefulWidget {
     this.iconWidget,
     this.displayIcon = true,
     this.enableIconAnimation = true,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
@@ -152,6 +163,8 @@ class CherryToast extends StatefulWidget {
     this.displayIcon = true,
     this.enableIconAnimation = true,
     this.iconWidget,
+    this.height,
+    this.width,
   }) : super(key: key) {
     icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
@@ -271,36 +284,43 @@ class CherryToast extends StatefulWidget {
   ///
   final bool enableIconAnimation;
 
+  /// The above code is declaring a final variable named "width" of type double with a nullable value.
+  /// width attribute define the toast width
+  final double? width;
+
+  /// The above code is declaring a final variable named "height" of type double with a nullable type
+  /// modifier.
+  /// height attribute define the toast height
+  final double? height;
+
+  void show(BuildContext context) {
+    overlayEntry = _overlayEntryBuilder();
+    Overlay.maybeOf(context)?.insert(overlayEntry!);
+  }
+
+  void closeOverlay() {
+    overlayEntry?.remove();
+    overlayEntry = null;
+  }
+
   ///Display the created cherry toast
   ///[context] the context of the application
   ///
-  void show(BuildContext context) {
-    Navigator.of(context).push(
-      PageRouteBuilder(
-        fullscreenDialog: false,
-        barrierColor: Colors.grey.withOpacity(0.1),
-        opaque: false,
-        barrierDismissible: true,
-        pageBuilder: (context, _, __) => GestureDetector(
-          onTap: Navigator.of(context).pop,
-          child: SafeArea(
-            child: AlertDialog(
-              backgroundColor: Colors.transparent,
-              elevation: 0,
-              content: Column(
-                mainAxisAlignment: toastPosition == Position.bottom
-                    ? MainAxisAlignment.end
-                    : MainAxisAlignment.start,
-                children: [
-                  SizedBox(
-                    child: this,
-                  ),
-                ],
-              ),
-            ),
+  OverlayEntry _overlayEntryBuilder() {
+    return OverlayEntry(
+      opaque: false,
+      builder: (context) {
+        return SafeArea(
+          child: AlertDialog(
+            backgroundColor: Colors.transparent,
+            elevation: 0,
+            alignment: Alignment.topLeft,
+            contentPadding: const EdgeInsets.all(0),
+            insetPadding: const EdgeInsets.all(30),
+            content: this,
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 
@@ -335,9 +355,7 @@ class _CherryToastState extends State<CherryToast>
       autoDismissTimer = Timer(widget.toastDuration, () {
         slideController.reverse();
         Timer(widget.animationDuration, () {
-          if (mounted) {
-            Navigator.maybePop(context);
-          }
+          widget.closeOverlay();
         });
       });
     }
@@ -430,115 +448,105 @@ class _CherryToastState extends State<CherryToast>
   ///render a left layout toast if [this.widget.layout] set to LTR
   ///
   Widget _renderLeftLayoutToast(BuildContext context) {
-    return Column(
-      mainAxisAlignment: widget.toastPosition == Position.top
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: [
-        SlideTransition(
-          position: offsetAnimation,
-          child: Container(
-            decoration: toastDecoration,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      crossAxisAlignment:
-                          widget.description == null && widget.action == null
-                              ? CrossAxisAlignment.center
-                              : CrossAxisAlignment.start,
-                      children: [
-                        if (widget.iconWidget != null)
-                          widget.iconWidget!
-                        else if (widget.displayIcon)
-                          CherryToastIcon(
-                            color: widget.themeColor,
-                            icon: widget.icon,
-                            iconSize: widget.iconSize,
-                            iconColor: widget.iconColor,
-                            enableAnimation: widget.enableIconAnimation,
-                          )
-                        else
-                          Container(),
-                        _renderToastContent(),
-                      ],
-                    ),
-                  ),
-                  widget.displayCloseButton
-                      ? Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            right: 10,
-                          ),
-                          child: _renderCloseButton(context),
-                        )
-                      : Container(),
-                ],
+    return SlideTransition(
+      position: offsetAnimation,
+      child: Container(
+        decoration: toastDecoration,
+        width: widget.width ?? MediaQuery.of(context).size.width * 0.7,
+        height: widget.height ?? MediaQuery.of(context).size.height * 0.1,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                flex: 2,
+                child: Row(
+                  crossAxisAlignment:
+                      widget.description == null && widget.action == null
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
+                  children: [
+                    if (widget.iconWidget != null)
+                      widget.iconWidget!
+                    else if (widget.displayIcon)
+                      CherryToastIcon(
+                        color: widget.themeColor,
+                        icon: widget.icon,
+                        iconSize: widget.iconSize,
+                        iconColor: widget.iconColor,
+                        enableAnimation: widget.enableIconAnimation,
+                      )
+                    else
+                      Container(),
+                    _renderToastContent(),
+                  ],
+                ),
               ),
-            ),
+              widget.displayCloseButton
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        right: 10,
+                      ),
+                      child: _renderCloseButton(context),
+                    )
+                  : Container(),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
   ///render a right layout toast if [this.widget.layout] set to RTL
   ///
-  Column _renderRightLayoutToast(BuildContext context) {
-    return Column(
-      mainAxisAlignment: widget.toastPosition == Position.top
-          ? MainAxisAlignment.start
-          : MainAxisAlignment.end,
-      children: [
-        SlideTransition(
-          position: offsetAnimation,
-          child: Container(
-            decoration: toastDecoration,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  widget.displayCloseButton
-                      ? Padding(
-                          padding: const EdgeInsets.only(
-                            top: 10,
-                            left: 10,
-                          ),
-                          child: _renderCloseButton(context),
-                        )
-                      : Container(),
-                  Expanded(
-                    flex: 2,
-                    child: Row(
-                      crossAxisAlignment:
-                          widget.description == null && widget.action == null
-                              ? CrossAxisAlignment.center
-                              : CrossAxisAlignment.start,
-                      children: [
-                        _renderToastContent(),
-                        CherryToastIcon(
-                          color: widget.themeColor,
-                          icon: widget.icon,
-                          iconSize: widget.iconSize,
-                          iconColor: widget.iconColor,
-                          enableAnimation: widget.enableIconAnimation,
-                        ),
-                      ],
+  Widget _renderRightLayoutToast(BuildContext context) {
+    return SlideTransition(
+      position: offsetAnimation,
+      child: Container(
+        width: widget.width ?? MediaQuery.of(context).size.width * 0.7,
+        height: widget.height ?? MediaQuery.of(context).size.height * 0.1,
+        decoration: toastDecoration,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              widget.displayCloseButton
+                  ? Padding(
+                      padding: const EdgeInsets.only(
+                        top: 10,
+                        left: 10,
+                      ),
+                      child: _renderCloseButton(context),
+                    )
+                  : Container(),
+              Expanded(
+                flex: 2,
+                child: Row(
+                  crossAxisAlignment:
+                      widget.description == null && widget.action == null
+                          ? CrossAxisAlignment.center
+                          : CrossAxisAlignment.start,
+                  children: [
+                    _renderToastContent(),
+                    CherryToastIcon(
+                      color: widget.themeColor,
+                      icon: widget.icon,
+                      iconSize: widget.iconSize,
+                      iconColor: widget.iconColor,
+                      enableAnimation: widget.enableIconAnimation,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
+            ],
           ),
         ),
-      ],
+      ),
     );
   }
 
@@ -553,7 +561,7 @@ class _CherryToastState extends State<CherryToast>
         Timer(
           widget.animationDuration,
           () {
-            Navigator.pop(context);
+            widget.closeOverlay();
           },
         );
       },

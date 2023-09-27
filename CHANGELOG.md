@@ -1,3 +1,8 @@
+## [1.4.3] - 27/09/2023
+
+* **Bug fix**: Enable click on screen widgets when toast is open [PR](https://github.com/koukibadr/Cherry-Toast/pull/47)
+* **Enhancement**: Add width and height attributes to the toast constructor
+
 ## [1.3.3] - 25/09/2023
 
 * Bug fix : Enable to change toast position other than center [Issue 45](https://github.com/koukibadr/Cherry-Toast/issues/45)

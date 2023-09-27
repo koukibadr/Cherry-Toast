@@ -58,7 +58,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.3.3
+    cherry_toast: ^1.4.3
 ```
 
   
@@ -158,6 +158,15 @@ final  bool  displayIcon;
 
 ///Define wether the animation on the icon will be rendered or not
 final  bool  enableIconAnimation;
+
+/// The above code is declaring a final variable named "width" of type double with a nullable value.
+/// width attribute define the toast width
+final double? width;
+
+/// The above code is declaring a final variable named "height" of type double with a nullable type
+/// modifier.
+/// height attribute define the toast height
+final double? height;
 ```
   
 
