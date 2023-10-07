@@ -301,6 +301,8 @@ icon:  Icons.alarm_add,
 
 themeColor:  Colors.pink,
 
+displayTitle:  false,
+
 description:  Text("A bottom cherry toast example", style:  TextStyle(color:  Colors.black)),
 
 toastPosition:  Position.bottom,
