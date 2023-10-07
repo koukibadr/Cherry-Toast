@@ -25,26 +25,18 @@
   
 
 - Support all platforms
-
 - Top and Bottom display position
-
 - Customizable background color
-
+- Support RTL layout rendering (for arabic text)
 - Multiple built-in themes
-
 - Built-in animations
-
 - Support null safety
-
 - Elegant design
-
 - Full customizable
-
 - Heartbeat animation on icons
-
 - Customizable icon size and color and display
-
 - Dismissable notification
+- Customizable toast constraints, height and width
 
   
 
@@ -58,7 +50,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.4.3
+    cherry_toast: ^1.5.3
 ```
 
   
@@ -167,6 +159,9 @@ final double? width;
 /// modifier.
 /// height attribute define the toast height
 final double? height;
+
+///Enable taost constraints customization (by default it's null)
+final BoxConstraints? constraints;
 ```
   
 
@@ -305,10 +300,6 @@ CherryToast(
 icon:  Icons.alarm_add,
 
 themeColor:  Colors.pink,
-
-title: Text(""),
-
-displayTitle:  false,
 
 description:  Text("A bottom cherry toast example", style:  TextStyle(color:  Colors.black)),
 

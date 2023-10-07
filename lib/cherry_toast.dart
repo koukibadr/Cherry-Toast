@@ -192,6 +192,7 @@ class CherryToast extends StatefulWidget {
   ///by default there's no action added
   final Text? action;
 
+  //TODO remove displayTitle and replace it by checking on nullable title widget
   ///indicates whether display or not the title
   ///
   final bool displayTitle;
@@ -289,15 +290,16 @@ class CherryToast extends StatefulWidget {
   ///
   final bool enableIconAnimation;
 
-  /// The above code is declaring a final variable named "width" of type double with a nullable value.
+  /// The attribute  is declaring a final variable named "width" of type double with a nullable value.
   /// width attribute define the toast width
   final double? width;
 
-  /// The above code is declaring a final variable named "height" of type double with a nullable type
+  /// The attribute is declaring a final variable named "height" of type double with a nullable type
   /// modifier.
   /// height attribute define the toast height
   final double? height;
 
+  ///Enable taost constraints customization (by default it's null)
   final BoxConstraints? constraints;
 
   void show(BuildContext context) {
@@ -345,7 +347,7 @@ class _CherryToastState extends State<CherryToast>
   @override
   void initState() {
     super.initState();
-    _initAnimation();
+    initAnimation();
     toastDecoration = BoxDecoration(
       color: widget.backgroundColor,
       borderRadius: BorderRadius.circular(widget.borderRadius),
@@ -376,7 +378,7 @@ class _CherryToastState extends State<CherryToast>
   }
 
   ///Initialize animation parameters [slideController] and [offsetAnimation]
-  void _initAnimation() {
+  void initAnimation() {
     slideController = AnimationController(
       duration: widget.animationDuration,
       vsync: this,
@@ -446,15 +448,15 @@ class _CherryToastState extends State<CherryToast>
   @override
   Widget build(BuildContext context) {
     if (widget.layout == ToastLayout.ltr) {
-      return _renderLeftLayoutToast(context);
+      return renderLeftLayoutToast(context);
     } else {
-      return _renderRightLayoutToast(context);
+      return renderRightLayoutToast(context);
     }
   }
 
   ///render a left layout toast if [this.widget.layout] set to LTR
   ///
-  Widget _renderLeftLayoutToast(BuildContext context) {
+  Widget renderLeftLayoutToast(BuildContext context) {
     return SlideTransition(
       position: offsetAnimation,
       child: Wrap(
@@ -492,7 +494,7 @@ class _CherryToastState extends State<CherryToast>
                           )
                         else
                           Container(),
-                        _renderToastContent(),
+                        renderToastContent(),
                       ],
                     ),
                   ),
@@ -502,7 +504,7 @@ class _CherryToastState extends State<CherryToast>
                         top: 10,
                         right: 10,
                       ),
-                      child: _renderCloseButton(context),
+                      child: renderCloseButton(context),
                     ),
                 ],
               ),
@@ -515,7 +517,7 @@ class _CherryToastState extends State<CherryToast>
 
   ///render a right layout toast if [this.widget.layout] set to RTL
   ///
-  Widget _renderRightLayoutToast(BuildContext context) {
+  Widget renderRightLayoutToast(BuildContext context) {
     return SlideTransition(
       position: offsetAnimation,
       child: Wrap(
@@ -537,7 +539,7 @@ class _CherryToastState extends State<CherryToast>
                         top: 10,
                         left: 10,
                       ),
-                      child: _renderCloseButton(context),
+                      child: renderCloseButton(context),
                     ),
                   Expanded(
                     flex: 2,
@@ -547,7 +549,7 @@ class _CherryToastState extends State<CherryToast>
                               ? CrossAxisAlignment.center
                               : CrossAxisAlignment.start,
                       children: [
-                        _renderToastContent(),
+                        renderToastContent(),
                         CherryToastIcon(
                           color: widget.themeColor,
                           icon: widget.icon,
@@ -570,7 +572,7 @@ class _CherryToastState extends State<CherryToast>
   /// render the close button icon with a clickable  widget that
   /// will hide the toast
   ///
-  InkWell _renderCloseButton(BuildContext context) {
+  InkWell renderCloseButton(BuildContext context) {
     return InkWell(
       onTap: () {
         slideController.reverse();
@@ -592,7 +594,7 @@ class _CherryToastState extends State<CherryToast>
 
   ///render the toast content (Title, Description and Action)
   ///
-  Expanded _renderToastContent() {
+  Expanded renderToastContent() {
     return Expanded(
       flex: 2,
       child: Padding(

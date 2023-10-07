@@ -1,3 +1,11 @@
+## [1.5.3] - 07/10/2023
+
+* **Enhancements**:
+    - Update default toast height
+    - Enable toast constraints customization (Add constraints attribute to toast main widget)
+    - Update toast rendering callback by removing unnecessary widgets
+    - Update toast documentation examples
+
 ## [1.4.3] - 27/09/2023
 
 * **Bug fix**: Enable click on screen widgets when toast is open [PR](https://github.com/koukibadr/Cherry-Toast/pull/47)
