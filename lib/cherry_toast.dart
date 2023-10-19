@@ -307,7 +307,8 @@ class CherryToast extends StatefulWidget {
   ///Enable taost constraints customization (by default it's null)
   final BoxConstraints? constraints;
 
-  //TODO add attribute documentation
+  ///indicate whether the toast animation is enabled or not
+  ///by default the toast animation is enabled
   final bool disableToastAnimation;
 
   void show(BuildContext context) {

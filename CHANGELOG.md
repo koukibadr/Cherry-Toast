@@ -1,3 +1,8 @@
+## [1.6.3] - 19/10/2023
+
+* **Enhancements**:
+    - Toast animation is now customizable with `disableToastAnimation` attribute
+
 ## [1.5.3] - 07/10/2023
 
 * **Enhancements**:
