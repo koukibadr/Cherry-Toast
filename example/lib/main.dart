@@ -53,6 +53,7 @@ class ExampleApp extends StatelessWidget {
               child: Text('🍒 Info Cherry Toast'),
               onPressed: () {
                 CherryToast.info(
+                  disableToastAnimation: true,
                   toastPosition: Position.top,
                   title: Text(
                     'Cherry toast title',

@@ -50,7 +50,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.5.3
+    cherry_toast: ^1.6.3
 ```
 
   
@@ -162,6 +162,10 @@ final double? height;
 
 ///Enable taost constraints customization (by default it's null)
 final BoxConstraints? constraints;
+
+///indicate whether the toast animation is enabled or not
+///by default the toast animation is enabled
+final bool disableToastAnimation;
 ```
   
 
