@@ -8,6 +8,7 @@ enum CherryType {
 
 enum Position {
   top,
+  center,
   bottom,
 }
 

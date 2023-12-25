@@ -114,6 +114,27 @@ class ExampleApp extends StatelessWidget {
           SizedBox(
             width: 300,
             child: ElevatedButton(
+              child: Text('🍒 Center Cherry Toast'),
+              onPressed: () {
+                CherryToast(
+                  icon: Icons.android,
+                  themeColor: Colors.green,
+                  title: Text(''),
+                  displayTitle: false,
+                  description: Text('A center cherry toast example'),
+                  toastPosition: Position.center,
+                  animationDuration: Duration(milliseconds: 1000),
+                  autoDismiss: true,
+                ).show(context);
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            width: 300,
+            child: ElevatedButton(
               child: Text('🍒 Warning Cherry Toast'),
               onPressed: () {
                 CherryToast.warning(
