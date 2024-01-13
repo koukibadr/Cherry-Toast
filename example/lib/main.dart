@@ -73,6 +73,30 @@ class ExampleApp extends StatelessWidget {
           SizedBox(
             width: 300,
             child: ElevatedButton(
+              child: Text('🍒 Cherry Toast Without Animation'),
+              onPressed: () {
+                CherryToast.info(
+                  disableToastAnimation: true,
+                  autoDismiss: false,
+                  toastPosition: Position.top,
+                  title: Text(
+                    'Cherry toast title',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  action: Text('Toast content description'),
+                  actionHandler: () {},
+                ).show(context);
+              },
+            ),
+          ),
+          SizedBox(
+            height: 10,
+          ),
+          SizedBox(
+            width: 300,
+            child: ElevatedButton(
               child: Text('🍒 Error Cherry Toast'),
               onPressed: () {
                 CherryToast.error(

@@ -1,3 +1,9 @@
+## [1.6.5] - 13/01/2024
+
+* **Bug Fix**:
+    - Fix animation controller timer dispose error [Issue #67](https://github.com/koukibadr/Cherry-Toast/issues/67) [Issue #66](https://github.com/koukibadr/Cherry-Toast/issues/66)
+
+
 ## [1.6.4] - 21/10/2023
 
 * **Enhancements**:
