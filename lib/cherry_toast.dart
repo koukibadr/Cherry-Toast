@@ -385,10 +385,10 @@ class _CherryToastState extends State<CherryToast>
 
   @override
   void dispose() {
-    if (!widget.disableToastAnimation) {
-      slideController.reverse();
-    }
     autoDismissTimer?.cancel();
+    if (!widget.disableToastAnimation) {
+      slideController.dispose();
+    }
     super.dispose();
   }
 
