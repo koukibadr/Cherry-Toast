@@ -54,7 +54,6 @@ class ExampleApp extends StatelessWidget {
               onPressed: () {
                 CherryToast.info(
                   disableToastAnimation: true,
-                  toastPosition: Position.top,
                   title: Text(
                     'Cherry toast title',
                     style: TextStyle(
