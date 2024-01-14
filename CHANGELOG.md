@@ -1,3 +1,10 @@
+## [1.7.0] - 14/01/2024
+
+* **Enhancement**:
+    - Update toast position to add center toast display [PR #65](https://github.com/koukibadr/Cherry-Toast/pull/65)
+* **Bug Fix**
+    - Fix toast position display using `toastPosition` attribute [Issue #62](https://github.com/koukibadr/Cherry-Toast/issues/62)
+
 ## [1.6.5] - 13/01/2024
 
 * **Bug Fix**:
