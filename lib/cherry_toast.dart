@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:cherry_toast/cherry_toast_icon.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:cherry_toast/resources/colors.dart';
+import 'package:cherry_toast/resources/extensions.dart';
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -332,7 +333,7 @@ class CherryToast extends StatefulWidget {
           child: AlertDialog(
             backgroundColor: Colors.transparent,
             elevation: 0,
-            alignment: Alignment.topLeft,
+            alignment: toastPosition.alignment,
             contentPadding: const EdgeInsets.all(0),
             insetPadding: const EdgeInsets.all(30),
             content: this,
