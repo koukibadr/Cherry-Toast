@@ -38,8 +38,6 @@
 - Dismissable notification
 - Customizable toast constraints, height and width
 
-  
-
 ## Installation
 
   
@@ -50,7 +48,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.7.0
+    cherry_toast: ^1.8.0
 ```
 
   
@@ -166,6 +164,9 @@ final BoxConstraints? constraints;
 ///indicate whether the toast animation is enabled or not
 ///by default the toast animation is enabled
 final bool disableToastAnimation;
+
+///Callback invoked when toast get dismissed (closed by button or dismissed automtically)
+final Function()? onToastClosed;
 ```
   
 

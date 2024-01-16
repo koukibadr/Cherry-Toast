@@ -43,6 +43,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.onToastClosed,
   }) : super(key: key);
 
   CherryToast.success({
@@ -74,6 +75,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.onToastClosed,
   }) : super(key: key) {
     icon = Icons.check_circle;
     _initializeAttributes(successColor);
@@ -108,6 +110,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.onToastClosed,
   }) : super(key: key) {
     icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
@@ -142,6 +145,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.onToastClosed,
   }) : super(key: key) {
     icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
@@ -176,6 +180,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.onToastClosed,
   }) : super(key: key) {
     icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
@@ -312,6 +317,9 @@ class CherryToast extends StatefulWidget {
   ///by default the toast animation is enabled
   final bool disableToastAnimation;
 
+  ///Callback invoked when toast get dismissed (closed by button or dismissed automtically)
+  final Function()? onToastClosed;
+
   void show(BuildContext context) {
     overlayEntry = _overlayEntryBuilder();
     Overlay.maybeOf(context)?.insert(overlayEntry!);
@@ -386,6 +394,7 @@ class _CherryToastState extends State<CherryToast>
 
   @override
   void dispose() {
+    widget.onToastClosed?.call();
     autoDismissTimer?.cancel();
     if (!widget.disableToastAnimation) {
       slideController.dispose();
