@@ -1,3 +1,7 @@
+## [1.8.0] - 16/01/2024
+
+* **Enhancement**:
+    - Add `onToastClosed` callback attribute invoked when the toast get closed or dismissed [Issue #64](https://github.com/koukibadr/Cherry-Toast/issues/64).
 ## [1.7.0] - 14/01/2024
 
 * **Enhancement**:

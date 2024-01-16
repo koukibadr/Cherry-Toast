@@ -62,6 +62,9 @@ class ExampleApp extends StatelessWidget {
                   ),
                   action: Text('Toast content description'),
                   actionHandler: () {},
+                  onToastClosed: () {
+                    print('Toast closed');
+                  },
                 ).show(context);
               },
             ),
