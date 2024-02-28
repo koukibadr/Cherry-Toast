@@ -48,7 +48,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.8.0
+    cherry_toast: ^1.9.0
 ```
 
   
@@ -58,7 +58,7 @@ dependencies:
 ```dart
 ///Text widget displayed as a title in the toast
 ///required parameter for all toast types
-final  Text  title;
+final  Text?  title;
 
 ///Text widget displayed as a description in the toast
 final  Text?  description;
@@ -66,9 +66,6 @@ final  Text?  description;
 ///The action button displayed below description
 ///by default there's no action added
 final  Text?  action;
-
-///indicates whether display or not the title
-final  bool  displayTitle;
 
 ///the toast icon, it's required when using the default constructor
 late  IconData  icon;
@@ -242,10 +239,6 @@ print("Action button pressed");
 
 CherryToast.warning(
 
-title: Text(""),
-
-displayTitle:  false,
-
 description:  Text("All information may be deleted after this action", style: TextStyle(color: Colors.black)),
 
 animationType:  AnimationType.fromLeft,
@@ -273,10 +266,6 @@ print("Hello World!!");
 ```dart
 
 CherryToast.error(
-
-title:  Text(""),
-
-displayTitle:  false,
 
 description:  Text("Invalid account information", style: TextStyle(color: Colors.black)),
 
@@ -306,8 +295,6 @@ icon:  Icons.alarm_add,
 
 themeColor:  Colors.pink,
 
-displayTitle:  false,
-
 description:  Text("A bottom cherry toast example", style:  TextStyle(color:  Colors.black)),
 
 toastPosition:  Position.bottom,
@@ -334,10 +321,6 @@ CherryToast(
 icon:  Icons.car_repair,
 
 themeColor:  Colors.green,
-
-title: const Text(""),
-
-displayTitle:  false,
 
 description: const Text("هذا مثال تصميم من اليمين",  style:  TextStyle(color:  Colors.black)),
 
