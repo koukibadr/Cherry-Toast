@@ -1,3 +1,10 @@
+## [1.9.0] - 28/02/2024
+
+* **Enhancement**:
+    - `displayTitle` removed and replaced by the check on the null value of `title` widget.
+    - Cherry toast widget should be initialized with either `title` or `description` or both.
+    - Refactor toast widget rendering.
+
 ## [1.8.0] - 16/01/2024
 
 * **Enhancement**:

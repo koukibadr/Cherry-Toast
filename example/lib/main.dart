@@ -102,9 +102,7 @@ class ExampleApp extends StatelessWidget {
               child: Text('🍒 Error Cherry Toast'),
               onPressed: () {
                 CherryToast.error(
-                  title: Text(''),
                   enableIconAnimation: false,
-                  displayTitle: false,
                   description: Text('Invalid account information'),
                   animationType: AnimationType.fromRight,
                   animationDuration: Duration(milliseconds: 1000),
@@ -124,8 +122,6 @@ class ExampleApp extends StatelessWidget {
                 CherryToast(
                   icon: Icons.alarm_add,
                   themeColor: Colors.pink,
-                  title: Text(''),
-                  displayTitle: false,
                   description: Text('A bottom cherry toast example'),
                   toastPosition: Position.bottom,
                   animationDuration: Duration(milliseconds: 1000),
@@ -146,7 +142,6 @@ class ExampleApp extends StatelessWidget {
                   icon: Icons.android,
                   themeColor: Colors.green,
                   title: Text(''),
-                  displayTitle: false,
                   description: Text('A center cherry toast example'),
                   toastPosition: Position.center,
                   animationDuration: Duration(milliseconds: 1000),
@@ -164,8 +159,6 @@ class ExampleApp extends StatelessWidget {
               child: Text('🍒 Warning Cherry Toast'),
               onPressed: () {
                 CherryToast.warning(
-                  title: Text(''),
-                  displayTitle: false,
                   description:
                       Text('All information may be deleted after this action'),
                   animationType: AnimationType.fromTop,
@@ -200,10 +193,8 @@ class ExampleApp extends StatelessWidget {
               onPressed: () {
                 CherryToast(
                   icon: Icons.car_repair,
+                  description: Text('This is a description message'),
                   themeColor: Colors.green,
-                  title: Text(''),
-                  displayTitle: false,
-                  description: Text('هذا مثال تصميم من اليمين'),
                   toastPosition: Position.bottom,
                   layout: ToastLayout.rtl,
                   animationType: AnimationType.fromRight,
