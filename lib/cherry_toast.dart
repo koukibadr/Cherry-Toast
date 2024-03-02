@@ -45,8 +45,10 @@ class CherryToast extends StatefulWidget {
     this.disableToastAnimation = false,
     this.onToastClosed,
   }) : super(key: key) {
-    assert(title != null || description != null,
-        'Cherry toast must be initialized with minimum title or description',);
+    assert(
+      title != null || description != null,
+      'Cherry toast must be initialized with minimum title or description',
+    );
   }
 
   CherryToast.success({
@@ -79,8 +81,10 @@ class CherryToast extends StatefulWidget {
     this.disableToastAnimation = false,
     this.onToastClosed,
   }) : super(key: key) {
-    assert(title != null || description != null,
-        'Cherry toast must be initialized with minimum title or description',);
+    assert(
+      title != null || description != null,
+      'Cherry toast must be initialized with minimum title or description',
+    );
     icon = Icons.check_circle;
     _initializeAttributes(successColor);
   }
@@ -115,8 +119,10 @@ class CherryToast extends StatefulWidget {
     this.disableToastAnimation = false,
     this.onToastClosed,
   }) : super(key: key) {
-    assert(title != null || description != null,
-        'Cherry toast must be initialized with minimum title or description',);
+    assert(
+      title != null || description != null,
+      'Cherry toast must be initialized with minimum title or description',
+    );
     icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
   }
@@ -151,8 +157,10 @@ class CherryToast extends StatefulWidget {
     this.disableToastAnimation = false,
     this.onToastClosed,
   }) : super(key: key) {
-    assert(title != null || description != null,
-        'Cherry toast must be initialized with minimum title or description',);
+    assert(
+      title != null || description != null,
+      'Cherry toast must be initialized with minimum title or description',
+    );
     icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
   }
@@ -187,8 +195,10 @@ class CherryToast extends StatefulWidget {
     this.disableToastAnimation = false,
     this.onToastClosed,
   }) : super(key: key) {
-    assert(title != null || description != null,
-        'Cherry toast must be initialized with minimum title or description',);
+    assert(
+      title != null || description != null,
+      'Cherry toast must be initialized with minimum title or description',
+    );
     icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
   }

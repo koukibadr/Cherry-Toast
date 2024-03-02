@@ -1,3 +1,8 @@
+## [1.9.1] - 02/03/2024
+
+* **Enhancement**:
+    - Apply dart formatting lint rules for pub analysis.
+
 ## [1.9.0] - 28/02/2024
 
 * **Enhancement**:
