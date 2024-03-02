@@ -43,6 +43,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.inheritThemeColors = false,
     this.onToastClosed,
   }) : super(key: key) {
     assert(
@@ -79,6 +80,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.inheritThemeColors = false,
     this.onToastClosed,
   }) : super(key: key) {
     assert(
@@ -117,6 +119,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.inheritThemeColors = false,
     this.onToastClosed,
   }) : super(key: key) {
     assert(
@@ -155,6 +158,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.inheritThemeColors = false,
     this.onToastClosed,
   }) : super(key: key) {
     assert(
@@ -193,6 +197,7 @@ class CherryToast extends StatefulWidget {
     this.width,
     this.constraints,
     this.disableToastAnimation = false,
+    this.inheritThemeColors = false,
     this.onToastClosed,
   }) : super(key: key) {
     assert(
@@ -329,6 +334,10 @@ class CherryToast extends StatefulWidget {
   ///by default the toast animation is enabled
   final bool disableToastAnimation;
 
+  /// Indicate toast should inherit theme colors sheme, to apply in background
+  /// and shadow color.
+  final bool inheritThemeColors;
+
   ///Callback invoked when toast get dismissed (closed by button or dismissed automtically)
   final Function()? onToastClosed;
 
@@ -390,12 +399,7 @@ class _CherryToastState extends State<CherryToast>
       color: widget.backgroundColor,
       borderRadius: BorderRadius.circular(widget.borderRadius),
       boxShadow: [
-        BoxShadow(
-          color: widget.shadowColor,
-          spreadRadius: 1,
-          blurRadius: 2,
-          offset: const Offset(0, 1), // changes position of shadow
-        ),
+        _createToastBoxShadow(color: widget.shadowColor),
       ],
     );
     if (widget.autoDismiss) {
@@ -521,7 +525,19 @@ class _CherryToastState extends State<CherryToast>
     return Wrap(
       children: [
         Container(
-          decoration: toastDecoration,
+          decoration: widget.inheritThemeColors
+              ? toastDecoration.copyWith(
+                  color: Theme.of(context).colorScheme.surface,
+                  boxShadow: [
+                    _createToastBoxShadow(
+                      color: Theme.of(context)
+                          .colorScheme
+                          .onSurface
+                          .withOpacity(0.12),
+                    ),
+                  ],
+                )
+              : toastDecoration,
           constraints: widget.constraints,
           width: widget.width,
           height: widget.height,
@@ -643,4 +659,14 @@ class _CherryToastState extends State<CherryToast>
       ),
     );
   }
+
+  BoxShadow _createToastBoxShadow({
+    required Color color,
+  }) =>
+      BoxShadow(
+        color: color,
+        spreadRadius: 1,
+        blurRadius: 2,
+        offset: const Offset(0, 1), // changes position of shadow
+      );
 }

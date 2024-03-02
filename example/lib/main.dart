@@ -13,8 +13,13 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Cherry Toast Example',
       theme: ThemeData(
+        useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
+      darkTheme: ThemeData.dark(
+        useMaterial3: true,
+      ),
+      themeMode: ThemeMode.system,
       home: Scaffold(
         body: ExampleApp(),
       ),
@@ -61,6 +66,7 @@ class ExampleApp extends StatelessWidget {
                     ),
                   ),
                   action: Text('Toast content description'),
+                  inheritThemeColors: true,
                   actionHandler: () {},
                   onToastClosed: () {
                     print('Toast closed');
@@ -79,6 +85,7 @@ class ExampleApp extends StatelessWidget {
               onPressed: () {
                 CherryToast.info(
                   disableToastAnimation: true,
+                  inheritThemeColors: true,
                   autoDismiss: false,
                   toastPosition: Position.top,
                   title: Text(
@@ -103,6 +110,7 @@ class ExampleApp extends StatelessWidget {
               onPressed: () {
                 CherryToast.error(
                   enableIconAnimation: false,
+                  inheritThemeColors: true,
                   description: Text('Invalid account information'),
                   animationType: AnimationType.fromRight,
                   animationDuration: Duration(milliseconds: 1000),
@@ -159,6 +167,7 @@ class ExampleApp extends StatelessWidget {
               child: Text('🍒 Warning Cherry Toast'),
               onPressed: () {
                 CherryToast.warning(
+                  inheritThemeColors: true,
                   description:
                       Text('All information may be deleted after this action'),
                   animationType: AnimationType.fromTop,
@@ -177,6 +186,7 @@ class ExampleApp extends StatelessWidget {
               child: Text('🍒 Success Cherry Toast'),
               onPressed: () {
                 CherryToast.success(
+                  inheritThemeColors: true,
                   title: Text('The simplest cherry toast'),
                   borderRadius: 0,
                 ).show(context);
@@ -192,6 +202,7 @@ class ExampleApp extends StatelessWidget {
               child: Text('🍒 Right Layout Cherry Toast'),
               onPressed: () {
                 CherryToast(
+                  inheritThemeColors: true,
                   icon: Icons.car_repair,
                   description: Text('This is a description message'),
                   themeColor: Colors.green,
