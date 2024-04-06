@@ -637,7 +637,7 @@ class _CherryToastState extends State<CherryToast>
                   const SizedBox(
                     height: 5,
                   ),
-                  widget.description!
+                  widget.description!,
                 ],
               ),
             if (widget.action != null)
@@ -651,9 +651,9 @@ class _CherryToastState extends State<CherryToast>
                       widget.actionHandler?.call();
                     },
                     child: widget.action,
-                  )
+                  ),
                 ],
-              )
+              ),
           ],
         ),
       ),

@@ -48,7 +48,7 @@ To add cherry toast to your project add this line to your `pubspec.yaml` file
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.9.1
+    cherry_toast: ^1.10.0
 ```
 
   
@@ -57,113 +57,129 @@ dependencies:
 
 ```dart
 ///Text widget displayed as a title in the toast
-///required parameter for all toast types
-final  Text?  title;
+  ///required parameter for all toast types
+  final Text? title;
 
-///Text widget displayed as a description in the toast
-final  Text?  description;
+  ///Text widget displayed as a description in the toast
+  final Text? description;
 
-///The action button displayed below description
-///by default there's no action added
-final  Text?  action;
+  ///THe action button displayed below description
+  ///by default there's no action added
+  final Text? action;
 
-///the toast icon, it's required when using the default constructor
-late  IconData  icon;
+  ///the toast icon, it's required when using the default constructor
+  ///
+  late IconData icon;
 
-///the Icon color
-///this parameter is only available on the default constructor
-///for the built-in themes the color will be set automatically
-late  Color  iconColor;
+  ///the Icon color
+  ///this parameter is only available on the default constructor
+  ///for the built-in themes the color  will be set automatically
+  late Color iconColor;
+  //background color of container
+  final Color backgroundColor;
+  //box shadow color of container
+  final Color shadowColor;
+  //Custom widget displayed at the place of the predefined icons
+  final Widget? iconWidget;
 
-///background color of container
-final  Color  backgroundColor;
-///box shadow color of container
-final Color shadowColor;
-//Custom widget displayed at the place of the predefined icons
-final  Widget?  iconWidget;
+  ///the icon size
+  ///by default is 20
+  ///this parameter is available in default constructor
+  late double iconSize;
 
-///the icon size
-///by default is 20
-///this parameter is available in default constructor
-late  double  iconSize;
+  ///the toast display postion, possible values
+  ///```dart
+  ///{
+  ///top,
+  ///bottom
+  ///}
+  ///```
+  final Position toastPosition;
 
-///the toast display postion, possible values
-///{
-///top,
-///bottom
-///}
-final  Position  toastPosition;
+  ///The color that will be applied on the circle behind the icon
+  ///for better rendering the action button must have the same color
+  ///
+  late Color themeColor;
 
-///The color that will be applied on the circle behind the icon
-///for better rendering the action button must have the same color
-late  Color  themeColor;
+  ///the function invoked when clicking on the action button
+  ///
+  final Function? actionHandler;
 
-///the function invoked when clicking on the action button
-final  Function?  actionHandler;
+  ///The duration of the animation by default it's 1.5 seconds
+  ///
+  final Duration animationDuration;
 
-///The duration of the animation by default it's 1.5 seconds
-final  Duration  animationDuration;
+  ///the animation curve by default it's set to `Curves.ease`
+  ///
+  final Cubic animationCurve;
 
-///the animation curve by default it's set to `Curves.ease`
-final  Cubic  animationCurve;
+  ///The animation type applied on the toast
+  ///```dart
+  ///{
+  ///fromTop,
+  ///fromLeft,
+  ///fromRight
+  ///}
+  ///```
+  final AnimationType animationType;
 
-///The animation type applied on the toast
-///{
-///fromTop,
-///fromLeft,
-///fromRight,
-///fromBottom,
-///}
-final  AnimationType  animationType;
+  ///indicates whether the toast will be hidden automatically or not
+  ///
+  final bool autoDismiss;
 
-///indicates whether the toast will be hidden automatically or not
-final  bool  autoDismiss;
+  ///the duration of the toast if [autoDismiss] is true
+  ///by default it's 3 seconds
+  ///
+  final Duration toastDuration;
 
-///the duration of the toast if [autoDismiss] is true
-///by default it's 3 seconds
-final  Duration  toastDuration;
+  ///the layout of the toast
+  ///```dart
+  ///{
+  ///ltr,
+  ///rtl
+  ///}
+  ///```
+  final ToastLayout layout;
 
-  
+  ///Display / Hide the close button icon
+  ///by default it's true
+  final bool displayCloseButton;
 
-///the layout of the toast
-///{
-///ltr,
-///rtl
-///}
-final  ToastLayout  layout;
+  ///define the border radius applied on the toast
+  ///by default it's 20
+  ///
+  final double borderRadius;
 
-///Display / Hide the close button icon
-///by default it's true
-final  bool  displayCloseButton;
+  ///Define whether the icon will be  rendered or not
+  ///
+  final bool displayIcon;
 
-///define the border radius applied on the toast
-///by default it's 20
-final  double  borderRadius;
+  ///Define wether the animation on the icon will be rendered or not
+  ///
+  final bool enableIconAnimation;
 
-///Define whether the icon will be rendered or not
-final  bool  displayIcon;
+  /// The attribute  is declaring a final variable named "width" of type double with a nullable value.
+  /// width attribute define the toast width
+  final double? width;
 
-///Define wether the animation on the icon will be rendered or not
-final  bool  enableIconAnimation;
+  /// The attribute is declaring a final variable named "height" of type double with a nullable type
+  /// modifier.
+  /// height attribute define the toast height
+  final double? height;
 
-/// The above code is declaring a final variable named "width" of type double with a nullable value.
-/// width attribute define the toast width
-final double? width;
+  ///Enable taost constraints customization (by default it's null)
+  final BoxConstraints? constraints;
 
-/// The above code is declaring a final variable named "height" of type double with a nullable type
-/// modifier.
-/// height attribute define the toast height
-final double? height;
+  ///indicate whether the toast animation is enabled or not
+  ///by default the toast animation is enabled
+  final bool disableToastAnimation;
 
-///Enable taost constraints customization (by default it's null)
-final BoxConstraints? constraints;
+  /// Indicate toast should inherit theme colors sheme, to apply in background
+  /// and shadow color.
+  final bool inheritThemeColors;
 
-///indicate whether the toast animation is enabled or not
-///by default the toast animation is enabled
-final bool disableToastAnimation;
-
-///Callback invoked when toast get dismissed (closed by button or dismissed automtically)
-final Function()? onToastClosed;
+  ///Callback invoked when toast get dismissed (closed by button or dismissed automtically)
+  final Function()? onToastClosed;
 ```
   
 

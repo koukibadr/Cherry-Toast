@@ -1,3 +1,8 @@
+## [1.10.0] - 06/04/2024
+
+* **Enhancement**:
+    - Add `inheritThemeColors` attribute to enable inherting widget theme of app theme [PR #72](https://github.com/koukibadr/Cherry-Toast/pull/72).
+
 ## [1.9.1] - 02/03/2024
 
 * **Enhancement**:

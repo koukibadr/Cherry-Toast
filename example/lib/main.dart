@@ -16,9 +16,6 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
         primarySwatch: Colors.blue,
       ),
-      darkTheme: ThemeData.dark(
-        useMaterial3: true,
-      ),
       themeMode: ThemeMode.system,
       home: Scaffold(
         body: ExampleApp(),
