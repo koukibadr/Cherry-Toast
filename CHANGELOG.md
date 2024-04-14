@@ -1,3 +1,9 @@
+## [1.10.1] - 14/04/2024
+
+* **Enhancement**:
+    - Add cherry toast image to pubspec package config
+
+
 ## [1.10.0] - 06/04/2024
 
 * **Enhancement**:

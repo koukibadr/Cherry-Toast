@@ -65,9 +65,7 @@ class ExampleApp extends StatelessWidget {
                   action: Text('Toast content description'),
                   inheritThemeColors: true,
                   actionHandler: () {},
-                  onToastClosed: () {
-                    print('Toast closed');
-                  },
+                  onToastClosed: () {},
                 ).show(context);
               },
             ),
