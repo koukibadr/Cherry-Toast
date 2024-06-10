@@ -33,7 +33,7 @@ class CherryToast extends StatefulWidget {
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
-    this.layout = ToastLayout.ltr,
+    this.textDirection = TextDirection.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
     this.displayIcon = true,
@@ -70,7 +70,7 @@ class CherryToast extends StatefulWidget {
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
-    this.layout = ToastLayout.ltr,
+    this.textDirection = TextDirection.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
     this.iconWidget,
@@ -110,7 +110,7 @@ class CherryToast extends StatefulWidget {
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
-    this.layout = ToastLayout.ltr,
+    this.textDirection = TextDirection.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
     this.displayIcon = true,
@@ -148,7 +148,7 @@ class CherryToast extends StatefulWidget {
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
-    this.layout = ToastLayout.ltr,
+    this.textDirection = TextDirection.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
     this.iconWidget,
@@ -187,7 +187,7 @@ class CherryToast extends StatefulWidget {
     this.toastDuration = const Duration(
       milliseconds: 3000,
     ),
-    this.layout = ToastLayout.ltr,
+    this.textDirection = TextDirection.ltr,
     this.displayCloseButton = true,
     this.borderRadius = 20,
     this.displayIcon = true,
@@ -299,7 +299,7 @@ class CherryToast extends StatefulWidget {
   ///
 
   ///```
-  final ToastLayout layout;
+  final TextDirection textDirection;
 
   ///Display / Hide the close button icon
   ///by default it's true
@@ -513,7 +513,7 @@ class _CherryToastState extends State<CherryToast>
           ? disabledAnimationOffset
           : offsetAnimation,
       child: Directionality(
-        textDirection: TextDirection.ltr,
+        textDirection: widget.textDirection,
         child: renderCherryToastContent(context),
       ),
     );
@@ -624,37 +624,37 @@ class _CherryToastState extends State<CherryToast>
           left: 10,
           right: 10,
         ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: widget.layout == ToastLayout.ltr
-              ? CrossAxisAlignment.start
-              : CrossAxisAlignment.end,
-          children: [
-            if (widget.title != null) widget.title!,
-            if (widget.description != null)
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  widget.description!,
-                ],
-              ),
-            if (widget.action != null)
-              Column(
-                children: [
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  InkWell(
-                    onTap: () {
-                      widget.actionHandler?.call();
-                    },
-                    child: widget.action,
-                  ),
-                ],
-              ),
-          ],
+        child: Directionality(
+          textDirection: widget.textDirection,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              if (widget.title != null) widget.title!,
+              if (widget.description != null)
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    widget.description!,
+                  ],
+                ),
+              if (widget.action != null)
+                Column(
+                  children: [
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        widget.actionHandler?.call();
+                      },
+                      child: widget.action,
+                    ),
+                  ],
+                ),
+            ],
+          ),
         ),
       ),
     );

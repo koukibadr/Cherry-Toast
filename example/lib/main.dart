@@ -202,7 +202,7 @@ class ExampleApp extends StatelessWidget {
                   description: Text('This is a description message'),
                   themeColor: Colors.green,
                   toastPosition: Position.bottom,
-                  layout: ToastLayout.rtl,
+                  textDirection: TextDirection.rtl,
                   animationType: AnimationType.fromRight,
                   action: Text(
                     'انقر هنا',
@@ -232,7 +232,7 @@ class ExampleApp extends StatelessWidget {
                   ),
                   action: Text('هذا النص كتب بالعربية'),
                   actionHandler: () {},
-                  layout: ToastLayout.rtl,
+                  textDirection: TextDirection.rtl,
                 ).show(context);
               },
             ),

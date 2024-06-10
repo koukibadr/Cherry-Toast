@@ -18,8 +18,3 @@ enum AnimationType {
   fromRight,
   fromBottom,
 }
-
-enum ToastLayout {
-  ltr,
-  rtl,
-}
