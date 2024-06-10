@@ -1,3 +1,8 @@
+## [1.11.0] - 10/06/2024
+
+* **Changes**:
+    - `layout` attribute is renamed to `textDirection` with `TextDirection` type
+
 ## [1.10.1] - 14/04/2024
 
 * **Enhancement**:
