@@ -168,7 +168,8 @@ class ExampleApp extends StatelessWidget {
                 CherryToast.warning(
                   inheritThemeColors: true,
                   description: const Text(
-                      'All information may be deleted after this action',),
+                    'All information may be deleted after this action',
+                  ),
                   animationType: AnimationType.fromTop,
                   action: const Text('Backup data'),
                   actionHandler: () {},
