@@ -1,3 +1,9 @@
+## [1.12.0] - 01/02/2025
+
+* **Changes**:
+    - add `horizontalAlignment` attribute to align notification content horizontally.
+    - add margin value attributes between title, description and action widgets `titleDescriptionMargin` and `descriptionActionMargin`.
+
 ## [1.11.0] - 10/06/2024
 
 * **Changes**:

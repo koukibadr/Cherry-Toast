@@ -187,7 +187,7 @@ class ExampleApp extends StatelessWidget {
               onPressed: () {
                 CherryToast.success(
                   inheritThemeColors: true,
-                  title: const Text('The simplest cherry toast'),
+                  title: const Text('Logout Successful'),
                   borderRadius: 0,
                 ).show(context);
               },
