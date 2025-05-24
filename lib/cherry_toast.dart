@@ -551,22 +551,17 @@ class _CherryToastState extends State<CherryToast>
           width: widget.width,
           height: widget.height,
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(5.0),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
-                  flex: 2,
                   child: Row(
-                    crossAxisAlignment:
-                        widget.description == null && widget.action == null
-                            ? CrossAxisAlignment.center
-                            : CrossAxisAlignment.start,
                     children: [
                       //TODO refactor `iconWidget` and `titleWidget` to avoid duplication
-                      if (widget.iconWidget != null)
+                      if (widget.displayIcon && widget.iconWidget != null)
                         widget.iconWidget!
                       else if (widget.displayIcon)
                         CherryToastIcon(
@@ -575,9 +570,7 @@ class _CherryToastState extends State<CherryToast>
                           iconSize: widget.iconSize,
                           iconColor: widget.iconColor,
                           enableAnimation: widget.enableIconAnimation,
-                        )
-                      else
-                        Container(),
+                        ),
                       renderToastContent(),
                     ],
                   ),
