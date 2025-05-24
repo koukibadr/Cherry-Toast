@@ -555,7 +555,7 @@ class _CherryToastState extends State<CherryToast>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Expanded(
                   flex: 2,
@@ -582,14 +582,7 @@ class _CherryToastState extends State<CherryToast>
                     ],
                   ),
                 ),
-                if (widget.displayCloseButton)
-                  Padding(
-                    padding: const EdgeInsets.only(
-                      top: 10,
-                      right: 10,
-                    ),
-                    child: renderCloseButton(context),
-                  ),
+                if (widget.displayCloseButton) renderCloseButton(context),
               ],
             ),
           ),
@@ -637,7 +630,7 @@ class _CherryToastState extends State<CherryToast>
           textDirection: widget.textDirection,
           child: Column(
             crossAxisAlignment: widget.horizontalAlignment,
-            mainAxisAlignment: MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               if (widget.title != null) widget.title!,
               if (widget.title != null && widget.description != null)
