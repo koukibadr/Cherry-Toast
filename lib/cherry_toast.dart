@@ -13,9 +13,12 @@ class CherryToast extends StatefulWidget {
 
   CherryToast({
     Key? key,
-    this.title,
-    required this.icon,
     required this.themeColor,
+    this.title,
+    @Deprecated(
+      "will be removed in the next major release, use iconWidget instead.",
+    )
+    this.icon,
     this.iconColor = Colors.black,
     this.action,
     this.backgroundColor = defaultBackgroundColor,
@@ -240,7 +243,8 @@ class CherryToast extends StatefulWidget {
   final Text? action;
 
   /// The toast icon, it's required when using the default constructor
-  late IconData icon;
+  @Deprecated("Deprecated, use iconWidget instead.")
+  late IconData? icon;
 
   /// The Icon color
   /// this parameter is only available on the default constructor
@@ -560,13 +564,12 @@ class _CherryToastState extends State<CherryToast>
                 Expanded(
                   child: Row(
                     children: [
-                      //TODO refactor `iconWidget` and `titleWidget` to avoid duplication
                       if (widget.displayIcon && widget.iconWidget != null)
                         widget.iconWidget!
-                      else if (widget.displayIcon)
+                      else if (widget.displayIcon && widget.icon != null)
                         CherryToastIcon(
                           color: widget.themeColor,
-                          icon: widget.icon,
+                          icon: widget.icon!,
                           iconSize: widget.iconSize,
                           iconColor: widget.iconColor,
                           enableAnimation: widget.enableIconAnimation,
