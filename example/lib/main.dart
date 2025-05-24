@@ -68,8 +68,10 @@ class ExampleApp extends StatelessWidget {
                   ),
                   action: const Text('Toast content description'),
                   inheritThemeColors: true,
+                  displayIcon: false,
                   actionHandler: () {},
                   onToastClosed: () {},
+                  horizontalAlignment: CrossAxisAlignment.start,
                 ).show(context);
               },
             ),
