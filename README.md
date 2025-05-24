@@ -1,7 +1,5 @@
 # Cherry Toast
 
-  
-
 <p  align="center">
 
 <img  src="https://github.com/koukibadr/Cherry-Toast/blob/main/cherry_toast_logo.gif?raw=true"  height="200"/>
@@ -12,17 +10,11 @@
 
 </p>
 
-  
-
-| ![info_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/info_cherry_toast.gif?raw=true) | ![error_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/error_cherry_toast.gif?raw=true) | ![bottom_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/bottom_cherry_toast.gif?raw=true) |
+| ![info_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/info_cherry_toast.gif?raw=true)       | ![error_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/error_cherry_toast.gif?raw=true)     | ![bottom_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/bottom_cherry_toast.gif?raw=true)             |
 | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------ |
 | ![warning_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/warning_cherry_toast.gif?raw=true) | ![success_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/success_cherry_toast.gif?raw=true) | ![right_layout_cherry_toast.gif](https://github.com/koukibadr/Cherry-Toast/blob/main/example/right_layout_cherry_toast.gif?raw=true) |
 
-  
-
 ## Cherry Toast
-
-  
 
 - Support all platforms
 - Top and Bottom display position
@@ -40,22 +32,16 @@
 
 ## Installation
 
-  
-
 To add cherry toast to your project add this line to your `pubspec.yaml` file
-
-  
 
 ```yaml
 dependencies:
-    cherry_toast: ^1.12.0
+  cherry_toast: ^1.13.0
 ```
-
-  
 
 ## Parameters
 
-```dart
+````dart
 /// Text widget displayed as a title in the toast
   /// required parameter for all toast types
   final Text? title;
@@ -177,16 +163,11 @@ dependencies:
 
   /// The space rendered between the description and actions widgets.
   final double descriptionActionMargin;
-```
-  
+````
 
 ## Usage
 
-  
-
 - Simple cherry toast with only title
-
-  
 
 ```dart
 
@@ -196,15 +177,11 @@ title:  Text("The simplest cherry toast", style: TextStyle(color: Colors.black))
 
 ).show(context);
 
-  
+
 
 ```
 
-  
-
 - Simple cherry toast with action button
-
-  
 
 ```dart
 
@@ -222,11 +199,9 @@ print("Action button pressed");
 
 ).show(context);
 
-  
+
 
 ```
-
-  
 
 <p  align="center">
 
@@ -234,19 +209,11 @@ print("Action button pressed");
 
 <br>
 
-  
-
 <b>A new way to display toasts in Flutter in an elegant design and animations</b>
-
-  
 
 </p>
 
-  
-
 - Toast with description without title
-
-  
 
 ```dart
 
@@ -266,15 +233,11 @@ print("Hello World!!");
 
 ).show(context);
 
-  
+
 
 ```
 
-  
-
 - Toast with nothing but description with different animation type and auto dismiss
-
-  
 
 ```dart
 
@@ -290,15 +253,11 @@ autoDismiss:  true
 
 ).show(context);
 
-  
+
 
 ```
 
-  
-
 - Bottom displayed cherry toast
-
-  
 
 ```dart
 
@@ -318,14 +277,10 @@ autoDismiss:  true
 
 ).show(context);
 
-  
+
 ```
 
-  
-
 - Right layout rendered cherry toast
-
-  
 
 ```dart
 
@@ -352,26 +307,19 @@ autoDismiss:  true)
 
 .show(context);
 
-  
+
 
 ```
 
-  
-
 ## Contribution
 
-  
-
 Of course the project is open source, and you can contribute to it [repository link](https://github.com/koukibadr/Cherry-Toast)
-
-  
 
 - If you **found a bug**, open an issue.
 
 - If you **have a feature request**, open an issue.
 
 - If you **want to contribute**, submit a pull request.
-
 
 ## Contributors
 
