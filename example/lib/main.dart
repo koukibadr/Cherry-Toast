@@ -129,7 +129,7 @@ class ExampleApp extends StatelessWidget {
               child: const Text('🍒 Bottom Cherry Toast'),
               onPressed: () {
                 CherryToast(
-                  icon: Icons.alarm_add,
+                  iconWidget: const Icon(Icons.alarm_add),
                   themeColor: Colors.pink,
                   description: const Text('A bottom cherry toast example'),
                   toastPosition: Position.bottom,
@@ -148,7 +148,7 @@ class ExampleApp extends StatelessWidget {
               child: const Text('🍒 Center Cherry Toast'),
               onPressed: () {
                 CherryToast(
-                  icon: Icons.android,
+                  iconWidget: const Icon(Icons.android),
                   themeColor: Colors.green,
                   title: const Text(''),
                   description: const Text('A center cherry toast example'),
@@ -205,7 +205,7 @@ class ExampleApp extends StatelessWidget {
               onPressed: () {
                 CherryToast(
                   inheritThemeColors: true,
-                  icon: Icons.car_repair,
+                  iconWidget: const Icon(Icons.car_rental),
                   description: const Text('This is a description message'),
                   themeColor: Colors.green,
                   toastPosition: Position.bottom,

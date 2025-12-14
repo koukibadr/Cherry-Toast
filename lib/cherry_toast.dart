@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:cherry_toast/cherry_toast_icon.dart';
 import 'package:cherry_toast/resources/arrays.dart';
 import 'package:cherry_toast/resources/colors.dart';
 import 'package:cherry_toast/resources/extensions.dart';
@@ -15,10 +13,6 @@ class CherryToast extends StatefulWidget {
     Key? key,
     required this.themeColor,
     this.title,
-    @Deprecated(
-      "will be removed in the next major release, use iconWidget instead.",
-    )
-    this.icon,
     this.iconColor = Colors.black,
     this.action,
     this.backgroundColor = defaultBackgroundColor,
@@ -96,7 +90,6 @@ class CherryToast extends StatefulWidget {
       title != null || description != null,
       'Cherry toast must be initialized with minimum title or description',
     );
-    icon = Icons.check_circle;
     _initializeAttributes(successColor);
   }
 
@@ -138,7 +131,6 @@ class CherryToast extends StatefulWidget {
       title != null || description != null,
       'Cherry toast must be initialized with minimum title or description',
     );
-    icon = Icons.error_rounded;
     _initializeAttributes(errorColor);
   }
 
@@ -180,7 +172,6 @@ class CherryToast extends StatefulWidget {
       title != null || description != null,
       'Cherry toast must be initialized with minimum title or description',
     );
-    icon = Icons.warning_rounded;
     _initializeAttributes(warningColor);
   }
 
@@ -222,7 +213,6 @@ class CherryToast extends StatefulWidget {
       title != null || description != null,
       'Cherry toast must be initialized with minimum title or description',
     );
-    icon = Icons.info_rounded;
     _initializeAttributes(infoColor);
   }
 
@@ -241,10 +231,6 @@ class CherryToast extends StatefulWidget {
 
   /// The action button displayed below description
   final Text? action;
-
-  /// The toast icon, it's required when using the default constructor
-  @Deprecated("Deprecated, use iconWidget instead.")
-  late IconData? icon;
 
   /// The Icon color
   /// this parameter is only available on the default constructor
@@ -565,15 +551,7 @@ class _CherryToastState extends State<CherryToast>
                   child: Row(
                     children: [
                       if (widget.displayIcon && widget.iconWidget != null)
-                        widget.iconWidget!
-                      else if (widget.displayIcon && widget.icon != null)
-                        CherryToastIcon(
-                          color: widget.themeColor,
-                          icon: widget.icon!,
-                          iconSize: widget.iconSize,
-                          iconColor: widget.iconColor,
-                          enableAnimation: widget.enableIconAnimation,
-                        ),
+                        widget.iconWidget!,
                       renderToastContent(),
                     ],
                   ),
